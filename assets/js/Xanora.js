@@ -63,3 +63,35 @@ function setupNavigation(){
    - FAQ Accordion
    - AI Assistant
 ========================================= */
+/* ==========================================
+   HERO ANIMATION
+========================================== */
+
+function animateHero() {
+
+    const hero = document.querySelector(".hero-content");
+
+    if (!hero) return;
+
+    hero.style.opacity = "0";
+    hero.style.transform = "translateY(30px)";
+
+    requestAnimationFrame(() => {
+
+        hero.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+        hero.style.opacity = "1";
+        hero.style.transform = "translateY(0)";
+
+    });
+
+}
+
+/* ==========================================
+   INITIALIZE HERO
+========================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    animateHero();
+
+});
