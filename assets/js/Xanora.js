@@ -1304,3 +1304,437 @@ document.addEventListener(
         }
     });
 }
+// ==========================================
+// XANORA AI — INQUIRY & CONSULTATION MODALS
+// ==========================================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const getStartedModal =
+        document.getElementById("getStartedModal");
+
+    const consultationModal =
+        document.getElementById("consultationModal");
+
+
+    // ==========================================
+    // OPEN MODALS
+    // ==========================================
+
+    function openModal(modal) {
+
+        if (!modal) return;
+
+        modal.classList.add("active");
+        modal.setAttribute("aria-hidden", "false");
+
+        document.body.classList.add("modal-open");
+
+    }
+
+
+    // ==========================================
+    // CLOSE MODALS
+    // ==========================================
+
+    function closeModal(modal) {
+
+        if (!modal) return;
+
+        modal.classList.remove("active");
+        modal.setAttribute("aria-hidden", "true");
+
+        document.body.classList.remove("modal-open");
+
+    }
+
+
+    // ==========================================
+    // GET STARTED BUTTONS
+    // ==========================================
+
+    const getStartedButtons =
+        document.querySelectorAll(
+            'a[href="contact.html"].primary-btn'
+        );
+
+
+    getStartedButtons.forEach(function (button) {
+
+        const text =
+            button.textContent.trim().toLowerCase();
+
+        if (text.includes("get started")) {
+
+            button.addEventListener("click", function (event) {
+
+                event.preventDefault();
+
+                openModal(getStartedModal);
+
+            });
+
+        }
+
+    });
+
+
+    // ==========================================
+    // BOOK CONSULTATION BUTTONS
+    // ==========================================
+
+    const consultationButtons =
+        document.querySelectorAll(
+            'a[href="contact.html"]'
+        );
+
+
+    consultationButtons.forEach(function (button) {
+
+        const text =
+            button.textContent.trim().toLowerCase();
+
+        if (text.includes("book a consultation")) {
+
+            button.addEventListener("click", function (event) {
+
+                event.preventDefault();
+
+                openModal(consultationModal);
+
+            });
+
+        }
+
+    });
+
+
+    // ==========================================
+    // CLOSE BUTTONS + OVERLAY
+    // ==========================================
+
+    const closeButtons =
+        document.querySelectorAll("[data-close-modal]");
+
+
+    closeButtons.forEach(function (button) {
+
+        button.addEventListener("click", function () {
+
+            const modal =
+                this.closest(".form-modal");
+
+            closeModal(modal);
+
+        });
+
+    });
+
+
+    // ==========================================
+    // ESCAPE KEY
+    // ==========================================
+
+    document.addEventListener("keydown", function (event) {
+
+        if (event.key !== "Escape") return;
+
+        if (
+            getStartedModal &&
+            getStartedModal.classList.contains("active")
+        ) {
+
+            closeModal(getStartedModal);
+
+        }
+
+
+        if (
+            consultationModal &&
+            consultationModal.classList.contains("active")
+        ) {
+
+            closeModal(consultationModal);
+
+        }
+
+    });
+
+});
+
+// ==========================================
+// XANORA AI — GET STARTED FORM
+// ==========================================
+
+const getStartedForm =
+    document.getElementById("getStartedForm");
+
+if (getStartedForm) {
+
+    getStartedForm.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+            const submitButton =
+                getStartedForm.querySelector(".form-submit");
+
+            const formData = {
+                name:
+                    document.getElementById("gsName").value.trim(),
+
+                email:
+                    document.getElementById("gsEmail").value.trim(),
+
+                phone:
+                    document.getElementById("gsPhone").value.trim(),
+
+                organization:
+                    document.getElementById("gsOrganization").value.trim(),
+
+                service:
+                    document.getElementById("gsService").value,
+
+                message:
+                    document.getElementById("gsMessage").value.trim()
+            };
+
+
+            try {
+
+                submitButton.disabled = true;
+                submitButton.textContent = "Sending...";
+
+
+                const response =
+                    await fetch(
+                        "/api/contact",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body:
+                                JSON.stringify(formData)
+                        }
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        result.message ||
+                        "Something went wrong."
+                    );
+
+                }
+
+
+                alert(
+                    "Your inquiry has been sent successfully."
+                );
+
+
+                getStartedForm.reset();
+
+
+            } catch (error) {
+
+                console.error(
+                    "Get Started form error:",
+                    error
+                );
+
+
+                alert(
+                    "Unable to send your inquiry. Please try again."
+                );
+
+
+            } finally {
+
+                submitButton.disabled = false;
+
+                submitButton.innerHTML = `
+                    Send Inquiry
+                    <i class="fa-solid fa-arrow-right"></i>
+                `;
+
+            }
+
+        }
+    );
+
+}
+
+
+
+// ==========================================
+// XANORA AI — CONSULTATION FORM
+// ==========================================
+
+const consultationForm =
+    document.getElementById("consultationForm");
+
+if (consultationForm) {
+
+    consultationForm.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+            const submitButton =
+                consultationForm.querySelector(".form-submit");
+
+
+            const availability =
+                document.querySelector(
+                    'input[name="availability"]:checked'
+                );
+
+
+            const meetingPreference =
+                document.querySelector(
+                    'input[name="meetingPreference"]:checked'
+                );
+
+
+            const formData = {
+
+                name:
+                    document.getElementById(
+                        "consultName"
+                    ).value.trim(),
+
+                email:
+                    document.getElementById(
+                        "consultEmail"
+                    ).value.trim(),
+
+                phone:
+                    document.getElementById(
+                        "consultPhone"
+                    ).value.trim(),
+
+                reason:
+                    document.getElementById(
+                        "consultReason"
+                    ).value,
+
+                description:
+                    document.getElementById(
+                        "consultDescription"
+                    ).value.trim(),
+
+                preferredDate:
+                    document.getElementById(
+                        "consultDate"
+                    ).value,
+
+                preferredTime:
+                    document.getElementById(
+                        "consultTime"
+                    ).value,
+
+                availability:
+                    availability
+                        ? availability.value
+                        : "",
+
+                meetingPreference:
+                    meetingPreference
+                        ? meetingPreference.value
+                        : "",
+
+                additional:
+                    document.getElementById(
+                        "consultAdditional"
+                    ).value.trim()
+
+            };
+
+
+            try {
+
+                submitButton.disabled = true;
+
+                submitButton.textContent =
+                    "Sending...";
+
+
+                const response =
+                    await fetch(
+                        "/api/consultation",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body:
+                                JSON.stringify(formData)
+                        }
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        result.message ||
+                        "Something went wrong."
+                    );
+
+                }
+
+
+                alert(
+                    "Your consultation request has been received. We will contact you to confirm the details."
+                );
+
+
+                consultationForm.reset();
+
+
+            } catch (error) {
+
+                console.error(
+                    "Consultation form error:",
+                    error
+                );
+
+
+                alert(
+                    "Unable to send your consultation request. Please try again."
+                );
+
+
+            } finally {
+
+                submitButton.disabled = false;
+
+                submitButton.innerHTML = `
+                    Request Consultation
+                    <i class="fa-solid fa-arrow-right"></i>
+                `;
+
+            }
+
+        }
+    );
+
+}
