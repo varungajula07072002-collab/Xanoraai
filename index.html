@@ -117,7 +117,7 @@
 
                         <div>
                             <i data-lucide="shield-check"></i>
-                            Trusted Guidance
+                            Clear Guidance
                         </div>
 
                         <div>
@@ -314,8 +314,8 @@
                 </span>
 
                 <h2>
-                    AI That Works for Real People
-                    and Real Businesses
+                   AI That Works for <span>Real People</span>
+                   and <span>Real Businesses</span>
                 </h2>
 
                 <p>
@@ -340,7 +340,7 @@
 
                     <p>
                         Clear, practical guidance to help you understand where AI can actually make a difference.
-
+                    </p>
                 </div>
 
 
@@ -409,7 +409,7 @@
                 <h2>
                     Everything You Need
                     <br>
-                    To Use AI Better
+                    To <span>Use AI Better</span>
                 </h2>
 
                 <p> 
@@ -506,7 +506,7 @@
                 </span>
 
                 <h2>
-                    Your Problem Comes First.
+                    Your <span>Problem Comes First.</span>
                     <br>
                     AI Comes Second.
                 </h2>
@@ -611,7 +611,7 @@
             </div>
 
             <h2 class="who-title">
-                AI That Fits the Way You Work
+                AI That <span>Fits the Way You Work</span>
             </h2>
 
             <p class="section-description">
@@ -670,7 +670,7 @@
                     </div>
 
                     <h3>
-                        Businesses Ready For Change
+                        Growing Businesses
                     </h3>
 
                     <p>
@@ -716,11 +716,11 @@
                 COMMON CHALLENGES
             </div>
 
-            <h2 class="section-title">
-                The Problems We Help Solve
+            <h2 class="problem-title">
+                The <span>Problems We Help Solve</span>
             </h2>
 
-            <p class="section-description">
+            <p class="problem-section.section-description">
                 AI is only valuable when it solves real
                 problems. Here are some of the common
                 challenges we help individuals, startups,
@@ -931,19 +931,60 @@
                    </div>
 
 
-                 <div class="form-field">
-                     <label for="gsPhone">
-                          Mobile Number
-                         <small>(Optional)</small>
-                      </label>
+                   <div class="form-row">
 
-                     <input
-                          type="tel"
-                          id="gsPhone"
-                         name="phone"
-                         placeholder="+91 XXXXX XXXXX"
-                        >
-                   </div>
+                       <div class="form-group">
+
+                         <label for="gsCountry">
+                             Country
+                         </label>
+
+                         <select
+                             id="gsCountry"
+                             name="country"
+                            >
+ 
+                             <option value="">
+                                 Select your country
+                             </option>
+
+                             <option value="India">India</option>
+                             <option value="United States">United States</option>
+                             <option value="Canada">Canada</option>
+                             <option value="United Kingdom">United Kingdom</option>
+                             <option value="Australia">Australia</option>
+                             <option value="United Arab Emirates">United Arab Emirates</option>
+                             <option value="Singapore">Singapore</option>
+                             <option value="Germany">Germany</option>
+                             <option value="France">France</option>
+                             <option value="Netherlands">Netherlands</option>
+                             <option value="Japan">Japan</option>
+                             <option value="South Korea">South Korea</option>
+                             <option value="Other">Other</option>
+
+                            </select>
+
+                        </div>
+
+
+                     <div class="form-group">
+
+                         <label for="gsPhone">
+                             Mobile Number
+                             <span>(Optional)</span>
+                          </label>
+
+                         <input
+                               type="tel"
+                              id="gsPhone"
+                              name="phone"
+                              placeholder="Your mobile number"
+                              autocomplete="tel"
+                            >
+
+                        </div>
+
+                    </div> 
 
 
                   <div class="form-field">
@@ -1121,22 +1162,59 @@
                     </div>
 
 
-                  <div class="form-field">
+                    <div class="form-row">
 
-                     <label for="consultPhone">
-                         Mobile Number
-                          <small>(Optional)</small>
-                       </label>
+                      <div class="form-group">
 
-                     <input
-                         type="tel"
-                         id="consultPhone"
-                         name="phone"
-                         placeholder="+91 XXXXX XXXXX"
-                        >
+                         <label for="consultCountry">
+                             Country
+                         </label>
 
-                    </div>
+                         <select
+                             id="consultCountry"
+                             name="country"
+                            >
 
+                             <option value="">
+                             Select your country
+                             </option>
+
+                             <option value="India">India</option>
+                             <option value="United States">United States</option>
+                             <option value="Canada">Canada</option>
+                             <option value="United Kingdom">United Kingdom</option>
+                             <option value="Australia">Australia</option>
+                             <option value="United Arab Emirates">United Arab Emirates</option>
+                             <option value="Singapore">Singapore</option>
+                             <option value="Germany">Germany</option>
+                             <option value="France">France</option>
+                             <option value="Netherlands">Netherlands</option>
+                             <option value="Japan">Japan</option>
+                             <option value="South Korea">South Korea</option>
+                             <option value="Other">Other</option>
+
+                            </select>
+
+                        </div>
+
+
+                       <div class="form-group">
+
+                         <label for="consultPhone">
+                              Mobile Number
+                             <span>(Optional)</span>
+                         </label>
+
+                         <input
+                             type="tel"
+                             id="consultPhone"
+                             name="phone"
+                             placeholder="Your mobile number"
+                             autocomplete="tel"
+                            >
+
+                        </div>
+                  </div>
 
                    <div class="form-field">
 
@@ -1376,17 +1454,216 @@
 
 
 
-    <!-- =========================
-         FOOTER
-    ========================== -->
+   <!-- =========================
+     FOOTER
+   ========================== -->
 
-    <footer>
+   <footer class="site-footer">
 
-        <p>
-            © 2026 XANORA AI. All Rights Reserved.
-        </p>
+      <div class="footer-main">
+
+         <!-- Brand -->
+         <div class="footer-brand">
+ 
+             <a href="index.html" class="footer-logo">
+                 XANORA <span>AI</span>
+             </a>
+
+             <p>
+                 Practical AI for real people and real businesses.
+                 We help you understand, adopt, and use AI in ways
+                 that actually make a difference.
+             </p>
+
+            </div>
+
+
+          <!-- Navigation -->
+          <div class="footer-column">
+
+             <h3>Explore</h3>
+
+             <a href="index.html">Home</a>
+             <a href="about.html">About</a>
+             <a href="services.html">Services</a>
+             <a href="contact.html">Contact</a>
+
+            </div>
+
+
+          <!-- Services -->
+          <div class="footer-column">
+
+             <h3>Services</h3>
+
+             <a href="services.html#ai-consulting">AI Consulting</a>
+             <a href="services.html#automation">Automation</a>
+             <a href="services.html#business-integration">AI Integration</a>
+             <a href="services.html#custom-ai-software">Custom AI Software</a>
+             <a href="services.html#ai-training">AI Training</a>
+             <a href="services.html#ai-strategy">AI Strategy</a>
+
+            </div>
+
+
+          <!-- Contact -->
+          <div class="footer-column">
+
+             <h3>Get Started</h3>
+ 
+             <p class="footer-contact-text">
+                 Have a problem you want to solve with AI?
+                 Let's start there.
+             </p>
+
+             <a href="index.html#get-started" class="footer-cta" data-open-modal="getStartedModal">
+                 Get Started
+                 <i data-lucide="arrow-right"></i>
+             </a>
+
+            </div>
+
+        </div>
+
+
+      <div class="footer-bottom">
+
+         <p>
+             © 2026 XANORA AI. All Rights Reserved.
+         </p>
+
+         
+
+          <div class="footer-bottom-links">
+
+             <a
+                 href="#"
+                 data-open-modal="privacyModal"
+                >
+                  Privacy Policy
+               </a>
+
+             <a
+                  href="#"
+                 data-open-modal="termsModal"
+                >
+                 Terms &amp; Conditions
+              </a>
+
+            </div>
+       </div>
 
     </footer>
+
+    <!-- =========================================================
+     PRIVACY POLICY MODAL
+    ========================================================= -->
+
+     <div
+         class="form-modal"
+         id="privacyModal"
+         aria-hidden="true"
+        >
+
+     <div
+         class="form-modal-overlay"
+         data-close-modal
+      ></div>
+
+
+     <div
+         class="form-modal-content legal-modal-content"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="privacyModalTitle"
+        >
+
+         <button
+             type="button"
+             class="form-modal-close"
+             data-close-modal
+             aria-label="Close Privacy Policy"
+            >
+              <i data-lucide="x"></i>
+         </button>
+
+
+         <div class="form-modal-header">
+
+             <span class="section-badge">
+                 PRIVACY POLICY
+             </span>
+
+             <h2 id="privacyModalTitle">
+                 Your privacy
+                 <span>matters to us.</span>
+             </h2>
+
+         </div>
+
+
+         <div class="legal-modal-body"
+               id="privacyModalBody">
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- =========================================================
+     TERMS & CONDITIONS MODAL
+   ========================================================= -->
+
+     <div
+         class="form-modal"
+         id="termsModal"
+         aria-hidden="true"
+        >
+
+      <div
+          class="form-modal-overlay"
+           data-close-modal
+      ></div>
+
+
+      <div
+          class="form-modal-content legal-modal-content"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="termsModalTitle"
+        >
+
+          <button
+              type="button"
+              class="form-modal-close"
+              data-close-modal
+              aria-label="Close Terms & Conditions"
+            >
+             <i data-lucide="x"></i>
+          </button>
+
+
+         <div class="form-modal-header">
+
+             <span class="section-badge">
+                 TERMS &amp; CONDITIONS
+             </span>
+
+             <h2 id="termsModalTitle">
+                 Terms &
+                 <span>Conditions.</span>
+             </h2>
+
+            </div>
+
+
+          <div class="legal-modal-body"
+               id="termsModalBody"
+            ></div>
+
+        </div>
+
+    </div>
 
 
     <!-- Lucide Icons -->
@@ -1398,3 +1675,4 @@
 </body>
 
 </html>
+

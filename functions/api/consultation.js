@@ -10,6 +10,7 @@ export async function onRequestPost(context) {
         const {
             name,
             email,
+            country,
             phone,
             reason,
             description,
@@ -111,6 +112,11 @@ export async function onRequestPost(context) {
             <p>
                 <strong>Email:</strong>
                 ${escapeHtml(email)}
+            </p>
+
+            <p>
+                <strong>Country:</strong>
+                ${escapeHtml(country || "Not provided")}
             </p>
 
             <p>

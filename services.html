@@ -59,7 +59,7 @@
 
             </ul>
 
-            <a href="contact.html" class="nav-button">
+            <a href="index.html#book-consultation" class="nav-button">
                 Book a Consultation
             </a>
 
@@ -96,10 +96,6 @@
 
                     <a href="#services-list" class="primary-btn">
                         Explore Services
-                    </a>
-
-                    <a href="contact.html" class="secondary-btn">
-                        Talk to Us
                     </a>
 
                 </div>
@@ -151,7 +147,7 @@
                      SERVICE 01
                 ========================== -->
 
-                <article class="service-detail-card">
+                <article class="service-detail-card" id="ai-consulting">
 
                     <div class="service-detail-icon">
                         <i class="fa-solid fa-comments"></i>
@@ -202,7 +198,7 @@
                      SERVICE 02
                 ========================== -->
 
-                <article class="service-detail-card">
+                <article class="service-detail-card" id="automation">
 
                     <div class="service-detail-icon">
                         <i class="fa-solid fa-robot"></i>
@@ -253,7 +249,7 @@
                      SERVICE 03
                 ========================== -->
 
-                <article class="service-detail-card">
+                <article class="service-detail-card" id="custom-ai-software">
 
                     <div class="service-detail-icon">
                         <i class="fa-solid fa-code"></i>
@@ -304,7 +300,7 @@
                      SERVICE 04
                 ========================== -->
 
-                <article class="service-detail-card">
+                <article class="service-detail-card" id="business-integration">
 
                     <div class="service-detail-icon">
                         <i class="fa-solid fa-briefcase"></i>
@@ -355,7 +351,7 @@
                      SERVICE 05
                 ========================== -->
 
-                <article class="service-detail-card">
+                <article class="service-detail-card" id="ai-training">
 
                     <div class="service-detail-icon">
                         <i class="fa-solid fa-graduation-cap"></i>
@@ -406,7 +402,7 @@
                      SERVICE 06
                 ========================== -->
 
-                <article class="service-detail-card">
+                <article class="service-detail-card" id="ai-strategy">
 
                     <div class="service-detail-icon">
                         <i class="fa-solid fa-lightbulb"></i>
@@ -587,7 +583,7 @@
                     practical next step.
                 </p>
 
-                <a href="contact.html" class="primary-btn">
+                <a href="index.html#book-consultation" class="primary-btn">
                     Book a Consultation
                 </a>
 
@@ -598,57 +594,225 @@
     </main>
 
 
-    <!-- =========================
-         FOOTER
-    ========================== -->
+     <!-- =========================
+     FOOTER
+   ========================== -->
 
-    <footer class="site-footer">
+   <footer class="site-footer">
 
-        <div class="footer-content">
+      <div class="footer-main">
 
-            <div class="footer-brand">
-                <div class="logo">
-                    XANORA <span>AI</span>
-                </div>
+         <!-- Brand -->
+         <div class="footer-brand">
+ 
+             <a href="index.html" class="footer-logo">
+                 XANORA <span>AI</span>
+             </a>
 
-                <p>
-                    Practical AI for real problems.
-                </p>
+             <p>
+                 Practical AI for real people and real businesses.
+                 We help you understand, adopt, and use AI in ways
+                 that actually make a difference.
+             </p>
+
             </div>
 
 
-            <div class="footer-links">
+          <!-- Navigation -->
+          <div class="footer-column">
 
-                <a href="index.html">
-                    Home
-                </a>
+             <h3>Explore</h3>
 
-                <a href="about.html">
-                    About
-                </a>
+             <a href="index.html">Home</a>
+             <a href="about.html">About</a>
+             <a href="services.html">Services</a>
+             <a href="contact.html">Contact</a>
 
-                <a href="services.html">
-                    Services
-                </a>
+            </div>
 
-                <a href="contact.html">
-                    Contact
-                </a>
+
+          <!-- Services -->
+          <div class="footer-column">
+
+             <h3>Services</h3>
+
+             <a href="services.html#ai-consulting">AI Consulting</a>
+             <a href="services.html#automation">Automation</a>
+             <a href="services.html#business-integration">Business Integration</a>
+             <a href="services.html#custom-ai-software">Custom AI Software</a>
+             <a href="services.html#ai-training">AI Training</a>
+             <a href="services.html#ai-strategy">AI Strategy</a>
+
+            </div>
+
+
+          <!-- Contact -->
+          <div class="footer-column">
+
+             <h3>Get Started</h3>
+ 
+             <p class="footer-contact-text">
+                 Have a problem you want to solve with AI?
+                 Let's start there.
+             </p>
+
+                <a href="index.html#get-started" class="footer-cta" data-open-modal="getStartedModal">
+                 Get Started
+                 <i data-lucide="arrow-right"></i>
+             </a>
 
             </div>
 
         </div>
 
-        <div class="footer-bottom">
-            <p>
-                © 2026 XANORA AI. All rights reserved.
-            </p>
+
+      <div class="footer-bottom">
+
+         <p>
+             © 2026 XANORA AI. All Rights Reserved.
+         </p>
+
+          <div class="footer-bottom-links">
+
+             <a
+                 href="#"
+                 data-open-modal="privacyModal"
+                >
+                  Privacy Policy
+               </a>
+
+             <a
+                  href="#"
+                 data-open-modal="termsModal"
+                >
+                 Terms &amp; Conditions
+              </a>
+
+            </div>
+
         </div>
 
     </footer>
 
+     <!-- =========================================================
+     PRIVACY POLICY MODAL
+    ========================================================= -->
+
+     <div
+         class="form-modal"
+         id="privacyModal"
+         aria-hidden="true"
+        >
+
+     <div
+         class="form-modal-overlay"
+         data-close-modal
+      ></div>
+
+
+     <div
+         class="form-modal-content legal-modal-content"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="privacyModalTitle"
+        >
+
+         <button
+             type="button"
+             class="form-modal-close"
+             data-close-modal
+             aria-label="Close Privacy Policy"
+            >
+              <i data-lucide="x"></i>
+         </button>
+
+
+         <div class="form-modal-header">
+
+             <span class="section-badge">
+                 PRIVACY POLICY
+             </span>
+
+             <h2 id="privacyModalTitle">
+                 Your privacy
+                 <span>matters to us.</span>
+             </h2>
+
+         </div>
+
+
+         <div class="legal-modal-body"
+               id="privacyModalBody">
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- =========================================================
+     TERMS & CONDITIONS MODAL
+   ========================================================= -->
+
+     <div
+         class="form-modal"
+         id="termsModal"
+         aria-hidden="true"
+        >
+
+      <div
+          class="form-modal-overlay"
+           data-close-modal
+      ></div>
+
+
+      <div
+          class="form-modal-content legal-modal-content"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="termsModalTitle"
+        >
+
+          <button
+              type="button"
+              class="form-modal-close"
+              data-close-modal
+              aria-label="Close Terms & Conditions"
+            >
+             <i data-lucide="x"></i>
+          </button>
+
+
+         <div class="form-modal-header">
+
+             <span class="section-badge">
+                 TERMS &amp; CONDITIONS
+             </span>
+
+             <h2 id="termsModalTitle">
+                 Terms &
+                 <span>Conditions.</span>
+             </h2>
+
+            </div>
+
+
+          <div class="legal-modal-body"
+               id="termsModalBody"
+
+            ></div>
+
+        </div>
+
+    </div>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- XANORA JavaScript -->
     <script src="assets/js/Xanora.js"></script>
 
 </body>
 
 </html>
+
+

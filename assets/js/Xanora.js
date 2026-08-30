@@ -15,58 +15,62 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-     NAVIGATION
+       NAVIGATION
     ===================================================== */
 
-     const navLinks =
-         document.querySelectorAll(".nav-links a");
+    const navLinks =
+        document.querySelectorAll(".nav-links a");
 
-         navLinks.forEach(function (link) {
+    navLinks.forEach(function (link) {
 
-             link.addEventListener("click", function () {
+        link.addEventListener("click", function () {
 
-                  navLinks.forEach(function (item) {
-                     item.classList.remove("active");
-                   });
-
-                 this.classList.add("active");
-
-                });
-
+            navLinks.forEach(function (item) {
+                item.classList.remove("active");
             });
+
+            this.classList.add("active");
+
+        });
+
+    });
 
 
     /* =====================================================
-        HIDE NAVIGATION ON SCROLL DOWN
-      SHOW NAVIGATION ON SCROLL UP
+       HIDE NAVIGATION ON SCROLL DOWN
+       SHOW NAVIGATION ON SCROLL UP
     ===================================================== */
 
-     const header = document.querySelector("header");
+    const header =
+        document.querySelector("header");
 
-       let lastScrollY = window.scrollY;
+    let lastScrollY =
+        window.scrollY;
 
-      if (header) {
+    if (header) {
 
         window.addEventListener("scroll", function () {
 
-           const currentScrollY = window.scrollY;
+            const currentScrollY =
+                window.scrollY;
 
-          if (
-              currentScrollY > lastScrollY &&
-              currentScrollY > 100
+            if (
+                currentScrollY > lastScrollY &&
+                currentScrollY > 100
             ) {
 
-             header.classList.add("nav-hidden");
+                header.classList.add("nav-hidden");
 
-             } else if (
-             currentScrollY < lastScrollY
+            } else if (
+                currentScrollY < lastScrollY
             ) {
 
-             header.classList.remove("nav-hidden");
+                header.classList.remove("nav-hidden");
 
             }
 
-            lastScrollY = currentScrollY;
+            lastScrollY =
+                currentScrollY;
 
         });
 
@@ -81,7 +85,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(
             ".why-card, .service-card, .process-card, .who-card, .problem-card, .floating-card"
         );
-
 
     const revealObserver =
         new IntersectionObserver(
@@ -132,9 +135,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const internalLinks =
         document.querySelectorAll(
-            'a[href^="#"]'
+            'a[href^="#"], a[href*="services.html#"]'
         );
-
 
     internalLinks.forEach(function (link) {
 
@@ -142,22 +144,47 @@ document.addEventListener("DOMContentLoaded", function () {
             "click",
             function (event) {
 
-                const targetId =
+                const href =
                     this.getAttribute("href");
 
+                if (!href || href === "#") {
+                    return;
+                }
 
-                if (
-                    targetId &&
-                    targetId !== "#"
-                ) {
+
+                if (href.startsWith("#")) {
 
                     const target =
-                        document.querySelector(
-                            targetId
-                        );
-
+                        document.querySelector(href);
 
                     if (target) {
+
+                        event.preventDefault();
+
+                        target.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+
+                    }
+
+                    return;
+
+                }
+
+
+                if (href.includes("services.html#")) {
+
+                    const targetId =
+                        href.split("#")[1];
+
+                    const target =
+                        document.getElementById(targetId);
+
+                    if (
+                        target &&
+                        window.location.pathname.endsWith("services.html")
+                    ) {
 
                         event.preventDefault();
 
@@ -183,7 +210,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const heroVisual =
         document.querySelector(".hero-visual");
 
-
     if (heroVisual) {
 
         heroVisual.addEventListener(
@@ -193,24 +219,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 const rect =
                     heroVisual.getBoundingClientRect();
 
-
                 const x =
                     (event.clientX - rect.left) /
                     rect.width;
-
 
                 const y =
                     (event.clientY - rect.top) /
                     rect.height;
 
-
                 const moveX =
                     (x - 0.5) * 12;
 
-
                 const moveY =
                     (y - 0.5) * 12;
-
 
                 heroVisual.style.transform =
                     `translate(${moveX}px, ${moveY}px)`;
@@ -238,7 +259,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const primaryButtons =
         document.querySelectorAll(".primary-btn");
 
-
     primaryButtons.forEach(function (button) {
 
         button.addEventListener(
@@ -248,7 +268,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 this.classList.add(
                     "button-clicked"
                 );
-
 
                 setTimeout(
                     function () {
@@ -281,10 +300,8 @@ document.addEventListener(
         const network =
             document.querySelector(".ai-network");
 
-
         const particleContainer =
             document.querySelector(".data-particles");
-
 
         if (
             !network ||
@@ -305,14 +322,12 @@ document.addEventListener(
                 )
             );
 
-
         const verticalPaths =
             Array.from(
                 document.querySelectorAll(
                     ".visible-vertical"
                 )
             );
-
 
         if (
             loopPaths.length !== 2 ||
@@ -331,15 +346,12 @@ document.addEventListener(
             const particle =
                 document.createElement("span");
 
-
             particle.className =
                 "data-particle";
-
 
             particleContainer.appendChild(
                 particle
             );
-
 
             return particle;
 
@@ -358,16 +370,13 @@ document.addEventListener(
             const length =
                 path.getTotalLength();
 
-
             const point =
                 path.getPointAtLength(
                     progress * length
                 );
 
-
             const matrix =
                 path.getScreenCTM();
-
 
             if (!matrix) {
 
@@ -378,25 +387,20 @@ document.addEventListener(
 
             }
 
-
             const screenX =
                 matrix.a * point.x +
                 matrix.c * point.y +
                 matrix.e;
-
 
             const screenY =
                 matrix.b * point.x +
                 matrix.d * point.y +
                 matrix.f;
 
-
             const rect =
                 particleContainer.getBoundingClientRect();
 
-
             return {
-
                 x:
                     screenX -
                     rect.left,
@@ -404,7 +408,6 @@ document.addEventListener(
                 y:
                     screenY -
                     rect.top
-
             };
 
         }
@@ -415,189 +418,159 @@ document.addEventListener(
         ===================================================== */
 
         function moveParticle(
-          particle,
-          path,
-          startProgress,
-          endProgress,
-          duration,
-          onComplete,
-          hideAtNodes = false
-
-       ) {
-
-    const startTime =
-        performance.now();
-
-
-    function animate(now) {
-
-        let progress =
-            (now - startTime) /
-            duration;
-
-
-        if (progress >= 1) {
-            progress = 1;
-        }
-
-
-        const currentProgress =
-            startProgress +
-            (
-                endProgress -
-                startProgress
-            ) *
-            progress;
-
-
-        const position =
-            getPathPosition(
-                path,
-                currentProgress
-            );
-
-
-        /* =============================================
-          NODE ABSORPTION / RELEASE
-          ============================================ */
-
-         if (hideAtNodes) {
-
-             /*
-              * Keep the incoming particle fully visible
-              * until it actually reaches the Core.
-              *
-              * At the final frame, moveParticle() below
-              * sets opacity to 0 before onComplete().
-              */
-
-            particle.style.opacity =
-              "0.9";
-
-        }
-        else {
-
-             /*
-              * All outgoing particles remain visible.
-              */
-
-            particle.style.opacity =
-               " 0.9";
-
-        }
-
-        /* =============================================
-           FIND ACTUAL TRAVEL DIRECTION
-        ============================================= */
-
-        const lookAhead =
-            0.003;
-
-
-        const nextProgress =
-            endProgress >= startProgress
-                ? Math.min(
-                    1,
-                    currentProgress +
-                    lookAhead
-                )
-                : Math.max(
-                    0,
-                    currentProgress -
-                    lookAhead
-                );
-
-
-        const nextPosition =
-            getPathPosition(
-                path,
-                nextProgress
-            );
-
-
-        const dx =
-            nextPosition.x -
-            position.x;
-
-
-        const dy =
-            nextPosition.y -
-            position.y;
-
-
-        const angle =
-            Math.atan2(
-                dy,
-                dx
-            ) *
-            180 /
-            Math.PI;
-
-
-        /* =============================================
-           PARTICLE + TRAIL
-        ============================================= */
-
-        particle.style.transform =
-            `translate3d(
-                ${position.x}px,
-                ${position.y}px,
-                0
-            )
-            translate(-50%, -50%)
-            rotate(${angle}deg)`;
-
-
-        if (
-            progress <
-            1
+            particle,
+            path,
+            startProgress,
+            endProgress,
+            duration,
+            onComplete,
+            hideAtNodes = false
         ) {
+
+            const startTime =
+                performance.now();
+
+
+            function animate(now) {
+
+                let progress =
+                    (now - startTime) /
+                    duration;
+
+                if (progress >= 1) {
+                    progress = 1;
+                }
+
+
+                const currentProgress =
+                    startProgress +
+                    (
+                        endProgress -
+                        startProgress
+                    ) *
+                    progress;
+
+
+                const position =
+                    getPathPosition(
+                        path,
+                        currentProgress
+                    );
+
+
+                /* =============================================
+                   NODE ABSORPTION / RELEASE
+                ============================================ */
+
+                if (hideAtNodes) {
+
+                    particle.style.opacity =
+                        "0.9";
+
+                } else {
+
+                    particle.style.opacity =
+                        "0.9";
+
+                }
+
+
+                /* =============================================
+                   FIND ACTUAL TRAVEL DIRECTION
+                ============================================= */
+
+                const lookAhead =
+                    0.003;
+
+                const nextProgress =
+                    endProgress >= startProgress
+
+                        ? Math.min(
+                            1,
+                            currentProgress +
+                            lookAhead
+                        )
+
+                        : Math.max(
+                            0,
+                            currentProgress -
+                            lookAhead
+                        );
+
+
+                const nextPosition =
+                    getPathPosition(
+                        path,
+                        nextProgress
+                    );
+
+
+                const dx =
+                    nextPosition.x -
+                    position.x;
+
+                const dy =
+                    nextPosition.y -
+                    position.y;
+
+
+                const angle =
+                    Math.atan2(
+                        dy,
+                        dx
+                    ) *
+                    180 /
+                    Math.PI;
+
+
+                /* =============================================
+                   PARTICLE + TRAIL
+                ============================================= */
+
+                particle.style.transform =
+                    `translate3d(
+                        ${position.x}px,
+                        ${position.y}px,
+                        0
+                    )
+                    translate(-50%, -50%)
+                    rotate(${angle}deg)`;
+
+
+                if (
+                    progress <
+                    1
+                ) {
+
+                    requestAnimationFrame(
+                        animate
+                    );
+
+                } else {
+
+                    particle.style.opacity =
+                        "0";
+
+                    onComplete();
+
+                }
+
+            }
+
 
             requestAnimationFrame(
                 animate
             );
 
-        } else {
-
-            /*
-             * Make absolutely sure the particle is
-             * invisible at the node before completion.
-             */
-
-            particle.style.opacity =
-                "0";
-
-
-            onComplete();
-
         }
 
-    }
-
-
-    requestAnimationFrame(
-        animate
-    );
-
-}
 
         /* =====================================================
            INFINITY LOOP TIMING
-        =====================================================
-
-           ALL FOUR LOOP PARTICLES START TOGETHER.
-
-           1. Intelligence → Core
-           2. Development → Core
-           3. Core → Development
-           4. Core → Intelligence
-
-           One synchronized cycle.
         ===================================================== */
 
         const LOOP_DURATION =
             4500;
-
 
         let loopCycleRunning =
             false;
@@ -609,79 +582,62 @@ document.addEventListener(
                 return;
             }
 
-
             loopCycleRunning =
                 true;
 
 
-            let incomingCount =
-                0;
+            let intelligenceArrived =
+                false;
+
+            let developmentArrived =
+                false;
+
+            let coreCollisionTriggered =
+                false;
 
 
-            /* =================================================
-               CORE COLLISION EVENT
-            ================================================= */
+            function incomingReachedCore(source) {
 
-             let intelligenceArrived = false;
-             let developmentArrived = false;
-             let coreCollisionTriggered = false;
+                if (source === "intelligence") {
+                    intelligenceArrived = true;
+                }
 
-
-             function incomingReachedCore(source) {
-
-             if (source === "intelligence") {
-                intelligenceArrived = true;
-              }
-
-            if (source === "development") {
-                developmentArrived = true;
-             }
+                if (source === "development") {
+                    developmentArrived = true;
+                }
 
 
-    /* =============================================
-       WAIT UNTIL BOTH PARTICLES HAVE ARRIVED
-    ============================================= */
-
-    if (
-        !intelligenceArrived ||
-        !developmentArrived ||
-        coreCollisionTriggered
-    ) {
-        return;
-    }
+                if (
+                    !intelligenceArrived ||
+                    !developmentArrived ||
+                    coreCollisionTriggered
+                ) {
+                    return;
+                }
 
 
-    /* =============================================
-       BOTH PARTICLES HAVE REACHED THE CORE
-
-       NOW — AND ONLY NOW — CREATE THE
-       AUTOMATION + INTEGRATION PARTICLES.
-    ============================================= */
-
-    coreCollisionTriggered = true;
+                coreCollisionTriggered =
+                    true;
 
 
-    createCoreBranch(
-        verticalPaths[0],
-        0.0,
-        1.0
-    );
+                createCoreBranch(
+                    verticalPaths[0],
+                    0.0,
+                    1.0
+                );
 
 
-    createCoreBranch(
-        verticalPaths[1],
-        0.0,
-        1.0
-    );
+                createCoreBranch(
+                    verticalPaths[1],
+                    0.0,
+                    1.0
+                );
 
-}
+            }
 
 
             /* =================================================
                1. INTELLIGENCE → CORE
-
-               LEFT LOOP
-               UPPER HALF
             ================================================= */
 
             const intelligenceParticle =
@@ -694,24 +650,23 @@ document.addEventListener(
                 0.50,
                 0.00,
                 LOOP_DURATION,
+
                 function () {
 
                     intelligenceParticle.remove();
 
-                    incomingReachedCore("intelligence");
+                    incomingReachedCore(
+                        "intelligence"
+                    );
 
                 },
+
                 true
             );
 
 
             /* =================================================
                2. CORE → INTELLIGENCE
-
-               LEFT LOOP
-               LOWER HALF
-
-               Starts at EXACTLY the same time.
             ================================================= */
 
             const coreIntelligenceParticle =
@@ -724,6 +679,7 @@ document.addEventListener(
                 1.00,
                 0.50,
                 LOOP_DURATION,
+
                 function () {
 
                     coreIntelligenceParticle.remove();
@@ -734,11 +690,6 @@ document.addEventListener(
 
             /* =================================================
                3. DEVELOPMENT → CORE
-
-               RIGHT LOOP
-               LOWER HALF
-
-               Starts simultaneously.
             ================================================= */
 
             const developmentParticle =
@@ -751,24 +702,23 @@ document.addEventListener(
                 0.50,
                 1.00,
                 LOOP_DURATION,
+
                 function () {
 
                     developmentParticle.remove();
 
-                    incomingReachedCore("development");
+                    incomingReachedCore(
+                        "development"
+                    );
 
                 },
+
                 true
             );
 
 
             /* =================================================
                4. CORE → DEVELOPMENT
-
-               RIGHT LOOP
-               UPPER HALF
-
-               Starts simultaneously.
             ================================================= */
 
             const coreDevelopmentParticle =
@@ -781,6 +731,7 @@ document.addEventListener(
                 0.00,
                 0.50,
                 LOOP_DURATION,
+
                 function () {
 
                     coreDevelopmentParticle.remove();
@@ -791,9 +742,6 @@ document.addEventListener(
 
             /* =================================================
                START NEXT CYCLE
-
-               The next four particles launch together
-               after the current four complete.
             ================================================= */
 
             setTimeout(
@@ -801,7 +749,6 @@ document.addEventListener(
 
                     loopCycleRunning =
                         false;
-
 
                     startLoopCycle();
 
@@ -825,7 +772,6 @@ document.addEventListener(
             const particle =
                 createParticle();
 
-
             const BRANCH_DURATION =
                 2200;
 
@@ -836,6 +782,7 @@ document.addEventListener(
                 startProgress,
                 endProgress,
                 BRANCH_DURATION,
+
                 function () {
 
                     particle.remove();
@@ -855,81 +802,57 @@ document.addEventListener(
 
         /* =====================================================
            OUTER CIRCULAR FLOW
-        =====================================================
-
-           EXACTLY FOUR PARTICLES.
-
-           Each particle begins at its own node.
-
-           Automation → Intelligence
-           Intelligence → Integration
-           Integration → Development
-           Development → Automation
-
-           All four travel simultaneously.
-
-           Each particle completes the entire circle
-           and returns to its original starting node.
-
-           Then the journey repeats.
         ===================================================== */
 
         const OUTER_SPEED =
-            0.000285;
+            0.0002;
 
 
         /* =====================================================
-           FIND ACTUAL NODE CENTERS
+          FIND ACTUAL NODE ICON CENTERS
+
+          The particle path must pass through the ICON,
+          not the centre of the entire node + label box.
         ===================================================== */
 
-        function getNodeCenter(
-            selector
-        ) {
+        function getNodeCenter(selector) {
 
-            const node =
-                document.querySelector(
-                    selector
-                );
+             const node =
+              document.querySelector(selector);
 
+             if (!node) {
+                 return null;
+                }
 
-            if (!node) {
-                return null;
-            }
+             const icon =
+              node.querySelector("svg");
 
+             if (!icon) {
+                 return null;
+                }
 
-            const nodeRect =
-                node.getBoundingClientRect();
+             const iconRect =
+               icon.getBoundingClientRect();
 
-
-            const containerRect =
+             const containerRect =
                 particleContainer.getBoundingClientRect();
 
+              return {
+                   x:
+                  iconRect.left +
+                  iconRect.width / 2 -
+                  containerRect.left,
 
-            return {
-
-                x:
-                    nodeRect.left +
-                    nodeRect.width / 2 -
-                    containerRect.left,
-
-                y:
-                    nodeRect.top +
-                    nodeRect.height / 2 -
-                    containerRect.top
-
-            };
-
+                   y:
+                  iconRect.top +
+                  iconRect.height / 2 -
+                  containerRect.top
+                };
         }
 
 
         /* =====================================================
            OUTER CIRCLE GEOMETRY
-
-           The ellipse is calculated from the ACTUAL
-           four node positions.
-
-           This prevents the Automation particle
-           from passing above the node.
         ===================================================== */
 
         function getOuterGeometry() {
@@ -939,18 +862,15 @@ document.addEventListener(
                     ".ai-node-2"
                 );
 
-
             const intelligence =
                 getNodeCenter(
                     ".ai-node-1"
                 );
 
-
             const development =
                 getNodeCenter(
                     ".ai-node-3"
                 );
-
 
             const integration =
                 getNodeCenter(
@@ -970,79 +890,76 @@ document.addEventListener(
 
             const centerX =
                 (
+                    automation.x +
                     intelligence.x +
-                    development.x
-                ) / 2;
+                    development.x +
+                    integration.x
+                ) / 4;
 
 
             const centerY =
                 (
                     automation.y +
+                    intelligence.y +
+                    development.y +
                     integration.y
-                ) / 2;
+                ) / 4;
 
 
             const radiusX =
-                (
-                    development.x -
-                    intelligence.x
-                ) / 2;
+                Math.max(
+                    Math.abs(
+                        automation.x -
+                        centerX
+                    ),
+                    Math.abs(
+                        intelligence.x -
+                        centerX
+                    ),
+                    Math.abs(
+                        development.x -
+                        centerX
+                    ),
+                    Math.abs(
+                        integration.x -
+                        centerX
+                    )
+                );
 
 
             const radiusY =
-                (
-                    integration.y -
-                    automation.y
-                ) / 2;
+                Math.max(
+                    Math.abs(
+                        automation.y -
+                        centerY
+                    ),
+                    Math.abs(
+                        intelligence.y -
+                        centerY
+                    ),
+                    Math.abs(
+                        development.y -
+                        centerY
+                    ),
+                    Math.abs(
+                        integration.y -
+                        centerY
+                    )
+                );
 
 
             return {
-
                 centerX,
                 centerY,
                 radiusX,
                 radiusY
-
             };
 
         }
 
 
         /* =====================================================
-           OUTER NODE ANGLES
-
-           Clockwise sequence:
-
-           Automation
-              ↓
-           Intelligence
-              ↓
-           Integration
-              ↓
-           Development
-              ↓
-           Automation
-        ===================================================== */
-
-        const OUTER_START_ANGLES = {
-
-            automation:
-                -Math.PI / 2,
-
-            intelligence:
-                Math.PI,
-
-            integration:
-                Math.PI / 2,
-
-            development:
-                0
-
-        };
-
-
-        /* =====================================================
-           OUTER PARTICLE
+           OUTER PARTICLE CREATION
         ===================================================== */
 
         function createOuterParticle(
@@ -1057,155 +974,99 @@ document.addEventListener(
                 startAngle;
 
 
-            let lastTime =
-                performance.now();
-
-
-            function animate(now) {
-
-                const delta =
-                    now -
-                    lastTime;
-
-
-                lastTime =
-                    now;
-
-
-                /*
-                 * NEGATIVE direction creates:
-
-                 * Automation
-                 * → Intelligence
-                 * → Integration
-                 * → Development
-                 * → Automation
-                 */
-
-                angle -=
-                    delta *
-                    OUTER_SPEED;
-
+            function animate() {
 
                 const geometry =
                     getOuterGeometry();
 
 
-                if (geometry) {
+                if (!geometry) {
 
-                    const x =
-                        geometry.centerX +
-                        Math.cos(angle) *
-                        geometry.radiusX;
+                    requestAnimationFrame(
+                        animate
+                    );
 
+                    return;
 
-                    const y =
-                        geometry.centerY +
-                        Math.sin(angle) *
-                        geometry.radiusY;
+                }
 
 
-                    const tangentX =
-                        Math.sin(angle) *
-                        geometry.radiusX;
+                angle -=
+                    OUTER_SPEED *
+                    16;
 
-                    const tangentY =
-                        -Math.cos(angle) *
-                        geometry.radiusY;
 
-                    const particleAngle =
-                        Math.atan2(
-                        tangentY,
-                        tangentX
-                      ) *
+                if (
+                    angle >
+                    Math.PI * 2
+                ) {
+
+                    angle -=
+                        Math.PI * 2;
+
+                }
+
+
+                const x =
+                    geometry.centerX +
+                    geometry.radiusX *
+                    Math.cos(angle);
+
+
+                const y =
+                    geometry.centerY +
+                    geometry.radiusY *
+                    Math.sin(angle);
+
+
+                const nextAngle =
+                    angle -
+                    0.01;
+
+
+                const nextX =
+                    geometry.centerX +
+                    geometry.radiusX *
+                    Math.cos(nextAngle);
+
+
+                const nextY =
+                    geometry.centerY +
+                    geometry.radiusY *
+                    Math.sin(nextAngle);
+
+
+                const dx =
+                    nextX -
+                    x;
+
+
+                const dy =
+                    nextY -
+                    y;
+
+
+                const rotation =
+                    Math.atan2(
+                        dy,
+                        dx
+                    ) *
                     180 /
                     Math.PI;
 
-                    particle.style.transform =
-                     `translate3d(
-                      ${x}px,
-                      ${y}px,
-                       0
+
+                particle.style.transform =
+                    `translate3d(
+                        ${x}px,
+                        ${y}px,
+                        0
                     )
-                      translate(-50%, -50%)
-                      rotate(${particleAngle}deg)`;
+                    translate(-50%, -50%)
+                    rotate(${rotation}deg)`;
 
 
-                    /* =============================================
-                      HIDE PARTICLE INSIDE OUTER NODE
-                     ============================================= */
-
-                       const NODE_HIDE_ANGLE =
-                         0.055;
-
-
-                       const nodeAngles = [
-
-                          OUTER_START_ANGLES.automation,
-
-                          OUTER_START_ANGLES.intelligence,
-
-                          OUTER_START_ANGLES.integration,
-
-                          OUTER_START_ANGLES.development
-                       ];
-
-
-                     let outerOpacity =
-                         0.8;
-
-
-                     for (
-                       const nodeAngle
-                        of nodeAngles
-                        ) {
-
-    const angularDistance =
-        Math.abs(
-            Math.atan2(
-                Math.sin(
-                    angle -
-                    nodeAngle
-                ),
-                Math.cos(
-                    angle -
-                    nodeAngle
-                )
-            )
-        );
-
-
-    if (
-        angularDistance <
-        NODE_HIDE_ANGLE
-    ) {
-
-        const fade =
-            angularDistance /
-            NODE_HIDE_ANGLE;
-
-
-        outerOpacity =
-            Math.min(
-                outerOpacity,
-                fade
-            );
-
-    }
-
-                        }
-
-
-                     particle.style.opacity =
-                     Math.max(
-                        0,
-                     Math.min(
-                       0.8,
-                      outerOpacity
-                    )
-                 );
-
-                }
+                particle.style.opacity =
+                    "0.9";
 
 
                 requestAnimationFrame(
@@ -1223,288 +1084,98 @@ document.addEventListener(
 
 
         /* =====================================================
-           FOUR OUTER PARTICLES
-
-           ALL FOUR START SIMULTANEOUSLY.
+           OUTER FLOW PARTICLES
         ===================================================== */
 
         createOuterParticle(
-            OUTER_START_ANGLES.automation
+            -Math.PI / 2
         );
-
 
         createOuterParticle(
-            OUTER_START_ANGLES.intelligence
+            0
         );
-
 
         createOuterParticle(
-            OUTER_START_ANGLES.integration
+            Math.PI / 2
         );
-
 
         createOuterParticle(
-            OUTER_START_ANGLES.development
+            Math.PI
         );
-
 
     }
 );
- // ==========================================
- // CONTACT FORM
- // ==========================================
 
- const contactForm = document.getElementById("contactForm");
 
- if (contactForm) {
-    contactForm.addEventListener("submit", async function (event) {
-        event.preventDefault();
+/* =========================================================
+   CONTACT FORM
+========================================================= */
 
-        const submitButton = contactForm.querySelector(".contact-submit");
+const contactForm =
+    document.getElementById("contactForm");
 
-        const formData = {
-            name: document.getElementById("name").value.trim(),
-            email: document.getElementById("email").value.trim(),
-            organization: document.getElementById("organization").value.trim(),
-            service: document.getElementById("service").value,
-            message: document.getElementById("message").value.trim()
-        };
+if (contactForm) {
 
-        try {
-            submitButton.disabled = true;
-            submitButton.textContent = "Sending...";
-
-            const response = await fetch("/api/contact", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(formData)
-            });
-
-            const result = await response.json();
-
-            if (!response.ok) {
-                throw new Error(result.message || "Something went wrong.");
-            }
-
-            alert("Your inquiry has been sent successfully.");
-            contactForm.reset();
-
-        } catch (error) {
-            console.error("Contact form error:", error);
-            alert("Unable to send your inquiry. Please try again.");
-
-        } finally {
-            submitButton.disabled = false;
-            submitButton.innerHTML = `
-                Send Inquiry
-                <i class="fa-solid fa-arrow-right"></i>
-            `;
-        }
-    });
-}
-// ==========================================
-// XANORA AI — INQUIRY & CONSULTATION MODALS
-// ==========================================
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const getStartedModal =
-        document.getElementById("getStartedModal");
-
-    const consultationModal =
-        document.getElementById("consultationModal");
-
-
-    // ==========================================
-    // OPEN MODALS
-    // ==========================================
-
-    function openModal(modal) {
-
-        if (!modal) return;
-
-        modal.classList.add("active");
-        modal.setAttribute("aria-hidden", "false");
-
-        document.body.classList.add("modal-open");
-
-    }
-
-
-    // ==========================================
-    // CLOSE MODALS
-    // ==========================================
-
-    function closeModal(modal) {
-
-        if (!modal) return;
-
-        modal.classList.remove("active");
-        modal.setAttribute("aria-hidden", "true");
-
-        document.body.classList.remove("modal-open");
-
-    }
-
-
-    // ==========================================
-    // GET STARTED BUTTONS
-    // ==========================================
-
-    const getStartedButtons =
-        document.querySelectorAll(
-            'a[href="contact.html"].primary-btn'
-        );
-
-
-    getStartedButtons.forEach(function (button) {
-
-        const text =
-            button.textContent.trim().toLowerCase();
-
-        if (text.includes("get started")) {
-
-            button.addEventListener("click", function (event) {
-
-                event.preventDefault();
-
-                openModal(getStartedModal);
-
-            });
-
-        }
-
-    });
-
-
-    // ==========================================
-    // BOOK CONSULTATION BUTTONS
-    // ==========================================
-
-    const consultationButtons =
-        document.querySelectorAll(
-            'a[href="contact.html"]'
-        );
-
-
-    consultationButtons.forEach(function (button) {
-
-        const text =
-            button.textContent.trim().toLowerCase();
-
-        if (text.includes("book a consultation")) {
-
-            button.addEventListener("click", function (event) {
-
-                event.preventDefault();
-
-                openModal(consultationModal);
-
-            });
-
-        }
-
-    });
-
-
-    // ==========================================
-    // CLOSE BUTTONS + OVERLAY
-    // ==========================================
-
-    const closeButtons =
-        document.querySelectorAll("[data-close-modal]");
-
-
-    closeButtons.forEach(function (button) {
-
-        button.addEventListener("click", function () {
-
-            const modal =
-                this.closest(".form-modal");
-
-            closeModal(modal);
-
-        });
-
-    });
-
-
-    // ==========================================
-    // ESCAPE KEY
-    // ==========================================
-
-    document.addEventListener("keydown", function (event) {
-
-        if (event.key !== "Escape") return;
-
-        if (
-            getStartedModal &&
-            getStartedModal.classList.contains("active")
-        ) {
-
-            closeModal(getStartedModal);
-
-        }
-
-
-        if (
-            consultationModal &&
-            consultationModal.classList.contains("active")
-        ) {
-
-            closeModal(consultationModal);
-
-        }
-
-    });
-
-});
-
-// ==========================================
-// XANORA AI — GET STARTED FORM
-// ==========================================
-
-const getStartedForm =
-    document.getElementById("getStartedForm");
-
-if (getStartedForm) {
-
-    getStartedForm.addEventListener(
+    contactForm.addEventListener(
         "submit",
         async function (event) {
 
             event.preventDefault();
 
+
             const submitButton =
-                getStartedForm.querySelector(".form-submit");
+                contactForm.querySelector(
+                    ".contact-submit"
+                );
+
 
             const formData = {
+
                 name:
-                    document.getElementById("gsName").value.trim(),
+                    document.getElementById(
+                        "name"
+                    ).value.trim(),
 
                 email:
-                    document.getElementById("gsEmail").value.trim(),
+                    document.getElementById(
+                        "email"
+                    ).value.trim(),
+
+                country:
+                    document.getElementById(
+                        "country"
+                    ).value,
 
                 phone:
-                    document.getElementById("gsPhone").value.trim(),
+                    document.getElementById(
+                        "phone"
+                    ).value.trim(),
 
                 organization:
-                    document.getElementById("gsOrganization").value.trim(),
+                    document.getElementById(
+                        "organization"
+                    ).value.trim(),
 
                 service:
-                    document.getElementById("gsService").value,
+                    document.getElementById(
+                        "service"
+                    ).value,
 
                 message:
-                    document.getElementById("gsMessage").value.trim()
+                    document.getElementById(
+                        "message"
+                    ).value.trim()
+
             };
 
 
             try {
 
-                submitButton.disabled = true;
-                submitButton.textContent = "Sending...";
+                submitButton.disabled =
+                    true;
+
+                submitButton.textContent =
+                    "Sending...";
 
 
                 const response =
@@ -1519,7 +1190,661 @@ if (getStartedForm) {
                             },
 
                             body:
-                                JSON.stringify(formData)
+                                JSON.stringify(
+                                    formData
+                                )
+                        }
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        result.message ||
+                        "Something went wrong."
+                    );
+
+                }
+
+
+                alert(
+                    "Your inquiry has been sent successfully."
+                );
+
+
+                contactForm.reset();
+
+
+            } catch (error) {
+
+                console.error(
+                    "Contact form error:",
+                    error
+                );
+
+
+                alert(
+                    "Unable to send your inquiry. Please try again."
+                );
+
+
+            } finally {
+
+                submitButton.disabled =
+                    false;
+
+
+                submitButton.innerHTML = `
+                    Send Inquiry
+                    <i class="fa-solid fa-arrow-right"></i>
+                `;
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   XANORA AI — INQUIRY & CONSULTATION MODALS
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const getStartedModal =
+            document.getElementById(
+                "getStartedModal"
+            );
+
+
+        const consultationModal =
+            document.getElementById(
+                "consultationModal"
+            );
+
+
+        const privacyModal =
+            document.getElementById(
+                "privacyModal"
+            );
+
+
+        const termsModal =
+            document.getElementById(
+                "termsModal"
+            );
+
+
+        /* =====================================================
+           OPEN MODALS
+        ===================================================== */
+
+        function openModal(modal) {
+
+            if (!modal) return;
+
+            modal.classList.add(
+                "active"
+            );
+
+            modal.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+            document.body.classList.add(
+                "modal-open"
+            );
+
+        }
+
+
+        /* =====================================================
+           CLOSE MODALS
+        ===================================================== */
+
+        function closeModal(modal) {
+
+            if (!modal) return;
+
+            modal.classList.remove(
+                "active"
+            );
+
+            modal.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+            document.body.classList.remove(
+                "modal-open"
+            );
+
+        }
+
+
+        /* =====================================================
+           GET STARTED BUTTONS
+        ===================================================== */
+
+        const getStartedButtons =
+            document.querySelectorAll(
+                'a[href="contact.html"].primary-btn, [data-open-modal="getStartedModal"]'
+            );
+
+
+        getStartedButtons.forEach(
+            function (button) {
+
+                const text =
+                    button.textContent
+                        .trim()
+                        .toLowerCase();
+
+
+                if (
+                    !text.includes(
+                        "get started"
+                    )
+                ) {
+                    return;
+                }
+
+
+                button.addEventListener(
+                    "click",
+                    function (event) {
+
+                        if (getStartedModal) {
+
+                            event.preventDefault();
+
+                            openModal(
+                                getStartedModal
+                            );
+
+                            return;
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           BOOK CONSULTATION BUTTONS
+        ===================================================== */
+
+        const consultationButtons =
+            document.querySelectorAll(
+                'a[href="contact.html"]'
+            );
+
+
+        consultationButtons.forEach(
+            function (button) {
+
+                const text =
+                    button.textContent
+                        .trim()
+                        .toLowerCase();
+
+
+                if (
+                    text.includes(
+                        "book a consultation"
+                    )
+                ) {
+
+                    button.addEventListener(
+                        "click",
+                        function (event) {
+
+                            event.preventDefault();
+
+                            openModal(
+                                consultationModal
+                            );
+
+                        }
+                    );
+
+                }
+
+            }
+        );
+
+        // ==========================================
+        // LEGAL MODALS
+        // ==========================================
+
+          const legalModalButtons =
+              document.querySelectorAll(
+                 '[data-open-modal="privacyModal"], [data-open-modal="termsModal"]'
+                );
+
+              const privacyModalBody =
+                 document.getElementById("privacyModalBody");
+
+              const termsModalBody =
+                document.getElementById("termsModalBody");
+
+
+              // ==========================================
+              // LOAD LEGAL CONTENT
+              // ==========================================
+
+                 async function loadLegalContent() {
+
+                      try {
+
+                         const [privacyResponse, termsResponse] =
+                             await Promise.all([
+                             fetch("privacy-policy.html"),
+                             fetch("terms.html")
+                            ]);
+
+
+                         if (!privacyResponse.ok) {
+                             throw new Error(
+                                 "Unable to load Privacy Policy."
+                                );
+                            }
+
+
+                         if (!termsResponse.ok) {
+                              throw new Error(
+                                 "Unable to load Terms & Conditions."
+                                );
+                            }
+
+
+                          const privacyHTML =
+                            await privacyResponse.text();
+
+                          const termsHTML =
+                            await termsResponse.text();
+
+
+                         const parser =
+                           new DOMParser();
+
+
+                         const privacyDocument =
+                            parser.parseFromString(
+                               privacyHTML,
+                               "text/html"
+                            );
+
+
+                         const termsDocument =
+                             parser.parseFromString(
+                              termsHTML,
+                             "text/html"
+                            );
+
+
+                         const privacyContent =
+                           privacyDocument.querySelector(
+                             '[data-legal-content="privacy"]'
+                            );
+ 
+
+                         const termsContent =
+                           termsDocument.querySelector(
+                             '[data-legal-content="terms"]'
+                            );
+
+
+                         if (
+                             privacyModalBody &&
+                             privacyContent
+                            ) {
+
+                             privacyModalBody.innerHTML =
+                             privacyContent.innerHTML;
+
+                            }
+
+
+                         if (
+                             termsModalBody &&
+                             termsContent
+                            ) {
+
+                             termsModalBody.innerHTML =
+                             termsContent.innerHTML;
+     
+                            }
+
+
+                        } catch (error) {
+
+                          console.error(
+                             "XANORA AI: Failed to load legal content.",
+                              error
+                            );
+
+                        }
+
+                    }
+
+
+                // Load both documents when the page is ready
+                loadLegalContent();
+
+
+             // ==========================================
+             // OPEN PRIVACY POLICY / TERMS MODALS
+             // ==========================================
+
+                 legalModalButtons.forEach(
+                     function (button) {
+
+                         button.addEventListener(
+                            "click",
+                          function (event) {
+
+                              event.preventDefault();
+
+                             const modalId =
+                                 this.getAttribute(
+                                      "data-open-modal"
+                                    );
+
+
+                                if (
+                                     modalId === "privacyModal"
+                                    ) {
+
+                                   if (!privacyModal) {
+
+                                      console.error(
+                                         "XANORA AI: privacyModal was not found."
+                                        );
+
+                                   return;
+
+                                }
+
+                               openModal(
+                                 privacyModal
+                                );
+
+                            return;}
+
+
+                          if (
+                              modalId === "termsModal"
+                            ) {
+
+                              if (!termsModal) {
+
+                                 console.error(
+                                     "XANORA AI: termsModal was not found."
+                                    );
+
+                                return;
+
+                            }
+
+                            openModal(
+                               termsModal
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+        /* =====================================================
+           OPEN CONSULTATION FROM OTHER PAGES
+        ===================================================== */
+
+        if (
+            window.location.hash ===
+            "#book-consultation" &&
+            consultationModal
+        ) {
+
+            openModal(
+                consultationModal
+            );
+
+        }
+
+
+        /* =====================================================
+           OPEN GET STARTED FROM OTHER PAGES
+        ===================================================== */
+
+        if (
+            window.location.hash ===
+            "#get-started" &&
+            getStartedModal
+        ) {
+
+            openModal(
+                getStartedModal
+            );
+
+        }
+
+
+        /* =====================================================
+           CLOSE BUTTONS + OVERLAY
+        ===================================================== */
+
+        const closeButtons =
+            document.querySelectorAll(
+                "[data-close-modal]"
+            );
+
+
+        closeButtons.forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        const modal =
+                            this.closest(
+                                ".form-modal"
+                            );
+
+                        closeModal(
+                            modal
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           ESCAPE KEY
+        ===================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key !==
+                    "Escape"
+                ) {
+                    return;
+                }
+
+
+                if (
+                    getStartedModal &&
+                    getStartedModal.classList.contains(
+                        "active"
+                    )
+                ) {
+
+                    closeModal(
+                        getStartedModal
+                    );
+
+                }
+
+
+                if (
+                    consultationModal &&
+                    consultationModal.classList.contains(
+                        "active"
+                    )
+                ) {
+
+                    closeModal(
+                        consultationModal
+                    );
+
+                }
+
+
+                if (
+                    privacyModal &&
+                    privacyModal.classList.contains(
+                        "active"
+                    )
+                ) {
+
+                    closeModal(
+                        privacyModal
+                    );
+
+                }
+
+
+                if (
+                    termsModal &&
+                    termsModal.classList.contains(
+                        "active"
+                    )
+                ) {
+
+                    closeModal(
+                        termsModal
+                    );
+
+                }
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   XANORA AI — GET STARTED FORM
+========================================================= */
+
+const getStartedForm =
+    document.getElementById(
+        "getStartedForm"
+    );
+
+
+if (getStartedForm) {
+
+    getStartedForm.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+
+            const submitButton =
+                getStartedForm.querySelector(
+                    ".form-submit"
+                );
+
+
+            const formData = {
+
+                name:
+                    document.getElementById(
+                        "gsName"
+                    ).value.trim(),
+
+                email:
+                    document.getElementById(
+                        "gsEmail"
+                    ).value.trim(),
+
+                country:
+                    document.getElementById(
+                        "gsCountry"
+                    ).value,
+
+                phone:
+                    document.getElementById(
+                        "gsPhone"
+                    ).value.trim(),
+
+                organization:
+                    document.getElementById(
+                        "gsOrganization"
+                    ).value.trim(),
+
+                service:
+                    document.getElementById(
+                        "gsService"
+                    ).value,
+
+                message:
+                    document.getElementById(
+                        "gsMessage"
+                    ).value.trim()
+
+            };
+
+
+            try {
+
+                submitButton.disabled =
+                    true;
+
+                submitButton.textContent =
+                    "Sending...";
+
+
+                const response =
+                    await fetch(
+                        "/api/contact",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body:
+                                JSON.stringify(
+                                    formData
+                                )
                         }
                     );
 
@@ -1561,7 +1886,9 @@ if (getStartedForm) {
 
             } finally {
 
-                submitButton.disabled = false;
+                submitButton.disabled =
+                    false;
+
 
                 submitButton.innerHTML = `
                     Send Inquiry
@@ -1576,13 +1903,15 @@ if (getStartedForm) {
 }
 
 
-
-// ==========================================
-// XANORA AI — CONSULTATION FORM
-// ==========================================
+/* =========================================================
+   XANORA AI — CONSULTATION FORM
+========================================================= */
 
 const consultationForm =
-    document.getElementById("consultationForm");
+    document.getElementById(
+        "consultationForm"
+    );
+
 
 if (consultationForm) {
 
@@ -1592,8 +1921,11 @@ if (consultationForm) {
 
             event.preventDefault();
 
+
             const submitButton =
-                consultationForm.querySelector(".form-submit");
+                consultationForm.querySelector(
+                    ".form-submit"
+                );
 
 
             const availability =
@@ -1619,6 +1951,11 @@ if (consultationForm) {
                     document.getElementById(
                         "consultEmail"
                     ).value.trim(),
+
+                country:
+                    document.getElementById(
+                        "consultCountry"
+                    ).value,
 
                 phone:
                     document.getElementById(
@@ -1665,7 +2002,8 @@ if (consultationForm) {
 
             try {
 
-                submitButton.disabled = true;
+                submitButton.disabled =
+                    true;
 
                 submitButton.textContent =
                     "Sending...";
@@ -1683,7 +2021,9 @@ if (consultationForm) {
                             },
 
                             body:
-                                JSON.stringify(formData)
+                                JSON.stringify(
+                                    formData
+                                )
                         }
                     );
 
@@ -1725,7 +2065,9 @@ if (consultationForm) {
 
             } finally {
 
-                submitButton.disabled = false;
+                submitButton.disabled =
+                    false;
+
 
                 submitButton.innerHTML = `
                     Request Consultation
@@ -1738,3 +2080,543 @@ if (consultationForm) {
     );
 
 }
+
+
+/* =====================================================
+   SERVICE ANCHOR HIGHLIGHT
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        if (
+            !window.location.pathname.endsWith(
+                "services.html"
+            )
+        ) {
+            return;
+        }
+
+
+        const targetId =
+            window.location.hash.substring(1);
+
+
+        if (!targetId) {
+            return;
+        }
+
+
+        const target =
+            document.getElementById(
+                targetId
+            );
+
+
+        if (!target) {
+            return;
+        }
+
+
+        setTimeout(
+            function () {
+
+                target.classList.add(
+                    "service-highlight"
+                );
+
+
+                setTimeout(
+                    function () {
+
+                        target.classList.remove(
+                            "service-highlight"
+                        );
+
+                    },
+                    60000
+                );
+
+            },
+            300
+        );
+
+    }
+);
+
+
+/* =========================================================
+   XANORA AI — DARK MODE / THEME CONTROLLER
+========================================================= */
+
+(function () {
+
+    "use strict";
+
+
+    /* =====================================================
+       SETTINGS
+    ===================================================== */
+
+    const STORAGE_KEY =
+        "xanora-theme";
+
+    const root =
+        document.documentElement;
+
+
+    /* =====================================================
+       GET SAVED THEME
+    ===================================================== */
+
+    function getStoredTheme() {
+
+        const storedTheme =
+            localStorage.getItem(
+                STORAGE_KEY
+            );
+
+
+        if (
+            storedTheme === "light" ||
+            storedTheme === "dark"
+        ) {
+
+            return storedTheme;
+
+        }
+
+
+        return null;
+
+    }
+
+
+    /* =====================================================
+       GET SYSTEM THEME
+    ===================================================== */
+
+    function getSystemTheme() {
+
+        if (
+            window.matchMedia &&
+            window.matchMedia(
+                "(prefers-color-scheme: dark)"
+            ).matches
+        ) {
+
+            return "dark";
+
+        }
+
+
+        return "light";
+
+    }
+
+
+    /* =====================================================
+       GET CURRENT THEME
+    ===================================================== */
+
+    function getCurrentTheme() {
+
+        return (
+            root.getAttribute(
+                "data-theme"
+            ) ||
+            getSystemTheme()
+        );
+
+    }
+
+
+    /* =====================================================
+       UPDATE TOGGLE ICON
+    ===================================================== */
+
+    function updateToggle(
+        button,
+        theme
+    ) {
+
+        if (!button) return;
+
+
+        const isDark =
+            theme === "dark";
+
+
+        button.setAttribute(
+            "aria-label",
+            isDark
+                ? "Switch to light mode"
+                : "Switch to dark mode"
+        );
+
+
+        button.setAttribute(
+            "title",
+            isDark
+                ? "Switch to light mode"
+                : "Switch to dark mode"
+        );
+
+
+        button.setAttribute(
+            "aria-pressed",
+            String(isDark)
+        );
+
+
+        if (isDark) {
+
+            button.innerHTML = `
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+
+                    <circle
+                        cx="12"
+                        cy="12"
+                        r="4"
+                    ></circle>
+
+                    <path d="M12 2v2"></path>
+
+                    <path d="M12 20v2"></path>
+
+                    <path d="m4.93 4.93 1.41 1.41"></path>
+
+                    <path d="m17.66 17.66 1.41 1.41"></path>
+
+                    <path d="M2 12h2"></path>
+
+                    <path d="M20 12h2"></path>
+
+                    <path d="m6.34 17.66-1.41 1.41"></path>
+
+                    <path d="m19.07 4.93-1.41 1.41"></path>
+
+                </svg>
+            `;
+
+        } else {
+
+            button.innerHTML = `
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+
+                    <path
+                        d="M21 12.79A9 9 0 1 1 11.21 3
+                           7 7 0 0 0 21 12.79Z"
+                    ></path>
+
+                </svg>
+            `;
+
+        }
+
+    }
+
+
+    /* =====================================================
+       APPLY THEME
+    ===================================================== */
+
+    function applyTheme(
+        theme,
+        remember
+    ) {
+
+        if (
+            theme !== "light" &&
+            theme !== "dark"
+        ) {
+
+            return;
+
+        }
+
+
+        root.setAttribute(
+            "data-theme",
+            theme
+        );
+
+
+        if (remember) {
+
+            localStorage.setItem(
+                STORAGE_KEY,
+                theme
+            );
+
+        }
+
+
+        const button =
+            document.querySelector(
+                ".theme-toggle"
+            );
+
+
+        if (button) {
+
+            updateToggle(
+                button,
+                theme
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       CREATE THEME TOGGLE
+    ===================================================== */
+
+    function createThemeToggle() {
+
+        const navbar =
+            document.querySelector(
+                ".navbar"
+            );
+
+
+        if (!navbar) {
+            return;
+        }
+
+
+        if (
+            navbar.querySelector(
+                ".theme-toggle"
+            )
+        ) {
+            return;
+        }
+
+
+        const button =
+            document.createElement(
+                "button"
+            );
+
+
+        button.type =
+            "button";
+
+
+        button.className =
+            "theme-toggle";
+
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                const currentTheme =
+                    getCurrentTheme();
+
+
+                const nextTheme =
+                    currentTheme === "dark"
+                        ? "light"
+                        : "dark";
+
+
+                root.classList.add(
+                    "theme-transition"
+                );
+
+
+                applyTheme(
+                    nextTheme,
+                    true
+                );
+
+
+                window.setTimeout(
+                    function () {
+
+                        root.classList.remove(
+                            "theme-transition"
+                        );
+
+                    },
+                    300
+                );
+
+            }
+        );
+
+
+        const navButton =
+            navbar.querySelector(
+                ".nav-button"
+            );
+
+
+        if (navButton) {
+
+            navButton.parentNode.insertBefore(
+                button,
+                navButton
+            );
+
+        } else {
+
+            navbar.appendChild(
+                button
+            );
+
+        }
+
+
+        const currentTheme =
+            root.getAttribute(
+                "data-theme"
+            ) ||
+            getSystemTheme();
+
+
+        updateToggle(
+            button,
+            currentTheme
+        );
+
+    }
+
+
+    /* =====================================================
+       SYSTEM PREFERENCE CHANGE
+    ===================================================== */
+
+    function syncWithSystemPreference() {
+
+        if (
+            getStoredTheme()
+        ) {
+
+            return;
+
+        }
+
+
+        root.removeAttribute(
+            "data-theme"
+        );
+
+
+        const button =
+            document.querySelector(
+                ".theme-toggle"
+            );
+
+
+        if (button) {
+
+            updateToggle(
+                button,
+                getSystemTheme()
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       INITIAL THEME
+    ===================================================== */
+
+    const storedTheme =
+        getStoredTheme();
+
+
+    if (storedTheme) {
+
+        root.setAttribute(
+            "data-theme",
+            storedTheme
+        );
+
+    }
+
+
+    /* =====================================================
+       INITIALIZE AFTER HTML LOAD
+    ===================================================== */
+
+    if (
+        document.readyState ===
+        "loading"
+    ) {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            createThemeToggle,
+            {
+                once: true
+            }
+        );
+
+    } else {
+
+        createThemeToggle();
+
+    }
+
+
+    /* =====================================================
+       WATCH SYSTEM PREFERENCE
+    ===================================================== */
+
+    if (
+        window.matchMedia
+    ) {
+
+        const mediaQuery =
+            window.matchMedia(
+                "(prefers-color-scheme: dark)"
+            );
+
+
+        if (
+            mediaQuery.addEventListener
+        ) {
+
+            mediaQuery.addEventListener(
+                "change",
+                syncWithSystemPreference
+            );
+
+        } else if (
+            mediaQuery.addListener
+        ) {
+
+            mediaQuery.addListener(
+                syncWithSystemPreference
+            );
+
+        }
+
+    }
+
+})();

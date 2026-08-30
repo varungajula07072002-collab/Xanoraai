@@ -22,7 +22,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     >
 
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src=https://unpkg.com/lucide@latest/dist/umd/lucide.js></script>
     
     <link
         rel="stylesheet"
@@ -78,7 +78,7 @@
 
 
             <a
-                href="contact.html"
+                href="index.html#book-consultation"
                 class="nav-button"
             >
                 Book a Consultation
@@ -133,7 +133,7 @@
             <h2>
                 AI Is Powerful.
                 <br>
-                Knowing What To Do With It Is Harder.
+                Knowing What To Do With It Is  <span>Harder.</span>
             </h2>
 
             <p>
@@ -424,7 +424,7 @@
          <h2>
              We Don't Want AI
              <br>
-             To Just Be A Tool.
+             <span>To Just Be A Tool.</span>
          </h2>
 
          <p>
@@ -528,9 +528,7 @@
              </h3>
 
              <p>
-                 We recommend the approach that best fits the
-                 problem, from education and automation to
-                 integration or custom development.
+                 We recommend the approach that best fits your needs — from education and automation to integration or custom development.
              </p>
 
             </div>
@@ -631,7 +629,7 @@
          <h2>
              Ready To Make
              <br>
-             AI Work For You?
+             AI Work <span>For You?</span>
          </h2>
  
          <p>
@@ -641,7 +639,7 @@
          </p>
 
          <a
-             href="contact.html"
+             href="index.html#book-consultation"
              class="primary-btn"
            >
              Book a Consultation
@@ -655,62 +653,219 @@
 
 
     <!-- =========================
-         FOOTER
-    ========================== -->
+     FOOTER
+   ========================== -->
 
-    <footer>
+   <footer class="site-footer">
 
-        <div class="footer-content">
+      <div class="footer-main">
 
-            <div class="footer-brand">
+         <!-- Brand -->
+         <div class="footer-brand">
+ 
+             <a href="index.html" class="footer-logo">
+                 XANORA <span>AI</span>
+             </a>
 
-                <div class="logo">
-                    XANORA <span>AI</span>
-                </div>
-
-                <p>
-                    Practical AI for real problems.
-                </p>
+             <p>
+                 Practical AI for real people and real businesses.
+                 We help you understand, adopt, and use AI in ways
+                 that actually make a difference.
+             </p>
 
             </div>
 
 
-            <div class="footer-links">
+          <!-- Navigation -->
+          <div class="footer-column">
 
-                <a href="index.html">
-                    Home
-                </a>
+             <h3>Explore</h3>
 
-                <a href="about.html">
-                    About
-                </a>
+             <a href="index.html">Home</a>
+             <a href="about.html">About</a>
+             <a href="services.html">Services</a>
+             <a href="contact.html">Contact</a>
 
-                <a href="services.html">
-                    Services
-                </a>
+            </div>
 
-                <a href="contact.html">
-                    Contact
-                </a>
+
+          <!-- Services -->
+          <div class="footer-column">
+
+                <h3>Services</h3>
+    
+                <a href="services.html#ai-consulting">AI Consulting</a>
+                <a href="services.html#automation">Automation</a>
+                <a href="services.html#business-integration">Business Integration</a>
+                <a href="services.html#custom-ai-software">Custom AI Software</a>
+                <a href="services.html#ai-training">AI Training</a>
+                <a href="services.html#ai-strategy">AI Strategy</a>
+
+            </div>
+
+
+          <!-- Contact -->
+          <div class="footer-column">
+
+             <h3>Get Started</h3>
+ 
+             <p class="footer-contact-text">
+                 Have a problem you want to solve with AI?
+                 Let's start there.
+             </p>
+
+             <a href="index.html#get-started" class="footer-cta" data-open-modal="getStartedModal">
+                 Get Started
+                 <i data-lucide="arrow-right"></i>
+             </a>
 
             </div>
 
         </div>
 
 
-        <div class="footer-bottom">
+      <div class="footer-bottom">
 
-            <p>
-                © 2026 XANORA AI. All rights reserved.
-            </p>
+         <p>
+             © 2026 XANORA AI. All Rights Reserved.
+         </p>
+
+
+          <div class="footer-bottom-links">
+
+             <a
+                 href="#"
+                 data-open-modal="privacyModal"
+                >
+                  Privacy Policy
+               </a>
+
+             <a
+                  href="#"
+                 data-open-modal="termsModal"
+                >
+                 Terms &amp; Conditions
+              </a>
+
+            </div>
 
         </div>
 
     </footer>
 
+     <!-- =========================================================
+     PRIVACY POLICY MODAL
+    ========================================================= -->
+
+     <div
+         class="form-modal"
+         id="privacyModal"
+         aria-hidden="true"
+        >
+
+     <div
+         class="form-modal-overlay"
+         data-close-modal
+      ></div>
+
+
+     <div
+         class="form-modal-content legal-modal-content"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="privacyModalTitle"
+        >
+
+         <button
+             type="button"
+             class="form-modal-close"
+             data-close-modal
+             aria-label="Close Privacy Policy"
+            >
+              <i data-lucide="x"></i>
+         </button>
+
+
+         <div class="form-modal-header">
+
+             <span class="section-badge">
+                 PRIVACY POLICY
+             </span>
+
+             <h2 id="privacyModalTitle">
+                 Your privacy
+                 <span>matters to us.</span>
+             </h2>
+
+         </div>
+
+
+         <div class="legal-modal-body"
+               id="privacyModalBody">
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- =========================================================
+     TERMS & CONDITIONS MODAL
+   ========================================================= -->
+
+     <div
+         class="form-modal"
+         id="termsModal"
+         aria-hidden="true"
+        >
+
+      <div
+          class="form-modal-overlay"
+           data-close-modal
+      ></div>
+
+
+      <div
+          class="form-modal-content legal-modal-content"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="termsModalTitle"
+        >
+
+          <button
+              type="button"
+              class="form-modal-close"
+              data-close-modal
+              aria-label="Close Terms & Conditions"
+            >
+             <i data-lucide="x"></i>
+          </button>
+
+
+         <div class="form-modal-header">
+
+             <span class="section-badge">
+                 TERMS &amp; CONDITIONS
+             </span>
+
+             <h2 id="termsModalTitle">
+                 Terms &
+                 <span>Conditions.</span>
+             </h2>
+
+            </div>
+
+
+          <div class="legal-modal-body"
+               id="termsModalBody"
+            ></div>
+
+        </div>
+
+    </div>
 
     <script src="assets/js/Xanora.js"></script>
 
 </body>
 
 </html>
+

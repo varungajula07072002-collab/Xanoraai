@@ -1,6 +1,29 @@
 /* =========================================================
-   XANORA AI
-   GLOBAL STYLES
+   XANORA AI — HEADING ACCENT SYSTEM
+   Major headings use black text with a deliberate blue phrase.
+========================================================= */
+
+.section-heading h1 span,
+.section-heading h2 span,
+.section-title h2 span,
+.who-title span,
+.problems-section .problem-title span,
+.final-cta h2 span,
+.form-modal-header h2 span,
+.about-hero h1 span,
+.about-cta h2 span,
+.services-hero h1 span,
+.services-approach h2 span,
+.services-cta h2 span,
+.contact-hero h1 span,
+.contact-cta h2 span {
+    color: var(--heading-accent);
+}
+
+
+
+/* =========================================================
+   XANORA AI — GLOBAL STYLES
 ========================================================= */
 
 *{
@@ -14,16 +37,111 @@ html{
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f8fafc;
-    color:#1e293b;
+font-family:Arial, Helvetica, sans-serif;
+    background: var(--page-background);
+    color:var(--text-primary);
     line-height:1.7;
 }
 
 
-/* ===========================
+
+/* =========================================================
+   XANORA AI — DESIGN TOKENS
+   Single source of truth for the visual system
+========================================================= */
+
+:root {
+    --surface-white: #ffffff;
+    --brand-primary: #2563eb;
+    --brand-hover: #1d4ed8;
+    --brand-accent: #60a5fa;
+    --heading-accent: var(--brand-primary);
+    --brand-rgb: 37, 99, 235;
+
+    --text-primary: #1f2937;
+    --text-strong: #334155;
+    --text-secondary: #64748b;
+    --text-list: #475569;
+    --text-muted: #94a3b8;
+
+    --page-background: #ffffff;
+    --surface: #ffffff;
+    --surface-soft: #f8fbff;
+    --surface-blue: #eef5ff;
+    --surface-elevated: #ffffff;
+    --surface-card: #ffffff;
+    --surface-hover: #f1f5f9;
+
+    --border: #e2e8f0;
+    --border-blue: #dbeafe;
+
+    --footer-bg: #10182b;
+}
+
+/* =========================================================
+   SHARED — ANIMATIONS
+========================================================= */
+
+/* =========================================================
+   ANIMATION — FLOAT
+========================================================= */
+
+@keyframes float{
+
+    0% {
+
+        transform: translateY(0);
+
+    }
+
+    50% {
+
+        transform: translateY(-10px);
+
+    }
+
+    100% {
+
+        transform: translateY(0);
+
+    }
+
+}
+
+/* =========================================================
+   ANIMATION — GLOW
+========================================================= */
+
+@keyframes pulseGlow {
+
+    0% {
+
+        box-shadow:
+            0 0 30px rgba(var(--brand-rgb),.25);
+
+    }
+
+    50% {
+
+        box-shadow:
+            0 0 55px rgba(var(--brand-rgb),.45);
+
+    }
+
+    100% {
+
+        box-shadow:
+            0 0 30px rgba(var(--brand-rgb),.25);
+
+    }
+
+}
+
+
+
+/* =========================================================
    NAVIGATION
-=========================== */
+========================================================= */
 
 header {
     position: sticky;
@@ -69,11 +187,11 @@ header.nav-hidden {
     font-size: 26px;
     font-weight: 800;
     letter-spacing: 1px;
-    color: #1f2937;
+    color: var(--text-primary);
 }
 
 .logo span {
-    color: #2563eb;
+    color: var(--brand-primary);
 }
 
 .nav-links {
@@ -88,24 +206,22 @@ header.nav-hidden {
 
 .nav-links a {
     text-decoration: none;
-    color: #1f2937;
+    color: var(--text-primary);
     font-weight: 500;
-    transition:
-                 color 0.3s ease,
-                 opacity 0.3s ease;
+    transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #2563eb;
+    color: var(--brand-primary);
 }
 
 .nav-links .active {
-    color: #2563eb;
+    color: var(--brand-primary);
     font-weight: 700;
 }
 
 .nav-button {
-    background: #2563eb;
+    background: var(--brand-primary);
     color: white;
 
     padding: 12px 22px;
@@ -121,19 +237,25 @@ header.nav-hidden {
 
 .nav-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.20);
+    box-shadow: 0 8px 20px rgba(var(--brand-rgb), 0.20);
 }
+
+
+
+/* =========================================================
+   HOME / INDEX PAGE — DESKTOP
+========================================================= */
+
+/* =========================================================
+   HERO — DESKTOP
+========================================================= */
 
 /* =========================================================
    HERO SECTION
 ========================================================= */
 
 #hero {
-    background: linear-gradient(
-        135deg,
-        #f8fbff 0%,
-        #eef6ff 100%
-    );
+    background: var(--page-background);
 
     min-height: calc(100vh - 110px);
     padding: 80px 5% 60px;
@@ -176,8 +298,6 @@ header.nav-hidden {
 
     max-width: 700px;
 
-    transform: translateY(-50px);
-
 }
 
 
@@ -202,14 +322,13 @@ header.nav-hidden {
 
 .hero-service-circles {
     width: 100%;
-
     display: flex;
     justify-content: center;
     align-items: stretch;
 
     gap: 16px;
 
-    margin-top: -2px;
+    margin-top: 60px;
 }
 
 /* =========================================================
@@ -218,21 +337,21 @@ header.nav-hidden {
 
 .hero-badge{
 
-    display:inline-block;
+    display: inline-block;
 
-    background:#e8f3ff;
+    background: var(--surface-blue);
 
-    color:#0d6efd;
+    color: var(--brand-primary);
 
-    padding:10px 18px;
+    padding: 10px 18px;
 
-    border-radius:999px;
+    border-radius: 999px;
 
-    font-size:14px;
+    font-size: 14px;
 
-    font-weight:600;
+    font-weight: 600;
 
-    margin-bottom:25px;
+    margin-bottom: 25px;
 
 }
 
@@ -246,13 +365,12 @@ header.nav-hidden {
     line-height: 1.08;
     font-weight: 800;
     letter-spacing: -1.5px;
-    color: #1f2937;
+    color: var(--text-primary);
     margin-bottom: 28px;
 }
 
 .hero-left h1 span{
-
-    color:#0d6efd;
+   color:var(--brand-primary);
 
 }
 
@@ -267,7 +385,7 @@ header.nav-hidden {
     font-size: 19px;
     line-height: 1.75;
 
-    color: #5f6b7a;
+    color: var(--text-secondary);
 
     margin-bottom: 38px;
 }
@@ -283,8 +401,6 @@ header.nav-hidden {
     align-items: center;
 
     gap: 18px;
-
-    margin: 38px 0 0;
 
     flex-wrap: wrap;
 
@@ -303,9 +419,9 @@ header.nav-hidden {
 
     justify-content: center;
 
-    background: #0d6efd;
+    background: var(--brand-primary);
 
-    color: #ffffff;
+    color: var(--surface-white);
 
     padding: 15px 30px;
 
@@ -318,7 +434,7 @@ header.nav-hidden {
     font-weight: 600;
 
     box-shadow:
-        0 8px 22px rgba(13, 110, 253, 0.18);
+        0 8px 22px rgba(var(--brand-rgb), 0.18);
 
     transition:
         transform 0.3s ease,
@@ -331,10 +447,10 @@ header.nav-hidden {
 
     transform: translateY(-3px);
 
-    background: #095dcc;
+    background: var(--brand-hover);
 
     box-shadow:
-        0 12px 28px rgba(13, 110, 253, 0.25);
+        0 12px 28px rgba(var(--brand-rgb), 0.25);
 
 }
 
@@ -353,11 +469,11 @@ header.nav-hidden {
 
     background: rgba(255, 255, 255, 0.45);
 
-    color: #0d6efd;
+    color: var(--brand-primary);
 
     padding: 13px 28px;
 
-    border: 2px solid rgba(13, 110, 253, 0.65);
+    border: 2px solid rgba(var(--brand-rgb), 0.65);
 
     border-radius: 999px;
 
@@ -382,9 +498,9 @@ header.nav-hidden {
 
     transform: translateY(-3px);
 
-    background: #0d6efd;
+    background: var(--brand-primary);
 
-    color: #ffffff;
+    color: var(--surface-white);
 
 }
 /* =========================================================
@@ -422,7 +538,7 @@ header.nav-hidden {
 
     font-weight: 600;
 
-    color: #1f2937;
+    color: var(--text-primary);
 
     line-height: 1.2;
 
@@ -441,7 +557,7 @@ header.nav-hidden {
 
     height: 19px;
 
-    color: #2563eb;
+    color: var(--brand-primary);
 
     flex-shrink: 0;
 
@@ -459,61 +575,15 @@ header.nav-hidden {
 
     height:450px;
 
-    margin:0 auto 70px;
+    margin:0 auto 110px;
 
     display:flex;
-
-    top: -50px;
 
     justify-content:center;
 
     align-items:center;
 
     animation:float 6s ease-in-out infinite;
-
-}
-
-
-/* =========================================================
-   AI CORE
-========================================================= */
-
-.ai-core{
-
-    width:90px;
-
-    height:90px;
-
-    border-radius:50%;
-
-    background:linear-gradient(
-        135deg,
-        #2563eb,
-        #4f8cff
-    );
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    color:white;
-
-    z-index:3;
-
-    box-shadow:
-        0 0 45px rgba(37,99,235,.35);
-
-    animation:pulseGlow 4s ease-in-out infinite;
-
-}
-
-.ai-core svg{
-
-    width:42px;
-
-    height:42px;
 
 }
 
@@ -527,6 +597,7 @@ header.nav-hidden {
     height: 390px;
     flex-shrink: 0;
     overflow: visible;
+    transform: translateX(-20px);
 }
 
 
@@ -551,7 +622,7 @@ header.nav-hidden {
 .infinity-path path {
     fill: none;
 
-    stroke: rgba(37, 99, 235, 0.14);
+    stroke: rgba(var(--brand-rgb), 0.14);
     stroke-width: 2;
 
     stroke-linecap: round;
@@ -598,8 +669,8 @@ header.nav-hidden {
     background:
         linear-gradient(
             135deg,
-            #2563eb,
-            #4f8cff
+            var(--brand-primary),
+            var(--brand-accent)
         );
 
     display: flex;
@@ -613,10 +684,10 @@ header.nav-hidden {
 
     color: white;
 
-    z-index: 6;
+    z-index: 100;
 
     box-shadow:
-        0 0 45px rgba(37, 99, 235, .35);
+        0 0 45px rgba(var(--brand-rgb), .35);
 
     animation: pulseGlow 4s ease-in-out infinite;
 }
@@ -651,28 +722,24 @@ header.nav-hidden {
 
     position: absolute;
 
-    width: 48px;
-    height: 48px;
+    width: 150px;
+    height: auto;
 
     border-radius: 50%;
 
     display: flex;
-
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    gap: 7px;
+    text-align: center;
 
-    background: rgba(255,255,255,.96);
-
-    border:
-        1px solid rgba(37,99,235,.18);
-
-    box-shadow:
-        0 8px 25px rgba(37,99,235,.12),
-        0 0 20px rgba(37,99,235,.10);
-
-    color: #2563eb;
-
-    z-index: 5;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    z-index: 10;
+    color: var(--brand-primary);
+    min-height: 0;
 
     transform: translate(-50%, -50%);
 
@@ -681,35 +748,41 @@ header.nav-hidden {
 
 .ai-node svg {
 
-    width: 21px;
-    height: 21px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px; 
+    padding: 11px;
+    box-sizing: border-box;
+    background: var(--surface-white);
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 6px 18px rgba(var(--brand-rgb), 0.12);
 
 }
 
 
 .ai-node span {
 
-    position: absolute;
+    position: static;
 
-    top: 58px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
+    display: block;
 
     width: max-content;
 
-    max-width: 130px;
-
     text-align: center;
 
-    font-size: 12px;
+    font-size: 15px;
 
-    font-weight: 700;
+    font-weight: 600;
+
+    line-height: 1.2;
 
     color: #334155;
 
     white-space: nowrap;
+    margin: 0;
+    padding: 0;
 
 }
 /* =========================================================
@@ -724,11 +797,11 @@ header.nav-hidden {
 
     border-radius: 50%;
 
-    background: #2563eb;
+    background: var(--brand-primary);
 
     box-shadow:
-        0 0 7px rgba(37, 99, 235, 0.85),
-        0 0 15px rgba(37, 99, 235, 0.40);
+        0 0 7px rgba(var(--brand-rgb), 0.85),
+        0 0 15px rgba(var(--brand-rgb), 0.40);
 
     pointer-events: none;
 
@@ -763,8 +836,8 @@ header.nav-hidden {
 
     background: linear-gradient(
         to left,
-        rgba(37, 99, 235, 0.55),
-        rgba(37, 99, 235, 0)
+        rgba(var(--brand-rgb), 0.55),
+        rgba(var(--brand-rgb), 0)
     );
 
     filter: blur(0.5px);
@@ -790,62 +863,12 @@ header.nav-hidden {
 
     border-radius: 50%;
 
-    background: #ffffff;
+    background: var(--surface-white);
 
     opacity: 0.85;
 
     pointer-events: none;
 }
-
-
-/* =========================================================
-   REMOVE OLD ORBIT SYSTEM
-========================================================= */
-
-.ai-network::before,
-.ai-network::after {
-
-    content: none;
-
-}
-
-
-
-/* =========================================================
-   NETWORK PULSE
-========================================================= */
-
-@keyframes networkPulse{
-
-    0%,
-    100%{
-        transform:scale(1);
-        opacity:.75;
-    }
-
-    50%{
-        transform:scale(1.35);
-        opacity:1;
-    }
-
-}
-
-
-/* =========================================================
-   AI CORE — KEEPING YOUR EXISTING CORE
-========================================================= */
- 
-.ai-core{
-    position:absolute;
-
-    left:50%;
-    top:50%;
-
-    transform:translate(-50%,-50%);
-
-    z-index:5;
-}
-
 
 /* =========================================================
    HERO SERVICE CIRCLE
@@ -858,11 +881,9 @@ header.nav-hidden {
 
     flex: 0 0 165px;
 
-    box-sizing: border-box;
-
     background: rgba(255, 255, 255, 0.82);
 
-    border: 1px solid rgba(37, 99, 235, 0.16);
+    border: 1px solid rgba(var(--brand-rgb), 0.16);
 
     border-radius: 50%;
 
@@ -877,7 +898,7 @@ header.nav-hidden {
     text-align: center;
 
     box-shadow:
-        0 12px 35px rgba(37, 99, 235, 0.08);
+        0 12px 35px rgba(var(--brand-rgb), 0.08);
 
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -904,9 +925,9 @@ header.nav-hidden {
     align-items: center;
     justify-content: center;
 
-    background: #eef5ff;
+    background: var(--surface-blue);
 
-    color: #2563eb;
+    color: var(--brand-primary);
 
     margin-bottom: 8px;
 }
@@ -932,7 +953,7 @@ header.nav-hidden {
 
     font-weight: 700;
 
-    color: #1f2937;
+    color: var(--text-primary);
 }
 
 
@@ -948,7 +969,7 @@ header.nav-hidden {
 
     line-height: 1.4;
 
-    color: #64748b;
+    color: var(--text-secondary);
 
     max-width: 125px;
 }
@@ -962,10 +983,10 @@ header.nav-hidden {
 
     transform: translateY(-6px);
 
-    border-color: rgba(37, 99, 235, 0.35);
+    border-color: rgba(var(--brand-rgb), 0.35);
 
     box-shadow:
-        0 18px 45px rgba(37, 99, 235, 0.14);
+        0 18px 45px rgba(var(--brand-rgb), 0.14);
 }
 
 
@@ -991,7 +1012,7 @@ header.nav-hidden {
 
     height:28px;
 
-    color:#2563eb;
+    color:var(--brand-primary);
 
 }
 
@@ -1001,7 +1022,7 @@ header.nav-hidden {
 
     font-weight:700;
 
-    color:#1f2937;
+    color:var(--text-primary);
 
     margin:0;
 
@@ -1009,7 +1030,7 @@ header.nav-hidden {
 
 .floating-card p{
 
-    color:#6b7280;
+    color:var(--text-secondary);
 
     line-height:1.8;
 
@@ -1017,6 +1038,85 @@ header.nav-hidden {
 
 }
 
+
+
+
+/* =========================================================
+   HERO — AI SYSTEM ADDITIONS / PRESERVED OVERRIDES
+========================================================= */
+
+/* =========================================================
+   XANORA AI — NETWORK SVG
+========================================================= */
+
+.network-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.network-svg path {
+    fill: none;
+    stroke: var(--brand-primary);
+    stroke-width: 1.5;
+    stroke-dasharray: 6 8;
+    stroke-linecap: round;
+}
+
+.visible-loop,
+.visible-vertical {
+    fill: none;
+}
+
+/* =========================================================
+   XANORA AI — CORRECT NODE ANCHORS
+   The icon itself is the path anchor.
+========================================================= */
+
+.ai-node-1 {
+    left: 10% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+.ai-node-2 {
+    left: 50% !important;
+    top: 18% !important;
+    transform: translate(-50%, -50%) !important;
+    flex-direction: column-reverse !important;
+}
+
+.ai-node-3 {
+    left: 90% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+.ai-node-4 {
+    left: 50% !important;
+    top: 82% !important;
+    transform: translate(-50%, -50%) !important;
+    flex-direction: column !important;
+}
+
+/* =========================================================
+   XANORA AI — CORE MUST COVER PARTICLES
+========================================================= */
+.ai-core {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 100 !important;
+}
+
+.data-particles {
+    position: absolute !important;
+    z-index: 20 !important;
+}
 
 /* =========================================================
    WHY XANORA AI
@@ -1026,7 +1126,7 @@ header.nav-hidden {
 
     max-width:1200px;
 
-    margin:120px auto;
+    margin:80px auto ;
 
     padding:20px;
 
@@ -1036,23 +1136,37 @@ header.nav-hidden {
 
     text-align:center;
 
-    margin-bottom:70px;
+    margin-bottom:55px;
 
 }
 
 .section-badge{
 
-    display:inline-block;
+    display:inline-flex;
 
-    background:#eaf3ff;
+    align-items:center;
 
-    color:#2563eb;
+    justify-content:center;
 
     padding:10px 20px;
 
     border-radius:999px;
 
-    font-weight:600;
+    background:#e4efff;
+
+    color:var(--brand-primary);
+
+    border:1px solid #cfe0ff;
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    line-height:1;
+
+    font-weight:700;
+
+    letter-spacing:0.06em;
 
     margin-bottom:20px;
 
@@ -1060,11 +1174,11 @@ header.nav-hidden {
 
 .section-heading h2{
 
-    font-size:42px;
+    font-size:40px;
 
-    margin-bottom:20px;
+    margin-bottom:18px;
 
-    color:#1f2937;
+    color:var(--text-primary);
 
 }
 
@@ -1074,12 +1188,25 @@ header.nav-hidden {
 
     margin:auto;
 
-    color:#6b7280;
+    color:var(--text-secondary);
 
-    line-height:1.8;
+    font-size:18px;
+
+    line-height:1.7;
 
 }
 
+.why-xanora .section-heading {
+    margin-bottom: 50px;
+}
+
+.why-xanora .why-grid {
+    gap: 24px;
+}
+
+.why-xanora .why-card {
+    padding: 32px;
+}
 
 /* =========================================================
    WHY GRID
@@ -1107,7 +1234,7 @@ header.nav-hidden {
     box-shadow:
         0 10px 30px rgba(0,0,0,.05);
 
-    transition:.3s;
+    transition: transform 0.3s ease;
 
 }
 
@@ -1123,7 +1250,7 @@ header.nav-hidden {
 
     height:36px;
 
-    color:#2563eb;
+    color:var(--brand-primary);
 
     margin-bottom:20px;
 
@@ -1133,28 +1260,27 @@ header.nav-hidden {
 
     margin-bottom:15px;
 
-    color:#1f2937;
+    color:var(--text-primary);
 
 }
 
 .why-card p{
 
-    color:#6b7280;
+    color:var(--text-secondary);
 
     line-height:1.7;
 
 }
 
-
 /* =========================================================
    SERVICES PREVIEW
 ========================================================= */
 
-.services-preview{
+.services-preview {
 
-    padding: 70px 8%;
+    padding: 60px 8%;
 
-    background:#ffffff;
+    background: var(--page-background);
 
 }
 
@@ -1162,13 +1288,13 @@ header.nav-hidden {
 
     text-align:center;
 
-    max-width:700px;
+    max-width:760px;
 
-    margin:0 auto 70px;
+    margin:0 auto 40px;
 
 }
 
-.section-title span{
+.section-title > span{
 
     display:inline-block;
 
@@ -1176,9 +1302,9 @@ header.nav-hidden {
 
     border-radius:50px;
 
-    background:#edf4ff;
+    background:var(--surface-blue);
 
-    color:#2d6cdf;
+    color:var(--brand-primary);
 
     font-weight:600;
 
@@ -1186,28 +1312,27 @@ header.nav-hidden {
 
 }
 
-.section-title h2{
+.section-title h2 {
 
-    font-size:52px;
+    font-size:40px;
 
     line-height:1.2;
 
-    color:#1b2430;
+    color: var(--text-primary);
 
-    margin-bottom:20px;
+    margin-bottom:18px;
 
 }
 
 .section-title p{
 
-    font-size:19px;
+    font-size:18px;
 
-    color:#6c7688;
+    color:var(--text-secondary);
 
-    line-height:1.8;
+    line-height:1.7;
 
 }
-
 
 /* =========================================================
    SERVICES GRID
@@ -1235,7 +1360,10 @@ header.nav-hidden {
     box-shadow:
         0 15px 45px rgba(0,0,0,.07);
 
-    transition:.35s;
+    transition:
+         transform 0.35s ease,
+         box-shadow 0.35s ease;
+
 
 }
 
@@ -1244,7 +1372,7 @@ header.nav-hidden {
     transform:translateY(-12px);
 
     box-shadow:
-        0 30px 60px rgba(45,108,223,.15);
+        0 30px 60px rgba(var(--brand-rgb),.15);
 
 }
 
@@ -1252,7 +1380,7 @@ header.nav-hidden {
 
     font-size:34px;
 
-    color:#2d6cdf;
+    color:var(--brand-primary);
 
     margin-bottom:25px;
 
@@ -1264,18 +1392,287 @@ header.nav-hidden {
 
     margin-bottom:15px;
 
-    color:#1b2430;
+    color:var(--text-primary);
 
 }
 
 .service-card p{
 
-    color:#6c7688;
+    color:var(--text-secondary);
 
     line-height:1.8;
 
 }
 
+/* =========================================================
+   SERVICES ORBIT
+========================================================= */
+
+.services-orbit {
+    position: relative;
+    width: min(100%, 1050px);
+    height: 700px;
+    margin: 20px auto 0;
+} 
+
+/* Central visual */
+
+.services-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 190px;
+    height: 190px;
+
+    border-radius: 50%;
+    background: var(--surface-white);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 60px rgba(var(--brand-rgb),.12);
+
+    border: 1px solid var(--border-blue);
+
+    z-index: 3;
+}
+
+.services-center .center-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--surface-blue);
+    color: var(--brand-primary);
+
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.services-center h3 {
+    margin: 0;
+    font-size: 20px;
+    color: var(--text-primary);
+}
+
+.services-center h3 span {
+    color: var(--brand-primary);
+}
+
+.services-center p {
+    margin: 8px 0 0;
+
+    font-size: 13px;
+    line-height: 1.5;
+
+    color: var(--text-secondary);
+}
+
+
+/* Orbit ring */
+
+.orbit-ring {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 430px;
+    height: 430px;
+
+    transform: translate(-50%, -50%);
+
+    border: 1px dashed rgba(var(--brand-rgb),.35);
+
+    border-radius: 50%;
+}
+
+
+/* Service cards */
+
+.service-orbit-card {
+    position: absolute;
+
+    width: 280px;
+    min-height: 115px;
+
+    padding: 22px 24px;
+
+    background: var(--surface-white);
+
+    border-radius: 20px;
+
+    border: 1px solid var(--border);
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.06);
+
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+
+    z-index: 2;
+
+    transition:
+         transform 0.3s ease,
+         box-shadow 0.3s ease;
+}
+.service-top-left:hover,
+.service-top-right:hover,
+.service-bottom-left:hover,
+.service-bottom-right:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 25px 55px rgba(var(--brand-rgb),.12);
+}
+
+.service-middle-left:hover {
+    transform: translateY(calc(-50% - 5px));
+
+    box-shadow:
+        0 25px 55px rgba(var(--brand-rgb),.12);
+}
+
+.service-middle-right:hover {
+    transform: translateY(calc(-50% - 5px));
+
+    box-shadow:
+        0 25px 55px rgba(var(--brand-rgb),.12);
+}
+
+.service-orbit-card i {
+    flex-shrink: 0;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--surface-blue);
+
+    color: var(--brand-primary);
+
+    font-size: 18px;
+}
+
+.service-orbit-card h3 {
+    margin: 2px 0 8px;
+
+    font-size: 18px;
+    line-height: 1.3;
+
+    color: var(--text-primary);
+}
+
+.service-orbit-card p {
+    margin: 0;
+
+    color: var(--text-secondary);
+
+    font-size: 14px;
+
+    line-height: 1.55;
+}
+
+
+/* Positioning */
+
+.service-top-left {
+    top: 35px;
+    left: 120px;
+}
+
+.service-top-right {
+    top: 35px;
+    right: 120px;
+}
+
+.service-middle-left {
+    top: 50%;
+    left: -5px;
+    transform: translateY(-50%);
+}
+
+.service-middle-right {
+    top: 50%;
+    right: -5px;
+    transform: translateY(-50%);
+}
+
+.service-bottom-left {
+    bottom: 35px;
+    left: 120px;
+}
+
+.service-bottom-right {
+    bottom: 35px;
+    right: 120px;
+}
+
+
+
+/* =========================================================
+   SERVICES ORBIT — DOTS
+========================================================= */
+
+.orbit-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--brand-primary);
+    box-shadow: 0 0 0 3px #ffffff,
+                0 0 10px rgba(var(--brand-rgb),.25);
+}
+
+.dot-1 {
+    top: 9%;
+    left: 19%;
+}
+
+.dot-2 {
+    top: 9%;
+    right: 19%;
+}
+
+.dot-3 {
+    top: 50%;
+    left: -4px;
+    transform: translateY(-50%);
+}
+
+.dot-4 {
+    top: 50%;
+    right: -4px;
+    transform: translateY(-50%);
+}
+
+.dot-5 {
+    bottom: 9%;
+    left: 19%;
+}
+
+.dot-6 {
+    bottom: 9%;
+    right: 19%;
+}
 
 /* =========================================================
    OUR PROCESS
@@ -1283,9 +1680,9 @@ header.nav-hidden {
 
 .process{
 
-    padding:120px 8%;
+    padding:90px 8%;
 
-    background:#f8fbff;
+    background:var(--surface-soft);
 
 }
 
@@ -1310,48 +1707,39 @@ header.nav-hidden {
 
     gap:24px;
 
-    margin-top: 35px;
+    margin-top: 30px;
 
 }
 
 .process-grid::before{
-
     content:"";
-
     position:absolute;
-
-    top:26px;
+    top:28px;
     left:10%;
     right:10%;
-
-    height:1px;
-
-    background:#dbe8fb;
-
+    height:2px;
+    background: #c8daf4;
     z-index:0;
-
 }
 
 .process-card{
 
     position:relative;
 
-    background:#ffffff;
+    background: var(--surface-white);
 
     border-radius:20px;
 
-    padding:34px 28px;
+    padding:30px 26px;
 
     text-align:left;
-
-    position:relative;
 
     z-index:1;
 
     box-shadow:
         0 12px 35px rgba(0,0,0,.05);
 
-    border:1px solid #e8eef8;
+    border:1px solid var(--border);
 
     transition:
         transform .3s ease,
@@ -1364,7 +1752,7 @@ header.nav-hidden {
     transform:translateY(-6px);
 
     box-shadow:
-        0 25px 60px rgba(45,108,223,.15);
+        0 25px 60px rgba(var(--brand-rgb),.15);
 
 }
 
@@ -1375,13 +1763,13 @@ header.nav-hidden {
 
 .number{
 
-    width:65px;
+    width:56px;
 
-    height:65px;
+    height:56px;
 
     border-radius:50%;
 
-    background:#2d6cdf;
+    background:var(--brand-primary);
 
     color:white;
 
@@ -1391,21 +1779,9 @@ header.nav-hidden {
 
     justify-content:center;
 
-    font-size:22px;
+    font-size:20px;
 
     font-weight:700;
-
-    margin-bottom:25px;
-
-}
-
-.step-number{
-
-    width:56px;
-
-    height:56px;
-
-    font-size:20px;
 
     margin-bottom:22px;
 
@@ -1415,75 +1791,67 @@ header.nav-hidden {
 
     font-size:22px;
 
-    color:#1b2430;
+    color:var(--text-primary);
 
-    margin-bottom:18px;
+    margin-bottom:14px;
 
 }
 
 .process-card p{
-
-    color:#6c7688;
-
-    line-height:1.8;
+    color:var(--text-secondary);
+    font-size: 15px;
+    line-height:1.65;
 
 }
-
 
 /* =========================================================
    WHO CAN BENEFIT
 ========================================================= */
 
 .who-section{
-
-    padding:120px 8%;
-
-    background:#ffffff;
-
+    padding:90px 8% 65px;
+    background: var(--surface-white);
     text-align:center;
-
 }
 
-.who-title{
-    font-size:52px;
+.who-title {
+    font-size:40px;
     line-height:1.2;
-    color:#1b2430;
+    color: var(--text-primary);
     margin:25px auto 20px;
     font-weight:700;
 }
 
 .who-grid{
-
     display:grid;
-
     grid-template-columns:
         repeat(2,1fr);
-
     gap:24px;
-
-    margin-top:50px;
+    margin-top:38px;
 
 }
 
 .section-description{
     max-width:760px;
     margin:0 auto;
-    color:#6c7688;
-    font-size:19px;
-    line-height:1.8;
+    color:var(--text-secondary);
+    font-size:18px;
+    line-height:1.75;
 }
 
 .who-card{
 
-    background:#fff;
+    background: var(--surface-white);
 
     border-radius:22px;
 
-    padding:28px 30px;
+    padding:26px 28px;
 
     text-align:left;
 
-    transition:.35s;
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
 
     box-shadow:
         0 15px 45px rgba(0,0,0,.05);
@@ -1492,19 +1860,22 @@ header.nav-hidden {
 
 .who-card:hover{
 
-    transform:translateY(-8px);
+    transform:translateY(-6px);
+
+    box-shadow:
+        0 25px 55px rgba(var(--brand-rgb),.10);
 
 }
 
 .who-icon{
 
-    width:70px;
+    width:62px;
 
-    height:70px;
+    height:62px;
 
     border-radius:50%;
 
-    background:#2f6df6;
+    background:var(--brand-primary);
 
     display:flex;
 
@@ -1512,11 +1883,11 @@ header.nav-hidden {
 
     align-items:center;
 
-    font-size:30px;
+    font-size:26px;
 
     color:white;
 
-    margin-bottom:25px;
+    margin-bottom:20px;
 
 }
 
@@ -1524,18 +1895,19 @@ header.nav-hidden {
 
     font-size:24px;
 
-    margin-bottom:14px;
+    margin-bottom:12px;
+
+     color: var(--text-primary);
 
 }
 
 .who-card p{
 
-    line-height:1.9;
+    line-height:1.75;
 
-    color:#6b7280;
+    color:var(--text-secondary);
 
 }
-
 
 /* =========================================================
    COMMON CHALLENGES
@@ -1543,21 +1915,21 @@ header.nav-hidden {
 
 .problems-section{
 
-    padding:60px 8% 100px;
+    padding:40px 8% 100px;
 
-    background:#ffffff;
+    background: var(--surface-white);
 
     text-align:center;
 
 }
 
-.problems-section .section-title{
+.problems-section .problem-title {
 
-    font-size:52px;
+    font-size:40px;
 
     line-height:1.2;
 
-    color:#1b2430;
+    color: var(--text-primary);
 
     margin:25px auto 20px;
 
@@ -1571,9 +1943,9 @@ header.nav-hidden {
 
     margin:0 auto;
 
-    color:#6c7688;
+    color:var(--text-secondary);
 
-    font-size:19px;
+    font-size:20px;
 
     line-height:1.8;
 
@@ -1588,13 +1960,13 @@ header.nav-hidden {
 
     gap:24px;
 
-    margin-top:55px;
+    margin-top:38px;
 
 }
 
 .problem-card{
 
-    background:#ffffff;
+    background: var(--surface-white);
 
     border-radius:22px;
 
@@ -1602,13 +1974,15 @@ header.nav-hidden {
 
     text-align:left;
 
-    border:1px solid #edf1f7;
+    border:1px solid var(--border);
 
     box-shadow:
         0 15px 45px rgba(0,0,0,.05);
 
-    transition:.35s;
+    transition:
 
+        transform .3s ease,
+        box-shadow .3s ease;
 }
 
 .problem-card:hover{
@@ -1620,27 +1994,6 @@ header.nav-hidden {
 
 }
 
-.problem-card span{
-
-    width:64px;
-
-    height:64px;
-
-    border-radius:50%;
-
-    background:#2f6df6;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    font-size:26px;
-
-    margin-bottom:24px;
-
-}
 
 .problem-card h3{
 
@@ -1648,7 +2001,7 @@ header.nav-hidden {
 
     line-height:1.3;
 
-    color:#1b2430;
+    color:var(--text-primary);
 
     margin-bottom:14px;
 
@@ -1656,7 +2009,7 @@ header.nav-hidden {
 
 .problem-card p{
 
-    color:#6c7688;
+    color:var(--text-secondary);
 
     font-size:17px;
 
@@ -1668,28 +2021,28 @@ header.nav-hidden {
 
 .problem-icon{
 
-    width:70px;
-    height:70px;
+    width:62px;
+    height:62px;
 
     border-radius:50%;
 
-    background:#2f6df6;
+    background:var(--brand-primary);
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    margin-bottom:28px;
+    margin-bottom:20px;
 
 }
 
 .problem-icon svg{
 
-    width:32px;
-    height:32px;
+    width:29px;
+    height:29px;
 
     fill:none;
-    stroke:#ffffff;
+    stroke: var(--surface-white);
     stroke-width:1.8;
 
     stroke-linecap:round;
@@ -1697,104 +2050,2064 @@ header.nav-hidden {
 
 }
 
-
 /* =========================================================
-   ANIMATION — FLOAT
+   FINAL CTA
 ========================================================= */
 
-@keyframes float{
+.final-cta {
+    padding: 75px 8%;
+    background: var(--page-background);
+    text-align: center;
+}
 
-    0%{
+.final-cta-content {
+    max-width: 850px;
+    margin: 0 auto;
+}
 
-        transform:translateY(0px);
+.final-cta .section-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-    }
+    padding: 12px 24px;
 
-    50%{
+    border-radius: 999px;
 
-        transform:translateY(-10px);
+    background: var(--surface-blue);
+    color: var(--brand-primary);
 
-    }
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: .3px;
+}
 
-    100%{
+.final-cta h2 {
+    margin: 28px auto 20px;
 
-        transform:translateY(0px);
+    font-size: 52px;
+    line-height: 1.15;
+    font-weight: 700;
 
-    }
+    color: var(--text-primary);
+}
+
+.final-cta h2 span {
+    color: var(--heading-accent);
+}
+
+.final-cta p {
+    max-width: 720px;
+    margin: 0 auto;
+
+    color: var(--text-secondary);
+
+    font-size: 19px;
+    line-height: 1.75;
+}
+
+.final-cta-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    margin-top: 35px;
+}
+
+.final-cta .primary-btn,
+.final-cta .secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 170px;
+    padding: 15px 28px;
+
+    border-radius: 999px;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.final-cta .primary-btn {
+    background: var(--brand-primary);
+    color: var(--surface-white);
+
+    box-shadow: 0 10px 25px rgba(var(--brand-rgb),.18);
+}
+
+.final-cta .secondary-btn {
+    background: var(--surface-white);
+    color: var(--brand-primary);
+
+    border: 1px solid var(--border-blue);
+}
+
+.final-cta .primary-btn:hover,
+.final-cta .secondary-btn:hover {
+    transform: translateY(-3px);
+}
+
+.final-cta .primary-btn:hover {
+    box-shadow: 0 15px 35px rgba(var(--brand-rgb),.25);
+}
+
+.final-cta .secondary-btn:hover {
+    box-shadow: 0 12px 30px rgba(0,0,0,.06);
+}
+
+
+
+/* =========================================================
+   SHARED — FOOTER — DESKTOP
+========================================================= */
+
+/* =========================================================
+   SITE FOOTER
+========================================================= */
+
+.site-footer {
+    background: var(--footer-bg);
+    color: var(--surface-white);
+    padding: 70px 8% 0;
+}
+
+
+/* Main footer */
+
+.footer-main {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns:
+        1.7fr
+        1fr
+        1.2fr
+        1.3fr;
+
+    gap: 60px;
+
+    padding-bottom: 55px;
+}
+
+
+/* Brand */
+
+.footer-brand {
+    max-width: 360px;
+}
+
+.footer-logo {
+    display: inline-block;
+
+    margin-bottom: 20px;
+
+    color: var(--surface-white);
+
+    font-size: 25px;
+    font-weight: 800;
+
+    letter-spacing: .3px;
+
+    text-decoration: none;
+}
+
+.footer-logo span {
+    color: var(--brand-primary);
+}
+
+.footer-brand p {
+    margin: 0;
+
+    color: #aab4c7;
+
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+
+/* Footer columns */
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-column h3 {
+    margin: 0 0 20px;
+
+    color: var(--surface-white);
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.footer-column a {
+    margin-bottom: 12px;
+
+    color: #aab4c7;
+
+    font-size: 15px;
+
+    text-decoration: none;
+
+    transition:
+        color .2s ease,
+        transform .2s ease;
+}
+
+.footer-column a:hover {
+    color: var(--surface-white);
+    transform: translateX(2px);
+}
+
+
+/* Contact text */
+
+.footer-contact-text {
+    max-width: 250px;
+
+    margin: 0 0 20px;
+
+    color: #aab4c7;
+
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+
+/* Footer CTA */
+
+.footer-cta {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 8px;
+
+    padding: 11px 18px;
+
+    background: var(--brand-primary);
+
+    border-radius: 999px;
+
+    color: var(--surface-white);
+
+    font-size: 14px;
+    font-weight: 700;
+
+    margin: 0;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.footer-cta:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(var(--brand-rgb),.25);
+}
+
+.footer-cta svg {
+    width: 16px;
+    height: 16px;
+}
+
+
+/* Bottom bar */
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    min-height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    border-top: 1px solid rgba(255,255,255,.1);
+}
+
+.footer-bottom p {
+    margin: 0;
+
+    color: #7f8ba3;
+
+    font-size: 13px;
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 22px;
+}
+
+.footer-bottom-links a {
+    color: #7f8ba3;
+
+    font-size: 13px;
+
+    text-decoration: none;
+
+    transition: color .2s ease;
+}
+
+.footer-bottom-links a:hover {
+    color: var(--surface-white);
+}
+
+/* =========================================================
+   ABOUT PAGE
+========================================================= */
+
+/* =========================
+   ABOUT HERO
+========================= */
+
+.about-hero {
+    padding: 100px 8% 180px;
+    background: var(--page-background);
+    text-align: center;
+}
+
+.about-hero .section-heading {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.about-hero h1 {
+    font-size: 60px;
+    line-height: 1.15;
+    color: var(--text-primary);
+    margin: 25px auto;
+    font-weight: 700;
+}
+
+.about-hero h1 span {
+    color: var(--heading-accent);
+}
+
+.about-hero p {
+    max-width: 720px;
+    margin: 0 auto;
+    color: var(--text-secondary);
+    font-size: 20px;
+    line-height: 1.8;
+}
+
+
+/* =========================
+   SHARED SECTION HEADING
+========================= */
+
+.about-story .section-heading,
+.about-beliefs .section-heading,
+.about-capabilities .section-heading,
+.about-process .section-heading,
+.about-future .section-heading {
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-story .section-badge,
+.about-beliefs .section-badge,
+.about-capabilities .section-badge,
+.about-vision .section-badge,
+.about-process .section-badge,
+.about-future .section-badge,
+.about-cta .section-badge {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 999px;
+    background: var(--surface-blue);
+    color: var(--brand-primary);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Better contrast on blue-background sections */
+.about-story .section-badge,
+.about-capabilities .section-badge,
+.about-process .section-badge,
+.about-cta .section-badge {
+    background: var(--surface-white);
+    color: var(--brand-primary);
+}
+
+/* =========================
+   WHY XANORA AI EXISTS
+========================= */
+
+.about-story {
+    padding: 80px 8%;
+    background: var(--page-background);
+}
+
+.about-story h2 {
+    font-size: 48px;
+    line-height: 1.2;
+    color: var(--text-primary);
+    margin: 25px auto 30px;
+    font-weight: 700;
+}
+
+.about-story p {
+    max-width: 760px;
+    margin: 0 auto 20px;
+    color: var(--text-secondary);
+    font-size: 18px;
+    line-height: 1.85;
+}
+
+
+/* =========================
+   BELIEFS
+========================= */
+
+.about-beliefs {
+    padding: 80px 8%;
+    background: var(--page-background);
+    text-align: center;
+}
+
+.about-beliefs h2 {
+    font-size: 48px;
+    line-height: 1.2;
+    color: var(--text-primary);
+    margin: 25px auto 30px;
+    font-weight: 700;
+}
+
+.about-beliefs h2 span {
+    color: var(--brand-primary);
+}
+
+.about-beliefs > .section-heading > p {
+    max-width: 760px;
+    margin: 0 auto;
+    color: var(--text-secondary);
+    font-size: 18px;
+    line-height: 1.85;
+}
+
+.beliefs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    max-width: 1000px;
+    margin: 50px auto 0;
+}
+
+.belief-card {
+    background: var(--surface-white);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 32px;
+    text-align: left;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.05);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.belief-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(var(--brand-rgb), 0.10);
+}
+
+.belief-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--brand-primary);
+    color: var(--surface-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 24px;
+}
+
+.belief-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.belief-card h3 {
+    font-size: 23px;
+    color: var(--text-primary);
+    margin: 0 0 12px;
+}
+
+.belief-card p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+}
+
+
+/* =========================
+   WHAT XANORA AI IS
+========================= */
+
+.about-capabilities {
+    padding: 100px 8%;
+    background: var(--page-background);
+}
+
+.about-capabilities h2 {
+    font-size: 52px;
+    line-height: 1.2;
+    color: var(--text-primary);
+    margin: 25px auto 30px;
+    font-weight: 700;
+}
+
+.about-capabilities h2 span {
+    color: var(--brand-primary);
+}
+
+.about-capabilities > .section-heading > p {
+    max-width: 760px;
+    margin: 0 auto;
+    color: var(--text-secondary);
+    font-size: 18px;
+    line-height: 1.85;
+}
+
+.capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1050px;
+    margin: 50px auto 0;
+}
+
+.capability-card {
+    background: var(--surface-white);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 28px 30px;
+    min-height: 200px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.capability-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(var(--brand-rgb), 0.10);
+}
+
+.capability-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--brand-primary);
+    color: var(--surface-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 22px;
+}
+
+.capability-icon svg {
+    width: 23px;
+    height: 23px;
+}
+
+.capability-card h3 {
+    font-size: 23px;
+    color: var(--text-primary);
+    margin: 0 0 12px;
+}
+
+.capability-card p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+}
+
+
+/* =========================
+   OUR VISION
+========================= */
+
+.about-vision {
+    padding: 100px 8%;
+    background: var(--page-background);
+}
+
+.vision-content {
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-vision h2 {
+    font-size: 52px;
+    line-height: 1.2;
+    color: var(--text-primary);
+    margin: 25px auto 30px;
+    font-weight: 700;
+}
+
+.about-vision p {
+    max-width: 760px;
+    margin: 0 auto 20px;
+    color: var(--text-secondary);
+    font-size: 18px;
+    line-height: 1.85;
+}
+
+
+
+/* =========================================================
+   ABOUT VISION — HEADING ACCENT
+========================================================= */
+
+.about-vision h2 span {
+    color: var(--heading-accent);
+}
+
+/* =========================
+   HOW WE WORK
+========================= */
+
+.about-process {
+    padding: 100px 8%;
+    background: var(--page-background);
+}
+
+.about-process h2 {
+    font-size: 52px;
+    line-height: 1.2;
+    color: var(--text-primary);
+    margin: 25px auto 30px;
+    font-weight: 700;
+}
+
+.about-process h2 span {
+    color: var(--brand-primary);
+}
+
+.about-process > .section-heading > p {
+    max-width: 760px;
+    margin: 0 auto;
+    color: var(--text-secondary);
+    font-size: 18px;
+    line-height: 1.85;
+}
+
+.about-process-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+    max-width: 1150px;
+    margin: 60px auto 0;
+}
+
+.about-process-card {
+    background: var(--surface-white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px 22px;
+    min-height: 260px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.04);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.about-process-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 45px rgba(var(--brand-rgb), 0.10);
+}
+
+.about-process-number {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--brand-primary);
+    margin-bottom: 22px;
+}
+
+.about-process-card h3 {
+    font-size: 21px;
+    color: var(--text-primary);
+    margin: 0 0 12px;
+}
+
+.about-process-card p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+}
+
+
+/* =========================
+   WHAT WE ARE BUILDING
+========================= */
+
+.about-future {
+    padding: 100px 8%;
+    background: var(--page-background);
+}
+
+.about-future h2 {
+    font-size: 52px;
+    line-height: 1.2;
+    color: var(--text-primary);
+    margin: 25px auto 30px;
+    font-weight: 700;
+}
+
+.about-future h2 span {
+    color: var(--brand-primary);
+}
+
+.about-future p {
+    max-width: 760px;
+    margin: 0 auto 20px;
+    color: var(--text-secondary);
+    font-size: 18px;
+    line-height: 1.85;
+}
+
+
+/* =========================
+   FINAL CTA
+========================= */
+
+.about-cta {
+    padding: 100px 8%;
+    background: var(--page-background);
+    text-align: center;
+}
+
+.about-cta-content {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.about-cta h2 {
+    font-size: 52px;
+    line-height: 1.2;
+    color: var(--text-primary);
+    margin: 25px auto 20px;
+    font-weight: 700;
+}
+
+.about-cta p {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    color: var(--text-secondary);
+    font-size: 19px;
+    line-height: 1.75;
+}
+
+
+
+/* =========================================================
+   ABOUT PAGE — SPACING & STICKY NAV FIX
+   This affects ONLY the About page.
+========================================================= */
+
+/* About page detection */
+body:has(.about-hero) {
+
+    /*
+       Keeps content from feeling cramped against
+       the sticky navigation.
+    */
+    scroll-padding-top: 130px;
+}
+
+/* =========================================================
+   ABOUT SECTION HEADINGS
+========================================================= */
+
+body:has(.about-hero) .section-heading {
+
+    max-width: 900px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+/* Give headings more breathing room */
+
+body:has(.about-hero) .section-heading h1,
+body:has(.about-hero) .section-heading h2 {
+
+    margin-top: 26px;
+    margin-bottom: 30px;
+
+}
+
+
+/* Keep paragraphs readable */
+
+body:has(.about-hero) .section-heading p {
+
+    max-width: 820px;
+
+    margin-left: auto;
+    margin-right: auto;
 
 }
 
 
 /* =========================================================
-   ANIMATION — ORBIT
+   ABOUT PAGE — BELIEF CARDS
 ========================================================= */
 
-@keyframes rotateOrbit{
+body:has(.about-beliefs) .beliefs-grid {
 
-    from{
-
-        transform:rotate(0deg);
-
-    }
-
-    to{
-
-        transform:rotate(360deg);
-
-    }
+    margin-top: 40px;
 
 }
 
 
 /* =========================================================
-   ANIMATION — GLOW
+   ABOUT PAGE — CAPABILITY CARDS
 ========================================================= */
 
-@keyframes pulseGlow{
+body:has(.about-capabilities) .capabilities-grid {
 
-    0%{
-
-        box-shadow:
-            0 0 30px rgba(37,99,235,.25);
-
-    }
-
-    50%{
-
-        box-shadow:
-            0 0 55px rgba(37,99,235,.45);
-
-    }
-
-    100%{
-
-        box-shadow:
-            0 0 30px rgba(37,99,235,.25);
-
-    }
+    margin-top: 55px;
 
 }
 
+
+/* =========================================================
+   ABOUT PAGE — PROCESS CARDS
+
+========================================================= */
+
+body:has(.about-process) .about-process-grid {
+
+    margin-top: 55px;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+
+
+/* =========================================================
+   SERVICES PAGE
+========================================================= */
+
+
+/* =========================
+   SERVICES HERO
+========================= */
+
+.services-hero {
+    padding: 150px 8% 120px;
+    background: var(--page-background);
+    text-align: center;
+}
+
+.services-hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.services-hero h1 {
+    margin: 28px auto 25px;
+    max-width: 850px;
+
+    font-size: clamp(48px, 6vw, 78px);
+    line-height: 1.08;
+    letter-spacing: -2px;
+
+    color: var(--text-primary);
+}
+
+.services-hero h1 span {
+    color: var(--heading-accent);
+}
+
+.services-hero p {
+    max-width: 760px;
+    margin: 0 auto;
+
+    color: var(--text-secondary);
+    font-size: 19px;
+    line-height: 1.8;
+}
+
+.services-hero-actions {
+    margin-top: 38px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+
+/* =========================
+   SERVICES INTRO
+========================= */
+
+.services-intro {
+    padding: 120px 8% 70px;
+    background: var(--page-background);
+    text-align: center;
+}
+
+.services-intro .section-heading {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.services-intro h2 {
+    margin: 25px auto 25px;
+
+    font-size: clamp(38px, 5vw, 58px);
+    line-height: 1.15;
+
+    color: var(--text-primary);
+}
+
+.services-intro h2 span {
+    color: var(--brand-primary);
+}
+
+.services-intro p {
+    max-width: 760px;
+    margin: 0 auto;
+
+    color: var(--text-secondary);
+    font-size: 18px;
+    line-height: 1.85;
+}
+
+
+/* =========================
+   SERVICES LIST
+========================= */
+
+.services-list {
+    padding: 80px 8% 130px;
+    background: var(--page-background);
+}
+
+.services-grid-page {
+    max-width: 1150px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+}
+
+
+/* =========================
+   SERVICE DETAIL CARD
+========================= */
+
+.service-detail-card {
+    position: relative;
+
+    background: var(--surface-white);
+
+    border: 1px solid var(--border);
+    border-radius: 26px;
+
+    padding: 38px;
+
+    box-shadow: 0 18px 50px rgba(31, 41, 55, 0.055);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.service-detail-card:hover {
+    transform: translateY(-6px);
+
+    border-color: rgba(var(--brand-rgb), 0.25);
+
+    box-shadow:
+        0 25px 65px rgba(31, 41, 55, 0.08),
+        0 10px 35px rgba(var(--brand-rgb), 0.07);
+}
+
+
+/* subtle blue accent */
+
+.service-detail-card::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background: var(--brand-primary);
+
+    transform: scaleX(0);
+    transform-origin: left;
+
+    transition: transform 0.35s ease;
+}
+
+.service-detail-card:hover::after {
+    transform: scaleX(1);
+}
+
+
+/* =========================
+   SERVICE ICON
+========================= */
+
+.service-detail-icon {
+    width: 64px;
+    height: 64px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--brand-primary);
+    color: var(--surface-white);
+
+    font-size: 23px;
+
+    margin-bottom: 25px;
+
+    box-shadow: 0 12px 25px rgba(var(--brand-rgb), 0.18);
+}
+
+.service-detail-icon i {
+    line-height: 1;
+}
+
+
+/* =========================
+   SERVICE NUMBER
+========================= */
+
+.service-number {
+    position: absolute;
+
+    top: 28px;
+    right: 32px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    color: var(--text-muted);
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================
+   SERVICE TEXT
+========================= */
+
+.service-detail-card h2 {
+    margin: 0 0 15px;
+
+    color: var(--text-primary);
+
+    font-size: 28px;
+    line-height: 1.2;
+}
+
+.service-detail-card .service-lead {
+    margin: 0 0 18px;
+
+    color: var(--text-strong);
+
+    font-size: 17px;
+    line-height: 1.7;
+
+    font-weight: 600;
+}
+
+.service-detail-card > p:not(.service-lead) {
+    margin: 0;
+
+    color: var(--text-secondary);
+
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+
+/* =========================
+   SERVICE FEATURES
+========================= */
+
+.service-detail-card ul {
+    margin: 25px 0 0;
+    padding: 0;
+
+    list-style: none;
+
+    display: grid;
+    gap: 12px;
+}
+
+.service-detail-card li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    color: var(--text-list);
+
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.service-detail-card li i {
+    color: var(--brand-primary);
+
+    font-size: 14px;
+
+    margin-top: 3px;
+}
+
+
+/* =========================
+   OUR APPROACH
+========================= */
+
+.services-approach {
+    padding: 130px 8%;
+
+    background: var(--page-background);
+}
+
+.services-approach-content {
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+.services-approach .section-heading {
+    max-width: 800px;
+    margin: 0 auto 65px;
+
+    text-align: center;
+}
+
+.services-approach h2 {
+    margin: 25px auto 25px;
+
+    color: var(--text-primary);
+
+    font-size: clamp(38px, 5vw, 58px);
+    line-height: 1.15;
+}
+
+.services-approach h2 span {
+    color: var(--heading-accent);
+}
+
+.services-approach .section-heading p {
+    color: var(--text-secondary);
+
+    font-size: 18px;
+    line-height: 1.85;
+}
+
+
+/* =========================
+   APPROACH GRID
+========================= */
+
+.approach-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 22px;
+}
+
+.approach-item {
+    padding: 32px 25px;
+
+    text-align: center;
+
+    background: var(--surface-soft);
+
+    border: 1px solid var(--border);
+    border-radius: 22px;
+}
+
+.approach-icon {
+    width: 58px;
+    height: 58px;
+
+    margin: 0 auto 22px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--surface-blue);
+    color: var(--brand-primary);
+
+    font-size: 20px;
+}
+
+.approach-item h3 {
+    margin: 0 0 12px;
+
+    color: var(--text-primary);
+
+    font-size: 21px;
+}
+
+.approach-item p {
+    margin: 0;
+
+    color: var(--text-secondary);
+
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+
+/* =========================
+   SERVICES CTA
+========================= */
+
+.services-cta {
+    padding: 130px 8%;
+
+    background: var(--page-background);
+
+    text-align: center;
+}
+
+.services-cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.services-cta h2 {
+    margin: 25px auto 22px;
+
+    color: var(--text-primary);
+
+    font-size: clamp(40px, 5vw, 60px);
+    line-height: 1.12;
+}
+
+.services-cta h2 span {
+    color: var(--heading-accent);
+}
+
+.services-cta p {
+    max-width: 700px;
+    margin: 0 auto;
+
+    color: var(--text-secondary);
+
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.services-cta .primary-btn {
+    display: inline-flex;
+
+    margin-top: 34px;
+}
+
+/* =========================================================
+   SERVICES PAGE RESPONSIVE
+========================================================= */
+
+.service-detail-card.service-highlight {
+    border-color: var(--brand-primary);
+
+    box-shadow:
+        0 0 0 4px rgba(var(--brand-rgb),.10),
+        0 25px 65px rgba(31,41,55,.08);
+}
+
+/* Temporary highlight line */
+.service-detail-card.service-highlight::after {
+    transform: scaleX(1);
+}
+
+/* =========================================================
+   CONTACT PAGE
+========================================================= */
+
+/* =========================
+   CONTACT HERO
+========================= */
+
+.contact-hero {
+
+    padding: 120px 8% 90px;
+
+    background: var(--page-background);
+
+    text-align: center;
+
+}
+
+.contact-hero-content {
+
+    max-width: 850px;
+
+    margin: 0 auto;
+
+}
+
+.contact-hero h1 {
+
+    margin: 28px auto 25px;
+
+    font-size: clamp(48px, 6vw, 72px);
+
+    line-height: 1.1;
+
+    color: var(--text-primary);
+
+}
+
+.contact-hero h1 span {
+
+    color: var(--heading-accent);
+
+}
+
+.contact-hero p {
+
+    max-width: 720px;
+
+    margin: 0 auto;
+
+    color: var(--text-secondary);
+
+    font-size: 19px;
+
+    line-height: 1.8;
+
+}
+
+
+/* =========================
+   CONTACT SECTION
+========================= */
+
+.contact-section {
+
+    padding: 110px 8%;
+
+    background: var(--page-background);
+
+}
+
+.contact-container {
+
+    max-width: 1150px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: 0.9fr 1.1fr;
+
+    gap: 70px;
+
+    align-items: start;
+
+}
+
+
+/* =========================
+   CONTACT INTRO
+========================= */
+
+.contact-intro h2 {
+
+    margin: 25px 0;
+
+    color: var(--text-primary);
+
+    font-size: 48px;
+
+    line-height: 1.15;
+
+}
+
+.contact-intro h2 span {
+
+    color: var(--brand-primary);
+
+}
+
+.contact-intro > p {
+
+    max-width: 540px;
+
+    margin: 0 0 20px;
+
+    color: var(--text-secondary);
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+}
+
+
+/* =========================
+   CONTACT DETAILS
+========================= */
+
+.contact-detail {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 16px;
+
+    margin-top: 28px;
+
+}
+
+.contact-detail-icon {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface-blue);
+    color: var(--brand-primary);
+}
+
+.contact-detail span {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--text-primary);
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+}
+
+.contact-detail a {
+
+    color: var(--brand-primary);
+
+    font-size: 16px;
+
+    text-decoration: none;
+
+}
+
+.contact-detail a:hover {
+
+    text-decoration: underline;
+
+}
+
+.contact-detail p {
+
+    margin: 0;
+
+    color: var(--text-secondary);
+
+    font-size: 16px;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================
+   CONTACT FORM
+========================= */
+
+.contact-form-wrapper {
+
+    padding: 38px;
+
+    background: var(--surface-white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 26px;
+
+    box-shadow:
+        0 18px 50px rgba(31, 41, 55, 0.06);
+
+}
+
+.contact-form {
+
+    display: grid;
+
+    gap: 20px;
+
+}
+
+.form-row {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 18px;
+
+}
+
+.form-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+.form-group label {
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    background: var(--surface-white);
+
+    color: var(--text-primary);
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    padding: 14px 16px;
+
+    outline: none;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+
+    color: var(--text-muted);
+
+}
+
+.form-group textarea {
+
+    resize: vertical;
+
+    min-height: 150px;
+
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+
+    border-color: var(--brand-primary);
+
+    box-shadow:
+        0 0 0 3px rgba(var(--brand-rgb), 0.08);
+
+}
+
+.contact-submit {
+
+    border: none;
+
+    cursor: pointer;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 5px;
+
+}
+
+.form-note {
+
+    margin: 0;
+
+    color: var(--text-muted);
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    text-align: center;
+
+}
+
+
+/* =========================
+   CONTACT CTA
+========================= */
+
+.contact-cta {
+
+    padding: 120px 8%;
+
+    background: var(--page-background);
+
+    text-align: center;
+
+}
+
+.contact-cta-content {
+
+    max-width: 760px;
+
+    margin: 0 auto;
+
+}
+
+.contact-cta h2 {
+
+    margin: 25px auto 20px;
+
+    color: var(--text-primary);
+
+    font-size: 52px;
+
+    line-height: 1.15;
+
+}
+
+.contact-cta h2 span {
+
+    color: var(--heading-accent);
+
+}
+
+.contact-cta p {
+
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    color: var(--text-secondary);
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+}
+
+/* =========================================================
+   SHARED — FORM MODALS — DESKTOP
+========================================================= */
+
+/* ==========================================
+   XANORA AI — FORM MODALS
+========================================== */
+
+body.modal-open {
+    overflow: hidden;
+}
+
+
+/* ==========================================
+   MODAL BACKDROP
+========================================== */
+
+.form-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+}
+
+
+.form-modal.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+
+.form-modal-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(5, 8, 20, 0.78);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+
+/* ==========================================
+   MODAL CONTENT
+========================================== */
+
+.form-modal-content {
+    position: relative;
+
+    width: min(680px, 100%);
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 42px;
+
+    background: var(--surface-white);
+
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 24px;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.25);
+
+    transform: translateY(20px) scale(0.98);
+
+    transition:
+        transform 0.25s ease;
+}
+
+
+.form-modal.active .form-modal-content {
+    transform: translateY(0) scale(1);
+}
+
+
+/* ==========================================
+   CLOSE BUTTON
+========================================== */
+
+.form-modal-close {
+    position: absolute;
+
+    top: 18px;
+    right: 18px;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 50%;
+
+    background: var(--surface-soft);
+
+    color: #222;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.form-modal-close:hover {
+    background: var(--surface-hover);
+    transform: rotate(5deg);
+}
+
+
+/* ==========================================
+   MODAL HEADER
+========================================== */
+
+.form-modal-header {
+    margin-bottom: 30px;
+
+    padding-right: 45px;
+}
+
+
+.form-modal-header .section-badge {
+    display: inline-block;
+
+    margin-bottom: 14px;
+}
+
+
+.form-modal-header h2 {
+    margin: 0 0 14px;
+
+    font-size: clamp(2rem, 5vw, 3rem);
+
+    line-height: 1.08;
+}
+
+
+.form-modal-header h2 span {
+    display: inline;
+}
+
+
+.form-modal-header p {
+    margin: 0;
+
+    color: var(--text-secondary);
+
+    line-height: 1.7;
+}
+
+
+/* ==========================================
+   FORM LAYOUT
+========================================== */
+
+.consultation-form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.form-field label {
+    font-size: 0.92rem;
+    font-weight: 600;
+
+    color: #222;
+}
+
+
+.form-field label span {
+    color: var(--text-muted);
+}
+
+
+.form-field label small {
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+
+/* ==========================================
+   INPUTS
+========================================== */
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 14px 16px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: var(--surface-white);
+
+    color: #222;
+
+    font-family: inherit;
+    font-size: 0.95rem;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    border-color: var(--brand-primary);
+
+    box-shadow:
+        0 0 0 3px rgba(var(--brand-rgb), 0.08);
+}
+
+
+.form-field textarea {
+    min-height: 120px;
+
+    resize: vertical;
+}
+
+
+.form-field select {
+    cursor: pointer;
+}
+
+
+/* ==========================================
+   RADIO OPTIONS
+========================================== */
+
+.form-options {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 10px;
+}
+
+
+.option-card {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 13px 14px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: var(--surface-white);
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease;
+}
+
+
+.option-card:hover {
+    border-color: var(--text-muted);
+}
+
+
+.option-card input {
+    width: auto;
+    margin: 0;
+}
+
+
+.option-card span {
+    font-size: 0.9rem;
+}
+
+
+/* ==========================================
+   SUBMIT BUTTON
+========================================== */
+
+.form-submit {
+    width: 100%;
+
+    margin-top: 6px;
+
+    border: none;
+
+    cursor: pointer;
+
+    justify-content: center;
+}
+
+/* =========================================================
+   TABLET — MAX WIDTH 701PX TO 1000PX
+========================================================= */
 
 /* =========================================================
    FOOTER
 ========================================================= */
 
-footer{
+@media (max-width: 900px) {
 
-    text-align:center;
+    .footer-main {
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 40px;
+    }
 
-    padding:40px;
-
-    background:#0f172a;
-
-    color:white;
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
 
 }
 
 
+
+
 /* =========================================================
-   RESPONSIVE DESIGN
+   HOME / INDEX — GENERAL
 ========================================================= */
 
 @media (max-width:1000px){
@@ -1853,362 +4166,8 @@ footer{
 
 }
 
-
-@media (max-width:700px){
-
-    .navbar{
-
-        flex-direction:column;
-
-        gap:15px;
-
-        margin:10px auto;
-
-    }
-
-    .nav-links{
-
-        gap:15px;
-
-        flex-wrap:wrap;
-
-        justify-content:center;
-
-    }
-
-    .nav-button{
-
-        display:none;
-
-    }
-
-    #hero{
-
-        padding:70px 5%;
-
-    }
-
-    .hero-left h1{
-
-        font-size:44px;
-
-    }
-
-    .hero-description{
-
-        font-size:17px;
-
-    }
-
-    .hero-visual{
-
-        width:280px;
-
-        height:280px;
-
-    }
-
-    .orbit1{
-
-        width:160px;
-
-        height:160px;
-
-    }
-
-    .orbit2{
-
-        width:230px;
-
-        height:230px;
-
-    }
-
-    .why-grid{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .services-grid{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .process-grid{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .who-grid{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .problems-grid{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .section-title h2{
-
-        font-size:38px;
-
-    }
-
-    .section-heading h2{
-
-        font-size:34px;
-
-    }
-
-    .hero-features{
-
-        flex-direction:column;
-
-        align-items:center;
-
-    }
-
-}
 /* =========================================================
-   XANORA AI — NETWORK SVG
-========================================================= */
-
-.network-svg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: visible;
-}
-
-.network-svg path {
-    fill: none;
-    stroke: #2563eb;
-    stroke-width: 1.5;
-    stroke-dasharray: 6 8;
-    stroke-linecap: round;
-}
-
-.visible-loop,
-.visible-vertical {
-    fill: none;
-}
-/* =========================================================
-   XANORA AI — NODE LAYOUT
-========================================================= */
-
-.ai-network {
-    position: relative;
-}
-
-/* ALL SATELLITE NODES */
-
-.ai-node {
-    position: absolute !important;
-
-    width: 150px !important;
-    height: auto !important;
-    min-height: 0 !important;
-
-    z-index: 10;
-
-    display: flex !important;
-    flex-direction: column !important;
-
-    align-items: center !important;
-    justify-content: flex-start !important;
-
-    text-align: center !important;
-
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-
-    gap: 6px !important;
-}
-
-
-/* SATELLITE CIRCLES */
-
-.ai-node > svg {
-    width: 44px !important;
-    height: 44px !important;
-
-    min-width: 44px !important;
-    min-height: 44px !important;
-
-    padding: 10px !important;
-
-    box-sizing: border-box !important;
-
-    background: #ffffff !important;
-
-    border-radius: 50% !important;
-
-    flex-shrink: 0 !important;
-
-    box-shadow:
-        0 6px 18px rgba(37, 99, 235, 0.12) !important;
-}
-
-
-/* NODE LABELS */
-
-.ai-node > span {
-    display: block !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-
-    font-size: 15px !important;
-    font-weight: 600 !important;
-
-    line-height: 1.15 !important;
-
-    text-align: center !important;
-
-    white-space: nowrap !important;
-}
-
-
-/* =========================================================
-   DATA & ANALYTICS
-   Inside LEFT infinity loop
-========================================================= */
-
-.ai-node-1 {
-    left: 10% !important;
-    top: 50% !important;
-
-    transform: translate(-50%, -50%) !important;
-}
-
-
-/* =========================================================
-   AUTOMATION
-   ICON ABOVE — LABEL ABOVE
-========================================================= */
-
-.ai-node-2 {
-    left: 50% !important;
-    top: 10% !important;
-
-    transform: translate(-50%, -50%) !important;
-
-    flex-direction: column-reverse !important;
-}
-
-
-/* =========================================================
-   DEVELOPMENT
-   Inside RIGHT infinity loop
-========================================================= */
-
-.ai-node-3 {
-    left: 90% !important;
-    top: 50% !important;
-
-    transform: translate(-50%, -50%) !important;
-}
-
-
-/* =========================================================
-   INTEGRATION
-   ICON ABOVE — LABEL BELOW
-========================================================= */
-
-.ai-node-4 {
-    left: 50% !important;
-    top: 85% !important;
-
-    transform: translate(-50%, -50%) !important;
-
-    flex-direction: column !important;
-}
-/* =========================================================
-   XANORA AI — SMALL NODE CIRCLES
-========================================================= */
-
-.ai-node {
-    width: 150px !important;
-    height: auto !important;
-    min-height: 0 !important;
-
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-
-    gap: 7px !important;
-}
-
-
-/* Smaller satellite circles */
-
-.ai-node > svg {
-    width: 44px !important;
-    height: 44px !important;
-
-    min-width: 44px !important;
-    min-height: 44px !important;
-
-    padding: 11px !important;
-
-    box-sizing: border-box !important;
-
-    background: #ffffff !important;
-
-    border-radius: 50% !important;
-
-    flex-shrink: 0 !important;
-
-    box-shadow:
-        0 6px 18px rgba(37, 99, 235, 0.12) !important;
-}
-
-
-/* Node names */
-
-.ai-node > span {
-    display: block !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-
-    line-height: 1.2 !important;
-
-    text-align: center !important;
-
-    white-space: nowrap !important;
-}
-/* =========================================================
-   XANORA AI — CORE MUST COVER PARTICLES
-========================================================= */
-.ai-core {
-    position: absolute !important;
-    left: 50% !important;
-    top: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    z-index: 100 !important;
-}
-
-.data-particles {
-    position: absolute !important;
-    z-index: 20 !important;
-}
-/* =========================================================
-   HERO SERVICE CIRCLES — RESPONSIVE
+   HOME / INDEX — HERO SERVICE CIRCLES
 ========================================================= */
 
 @media (max-width: 1000px) {
@@ -2224,288 +4183,8 @@ footer{
     }
 }
 
-
-@media (max-width: 700px) {
-
-    .hero-service-circles {
-        flex-wrap: wrap;
-        max-width: 360px;
-    }
-
-    .hero-service-circles .floating-card {
-        width: 145px;
-        height: 145px;
-        flex-basis: 145px;
-    }
-}
-.hero-service-circles .floating-card h3 {
-    min-height: 38px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin: 0 0 6px;
-
-    font-size: 16px;
-    line-height: 1.2;
-}
-
-.hero-service-circles .floating-card p {
-    min-height: 42px;
-
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-
-    margin: 0;
-
-    font-size: 11px;
-    line-height: 1.4;
-
-    max-width: 125px;
-}
 /* =========================================================
-   WHY XANORA - FINAL SPACING
-========================================================= */
-
-.why-xanora {
-    margin: 80px auto;
-}
-
-.why-xanora .section-heading {
-    margin-bottom: 50px;
-}
-
-.why-xanora .why-grid {
-    gap: 24px;
-}
-
-.why-xanora .why-card {
-    padding: 32px;
-}
-/* =========================================================
-   SERVICES ORBIT
-========================================================= */
-
-.services-orbit {
-    position: relative;
-    width: min(100%, 1050px);
-    height: 700px;
-    margin: 20px auto 0;
-} 
-
-/* Central visual */
-
-.services-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    width: 190px;
-    height: 190px;
-
-    border-radius: 50%;
-    background: #ffffff;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    box-shadow:
-        0 20px 60px rgba(45,108,223,.12);
-
-    border: 1px solid #e3edff;
-
-    z-index: 3;
-}
-
-.services-center .center-icon {
-    width: 48px;
-    height: 48px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: #edf4ff;
-    color: #2d6cdf;
-
-    font-size: 24px;
-    margin-bottom: 12px;
-}
-
-.services-center h3 {
-    margin: 0;
-    font-size: 20px;
-    color: #1b2430;
-}
-
-.services-center h3 span {
-    color: #2d6cdf;
-}
-
-.services-center p {
-    margin: 8px 0 0;
-
-    font-size: 13px;
-    line-height: 1.5;
-
-    color: #6c7688;
-}
-
-
-/* Orbit ring */
-
-.orbit-ring {
-    position: absolute;
-
-    top: 50%;
-    left: 50%;
-
-    width: 430px;
-    height: 430px;
-
-    transform: translate(-50%, -50%);
-
-    border: 1px dashed rgba(45,108,223,.35);
-
-    border-radius: 50%;
-}
-
-
-/* Service cards */
-
-.service-orbit-card {
-    position: absolute;
-
-    width: 280px;
-    min-height: 125px;
-
-    padding: 25px 28px;
-
-    background: #ffffff;
-
-    border-radius: 20px;
-
-    border: 1px solid #e8eef8;
-
-    box-shadow:
-        0 15px 45px rgba(0,0,0,.06);
-
-    display: flex;
-    align-items: flex-start;
-    gap: 18px;
-
-    z-index: 2;
-
-    transition: .3s ease;
-}
-.service-top-left:hover,
-.service-top-right:hover,
-.service-bottom-left:hover,
-.service-bottom-right:hover {
-    transform: translateY(-5px);
-
-    box-shadow:
-        0 25px 55px rgba(45,108,223,.12);
-}
-
-.service-middle-left:hover {
-    transform: translateY(calc(-50% - 5px));
-
-    box-shadow:
-        0 25px 55px rgba(45,108,223,.12);
-}
-
-.service-middle-right:hover {
-    transform: translateY(calc(-50% - 5px));
-
-    box-shadow:
-        0 25px 55px rgba(45,108,223,.12);
-}
-
-.service-orbit-card i {
-    flex-shrink: 0;
-
-    width: 42px;
-    height: 42px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: #edf4ff;
-
-    color: #2d6cdf;
-
-    font-size: 18px;
-}
-
-.service-orbit-card h3 {
-    margin: 2px 0 8px;
-
-    font-size: 20px;
-
-    color: #1b2430;
-}
-
-.service-orbit-card p {
-    margin: 0;
-
-    color: #6c7688;
-
-    font-size: 14px;
-
-    line-height: 1.6;
-}
-
-
-/* Positioning */
-
-.service-top-left {
-    top: 35px;
-    left: 120px;
-}
-
-.service-top-right {
-    top: 35px;
-    right: 120px;
-}
-
-.service-middle-left {
-    top: 50%;
-    left: -5px;
-    transform: translateY(-50%);
-}
-
-.service-middle-right {
-    top: 50%;
-    right: -5px;
-    transform: translateY(-50%);
-}
-
-.service-bottom-left {
-    bottom: 35px;
-    left: 120px;
-}
-
-.service-bottom-right {
-    bottom: 35px;
-    right: 120px;
-}
-
-
-/* =========================================================
-   SERVICES ORBIT — RESPONSIVE
+   HOME / INDEX — SERVICES ORBIT
 ========================================================= */
 
 @media (max-width: 900px) {
@@ -2553,6 +4232,275 @@ footer{
     }
 }
 
+/* =========================================================
+   ABOUT PAGE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .capabilities-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-process-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+/* =========================================================
+   SERVICES PAGE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .services-grid-page {
+        grid-template-columns: 1fr;
+    }
+
+    .approach-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-brand {
+        max-width: 500px;
+    }
+}
+
+/* =========================================================
+   CONTACT PAGE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .contact-container {
+
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+
+    }
+
+    .contact-intro {
+
+        max-width: 750px;
+
+        margin: 0 auto;
+
+    }
+
+}
+
+/* =========================================================
+   MOBILE — MAX WIDTH 700PX AND BELOW
+========================================================= */
+
+/* =========================================================
+   HOME / INDEX — FINAL CTA
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .final-cta {
+        padding: 75px 6%;
+    }
+
+    .final-cta h2 {
+        font-size: 38px;
+    }
+
+    .final-cta p {
+        font-size: 17px;
+    }
+
+    .final-cta-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .final-cta .primary-btn,
+    .final-cta .secondary-btn {
+        width: 100%;
+        max-width: 320px;
+    }
+}
+
+/* =========================================================
+   FOOTER — 600PX
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .site-footer {
+        padding: 55px 6% 25px;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 35px 25px;
+
+        padding-bottom: 40px;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+
+    .footer-column h3 {
+        margin-bottom: 15px;
+    }
+
+    .footer-bottom {
+        min-height: auto;
+
+        padding: 22px 0;
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 12px;
+    }
+
+}
+
+/* =========================================================
+   FOOTER — 420PX
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .footer-main {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-brand {
+        grid-column: auto;
+    }
+
+    .footer-bottom-links {
+        flex-wrap: wrap;
+        gap: 12px 18px;
+    }
+
+}
+
+/* =========================================================
+   HOME / INDEX — GENERAL — 700PX
+========================================================= */
+
+@media (max-width:700px){
+
+
+    #hero{
+
+        padding:70px 5%;
+
+    }
+
+    .hero-left h1{
+
+        font-size:44px;
+
+    }
+
+    .hero-description{
+
+        font-size:17px;
+
+    }
+
+    .hero-visual{
+
+        width:280px;
+
+        height:280px;
+
+    }
+
+    .why-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .services-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .process-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .who-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .problems-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .section-title h2 {
+
+        font-size:38px;
+
+    
+    color: var(--text-primary);
+}
+
+    .section-heading h2{
+
+        font-size:34px;
+
+    }
+
+    .who-title,
+    .problems-section .problem-title {
+
+        font-size:38px;
+
+    
+    color: var(--text-primary);
+}
+
+    .hero-features{
+
+        flex-direction:column;
+
+        align-items:center;
+
+    }
+
+}
+
+/* =========================================================
+   HOME / INDEX — HERO SERVICE CIRCLES — 700PX
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .hero-service-circles {
+        flex-wrap: wrap;
+        max-width: 360px;
+    }
+
+    .hero-service-circles .floating-card {
+        width: 145px;
+        height: 145px;
+        flex-basis: 145px;
+    }
+}
+
+/* =========================================================
+   HOME / INDEX — SERVICES ORBIT — 600PX
+========================================================= */
 
 @media (max-width: 600px) {
 
@@ -2568,501 +4516,12 @@ footer{
         width: 100%;
     }
 }
-.orbit-dot {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #2d6cdf;
-    box-shadow: 0 0 0 3px #ffffff,
-                0 0 10px rgba(45,108,223,.25);
-}
-
-.dot-1 {
-    top: 9%;
-    left: 19%;
-}
-
-.dot-2 {
-    top: 9%;
-    right: 19%;
-}
-
-.dot-3 {
-    top: 50%;
-    left: -4px;
-    transform: translateY(-50%);
-}
-
-.dot-4 {
-    top: 50%;
-    right: -4px;
-    transform: translateY(-50%);
-}
-
-.dot-5 {
-    bottom: 9%;
-    left: 19%;
-}
-
-.dot-6 {
-    bottom: 9%;
-    right: 19%;
-}
 
 /* =========================================================
-   ABOUT PAGE
+   ABOUT PAGE — 700PX
 ========================================================= */
 
-
-/* =========================
-   ABOUT HERO
-========================= */
-
-.about-hero {
-    padding: 135px 8% 100px;
-    background: #ffffff;
-    text-align: center;
-}
-
-.about-hero .section-heading {
-    max-width: 850px;
-    margin: 0 auto;
-}
-
-.about-hero h1 {
-    font-size: 60px;
-    line-height: 1.15;
-    color: #1b2430;
-    margin: 25px auto;
-    font-weight: 700;
-}
-
-.about-hero h1 span {
-    color: #2d6cdf;
-}
-
-.about-hero p {
-    max-width: 720px;
-    margin: 0 auto;
-    color: #6c7688;
-    font-size: 20px;
-    line-height: 1.8;
-}
-
-
-/* =========================
-   SHARED SECTION HEADING
-========================= */
-
-.about-story .section-heading,
-.about-beliefs .section-heading,
-.about-capabilities .section-heading,
-.about-process .section-heading,
-.about-future .section-heading {
-    max-width: 850px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.about-story .section-badge,
-.about-beliefs .section-badge,
-.about-capabilities .section-badge,
-.about-vision .section-badge,
-.about-process .section-badge,
-.about-future .section-badge,
-.about-cta .section-badge {
-    display: inline-block;
-    padding: 10px 20px;
-    border-radius: 999px;
-    background: #eef5ff;
-    color: #2d6cdf;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-
-
-/* =========================
-   WHY XANORA AI EXISTS
-========================= */
-
-.about-story {
-    padding: 110px 8%;
-    background: #f7f9fc;
-}
-
-.about-story h2 {
-    font-size: 48px;
-    line-height: 1.2;
-    color: #1b2430;
-    margin: 25px auto 30px;
-    font-weight: 700;
-}
-
-.about-story p {
-    max-width: 760px;
-    margin: 0 auto 20px;
-    color: #6c7688;
-    font-size: 18px;
-    line-height: 1.85;
-}
-
-
-/* =========================
-   BELIEFS
-========================= */
-
-.about-beliefs {
-    padding: 150px 8%;
-    background: #ffffff;
-    text-align: center;
-}
-
-.about-beliefs h2 {
-    font-size: 48px;
-    line-height: 1.2;
-    color: #1b2430;
-    margin: 25px auto 30px;
-    font-weight: 700;
-}
-
-.about-beliefs h2 span {
-    color: #2d6cdf;
-}
-
-.about-beliefs > .section-heading > p {
-    max-width: 760px;
-    margin: 0 auto;
-    color: #6c7688;
-    font-size: 18px;
-    line-height: 1.85;
-}
-
-.beliefs-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
-    max-width: 1000px;
-    margin: 50px auto 0;
-}
-
-.belief-card {
-    background: #ffffff;
-    border: 1px solid #edf1f7;
-    border-radius: 22px;
-    padding: 32px;
-    text-align: left;
-    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.05);
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-.belief-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 50px rgba(45, 108, 223, 0.10);
-}
-
-.belief-icon {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background: #2f6df6;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    margin-bottom: 24px;
-}
-
-.belief-icon svg {
-    width: 24px;
-    height: 24px;
-}
-
-.belief-card h3 {
-    font-size: 23px;
-    color: #1b2430;
-    margin: 0 0 12px;
-}
-
-.belief-card p {
-    color: #6c7688;
-    line-height: 1.7;
-    margin: 0;
-}
-
-
-/* =========================
-   WHAT XANORA AI IS
-========================= */
-
-.about-capabilities {
-    padding: 110px 8%;
-    background: #f7f9fc;
-}
-
-.about-capabilities h2 {
-    font-size: 52px;
-    line-height: 1.2;
-    color: #1b2430;
-    margin: 25px auto 30px;
-    font-weight: 700;
-}
-
-.about-capabilities h2 span {
-    color: #2d6cdf;
-}
-
-.about-capabilities > .section-heading > p {
-    max-width: 760px;
-    margin: 0 auto;
-    color: #6c7688;
-    font-size: 18px;
-    line-height: 1.85;
-}
-
-.capabilities-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    max-width: 1050px;
-    margin: 50px auto 0;
-}
-
-.capability-card {
-    background: #ffffff;
-    border: 1px solid #edf1f7;
-    border-radius: 22px;
-    padding: 28px 30px;
-    min-height: 220px;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-.capability-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 50px rgba(45, 108, 223, 0.10);
-}
-
-.capability-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: #2f6df6;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 22px;
-}
-
-.capability-icon svg {
-    width: 23px;
-    height: 23px;
-}
-
-.capability-card h3 {
-    font-size: 23px;
-    color: #1b2430;
-    margin: 0 0 12px;
-}
-
-.capability-card p {
-    color: #6c7688;
-    line-height: 1.7;
-    margin: 0;
-}
-
-
-/* =========================
-   OUR VISION
-========================= */
-
-.about-vision {
-    padding: 110px 8%;
-    background: #ffffff;
-}
-
-.vision-content {
-    max-width: 850px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.about-vision h2 {
-    font-size: 52px;
-    line-height: 1.2;
-    color: #1b2430;
-    margin: 25px auto 30px;
-    font-weight: 700;
-}
-
-.about-vision p {
-    max-width: 760px;
-    margin: 0 auto 20px;
-    color: #6c7688;
-    font-size: 18px;
-    line-height: 1.85;
-}
-
-
-/* =========================
-   HOW WE WORK
-========================= */
-
-.about-process {
-    padding: 110px 8%;
-    background: #f7f9fc;
-}
-
-.about-process h2 {
-    font-size: 52px;
-    line-height: 1.2;
-    color: #1b2430;
-    margin: 25px auto 30px;
-    font-weight: 700;
-}
-
-.about-process h2 span {
-    color: #2d6cdf;
-}
-
-.about-process > .section-heading > p {
-    max-width: 760px;
-    margin: 0 auto;
-    color: #6c7688;
-    font-size: 18px;
-    line-height: 1.85;
-}
-
-.about-process-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 18px;
-    max-width: 1150px;
-    margin: 60px auto 0;
-}
-
-.about-process-card {
-    background: #ffffff;
-    border: 1px solid #edf1f7;
-    border-radius: 20px;
-    padding: 28px 22px;
-    min-height: 260px;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.04);
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-.about-process-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 18px 45px rgba(45, 108, 223, 0.10);
-}
-
-.about-process-number {
-    font-size: 14px;
-    font-weight: 700;
-    color: #2d6cdf;
-    margin-bottom: 22px;
-}
-
-.about-process-card h3 {
-    font-size: 21px;
-    color: #1b2430;
-    margin: 0 0 12px;
-}
-
-.about-process-card p {
-    color: #6c7688;
-    line-height: 1.7;
-    margin: 0;
-}
-
-
-/* =========================
-   WHAT WE ARE BUILDING
-========================= */
-
-.about-future {
-    padding: 110px 8%;
-    background: #ffffff;
-}
-
-.about-future h2 {
-    font-size: 52px;
-    line-height: 1.2;
-    color: #1b2430;
-    margin: 25px auto 30px;
-    font-weight: 700;
-}
-
-.about-future h2 span {
-    color: #2d6cdf;
-}
-
-.about-future p {
-    max-width: 760px;
-    margin: 0 auto 20px;
-    color: #6c7688;
-    font-size: 18px;
-    line-height: 1.85;
-}
-
-
-/* =========================
-   FINAL CTA
-========================= */
-
-.about-cta {
-    padding: 110px 8%;
-    background: #eef5ff;
-    text-align: center;
-}
-
-.about-cta-content {
-    max-width: 760px;
-    margin: 0 auto;
-}
-
-.about-cta h2 {
-    font-size: 52px;
-    line-height: 1.2;
-    color: #1b2430;
-    margin: 25px auto 20px;
-    font-weight: 700;
-}
-
-.about-cta p {
-    max-width: 700px;
-    margin: 0 auto 30px;
-    color: #6c7688;
-    font-size: 19px;
-    line-height: 1.8;
-}
-
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 1000px) {
-
-    .capabilities-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .about-process-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-}
-
-
 @media (max-width: 700px) {
-
-    .about-hero {
-        padding: 100px 6% 80px;
-    }
 
     .about-hero h1 {
         font-size: 42px;
@@ -3070,17 +4529,6 @@ footer{
 
     .about-hero p {
         font-size: 17px;
-    }
-
-
-    .about-story,
-    .about-beliefs,
-    .about-capabilities,
-    .about-vision,
-    .about-process,
-    .about-future,
-    .about-cta {
-        padding: 80px 6%;
     }
 
 
@@ -3136,6 +4584,26 @@ footer{
 
 }
 
+/* =========================================================
+   HOME / INDEX — SECTION HEADINGS — 480PX
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .who-title,
+    .problems-section .problem-title,
+    .section-title h2 {
+        font-size:34px;
+    
+    color: var(--text-primary);
+}
+
+}
+
+
+/* =========================================================
+   ABOUT PAGE — 480PX
+========================================================= */
 
 @media (max-width: 480px) {
 
@@ -3160,182 +4628,9 @@ footer{
     }
 
 }
-/* =========================================================
-   ABOUT PAGE — SPACING & STICKY NAV FIX
-   This affects ONLY the About page.
-========================================================= */
-
-/* About page detection */
-body:has(.about-hero) {
-
-    /*
-       Keeps content from feeling cramped against
-       the sticky navigation.
-    */
-    scroll-padding-top: 130px;
-}
-
 
 /* =========================================================
-   ABOUT HERO
-========================================================= */
-
-body:has(.about-hero) .about-hero {
-
-    padding: 100px 8% 180px;
-
-}
-
-
-/* =========================================================
-   WHY XANORA AI EXISTS
-========================================================= */
-
-body:has(.about-story) .about-story {
-
-    padding: 125px 8% 120px;
-
-}
-
-
-/* =========================================================
-   WHAT WE BELIEVE
-========================================================= */
-
-body:has(.about-beliefs) .about-beliefs {
-
-    padding: 150px 8% 150px;
-
-}
-
-
-/* =========================================================
-   WHAT XANORA AI IS
-========================================================= */
-
-body:has(.about-capabilities) .about-capabilities {
-
-    padding: 125px 8% 125px;
-
-}
-
-
-/* =========================================================
-   OUR VISION
-========================================================= */
-
-body:has(.about-vision) .about-vision {
-
-    padding: 125px 8% 125px;
-
-}
-
-
-/* =========================================================
-   HOW WE WORK
-========================================================= */
-
-body:has(.about-process) .about-process {
-
-    padding: 125px 8% 125px;
-
-}
-
-
-/* =========================================================
-   WHAT WE ARE BUILDING
-========================================================= */
-
-body:has(.about-future) .about-future {
-
-    padding: 125px 8% 125px;
-
-}
-
-
-/* =========================================================
-   FINAL CTA
-========================================================= */
-
-body:has(.about-cta) .about-cta {
-
-    padding: 125px 8% 125px;
-
-}
-
-
-/* =========================================================
-   ABOUT SECTION HEADINGS
-========================================================= */
-
-body:has(.about-hero) .section-heading {
-
-    max-width: 900px;
-
-    margin-left: auto;
-    margin-right: auto;
-
-}
-
-
-/* Give headings more breathing room */
-
-body:has(.about-hero) .section-heading h1,
-body:has(.about-hero) .section-heading h2 {
-
-    margin-top: 26px;
-    margin-bottom: 30px;
-
-}
-
-
-/* Keep paragraphs readable */
-
-body:has(.about-hero) .section-heading p {
-
-    max-width: 820px;
-
-    margin-left: auto;
-    margin-right: auto;
-
-}
-
-
-/* =========================================================
-   ABOUT PAGE — BELIEF CARDS
-========================================================= */
-
-body:has(.about-beliefs) .beliefs-grid {
-
-    margin-top: 55px;
-
-}
-
-
-/* =========================================================
-   ABOUT PAGE — CAPABILITY CARDS
-========================================================= */
-
-body:has(.about-capabilities) .capabilities-grid {
-
-    margin-top: 55px;
-
-}
-
-
-/* =========================================================
-   ABOUT PAGE — PROCESS CARDS
-========================================================= */
-
-body:has(.about-process) .about-process-grid {
-
-    margin-top: 55px;
-
-}
-
-
-/* =========================================================
-   MOBILE
+   ABOUT PAGE — SPACING / STICKY NAV — 700PX
 ========================================================= */
 
 @media (max-width: 700px) {
@@ -3410,527 +4705,11 @@ body:has(.about-process) .about-process-grid {
         margin-bottom: 24px;
 
     }
-
-
-    body:has(.about-beliefs) .beliefs-grid,
-    body:has(.about-capabilities) .capabilities-grid,
-    body:has(.about-process) .about-process-grid {
-
-        margin-top: 40px;
-
-    }
-
-}
-/* =========================================================
-   ABOUT PAGE — CLEAN WHITE / BLUE RHYTHM
-========================================================= */
-
-body:has(.about-hero) .about-hero {
-    padding: 100px 8% 180px;
-    background: #ffffff;
-}
-
-body:has(.about-story) .about-story {
-    padding: 100px 8%;
-    background: #eef5ff;
-}
-
-body:has(.about-beliefs) .about-beliefs {
-    padding: 100px 8%;
-    background: #ffffff;
-}
-
-body:has(.about-capabilities) .about-capabilities {
-    padding: 100px 8%;
-    background: #eef5ff;
-}
-
-body:has(.about-vision) .about-vision {
-    padding: 100px 8%;
-    background: #ffffff;
-}
-
-body:has(.about-process) .about-process {
-    padding: 100px 8%;
-    background: #eef5ff;
-}
-
-body:has(.about-future) .about-future {
-    padding: 100px 8%;
-    background: #ffffff;
-}
-
-body:has(.about-cta) .about-cta {
-    padding: 100px 8%;
-    background: #eef5ff;
 }
 
 /* =========================================================
-   SERVICES PAGE
+   SERVICES PAGE — 600PX
 ========================================================= */
-
-
-/* =========================
-   SERVICES HERO
-========================= */
-
-.services-hero {
-    padding: 150px 8% 120px;
-    background: #ffffff;
-    text-align: center;
-}
-
-.services-hero-content {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.services-hero h1 {
-    margin: 28px auto 25px;
-    max-width: 850px;
-
-    font-size: clamp(48px, 6vw, 78px);
-    line-height: 1.08;
-    letter-spacing: -2px;
-
-    color: #1b2430;
-}
-
-.services-hero h1 span {
-    color: #2d6cdf;
-}
-
-.services-hero p {
-    max-width: 760px;
-    margin: 0 auto;
-
-    color: #6c7688;
-    font-size: 19px;
-    line-height: 1.8;
-}
-
-.services-hero-actions {
-    margin-top: 38px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-}
-
-
-/* =========================
-   SERVICES INTRO
-========================= */
-
-.services-intro {
-    padding: 120px 8% 70px;
-    background: #f8faff;
-    text-align: center;
-}
-
-.services-intro .section-heading {
-    max-width: 850px;
-    margin: 0 auto;
-}
-
-.services-intro h2 {
-    margin: 25px auto 25px;
-
-    font-size: clamp(38px, 5vw, 58px);
-    line-height: 1.15;
-
-    color: #1b2430;
-}
-
-.services-intro h2 span {
-    color: #2d6cdf;
-}
-
-.services-intro p {
-    max-width: 760px;
-    margin: 0 auto;
-
-    color: #6c7688;
-    font-size: 18px;
-    line-height: 1.85;
-}
-
-
-/* =========================
-   SERVICES LIST
-========================= */
-
-.services-list {
-    padding: 80px 8% 130px;
-    background: #f8faff;
-}
-
-.services-grid-page {
-    max-width: 1150px;
-    margin: 0 auto;
-
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 28px;
-}
-
-
-/* =========================
-   SERVICE DETAIL CARD
-========================= */
-
-.service-detail-card {
-    position: relative;
-
-    background: #ffffff;
-
-    border: 1px solid #e7edf6;
-    border-radius: 26px;
-
-    padding: 38px;
-
-    box-shadow: 0 18px 50px rgba(31, 41, 55, 0.055);
-
-    overflow: hidden;
-
-    transition:
-        transform 0.35s ease,
-        box-shadow 0.35s ease,
-        border-color 0.35s ease;
-}
-
-.service-detail-card:hover {
-    transform: translateY(-6px);
-
-    border-color: rgba(45, 108, 223, 0.25);
-
-    box-shadow:
-        0 25px 65px rgba(31, 41, 55, 0.08),
-        0 10px 35px rgba(45, 108, 223, 0.07);
-}
-
-
-/* subtle blue accent */
-
-.service-detail-card::after {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    bottom: 0;
-
-    width: 100%;
-    height: 4px;
-
-    background: #2d6cdf;
-
-    transform: scaleX(0);
-    transform-origin: left;
-
-    transition: transform 0.35s ease;
-}
-
-.service-detail-card:hover::after {
-    transform: scaleX(1);
-}
-
-
-/* =========================
-   SERVICE ICON
-========================= */
-
-.service-detail-icon {
-    width: 64px;
-    height: 64px;
-
-    border-radius: 50%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #2d6cdf;
-    color: #ffffff;
-
-    font-size: 23px;
-
-    margin-bottom: 25px;
-
-    box-shadow: 0 12px 25px rgba(45, 108, 223, 0.18);
-}
-
-.service-detail-icon i {
-    line-height: 1;
-}
-
-
-/* =========================
-   SERVICE NUMBER
-========================= */
-
-.service-number {
-    position: absolute;
-
-    top: 28px;
-    right: 32px;
-
-    font-size: 14px;
-    font-weight: 700;
-
-    color: #b6c3d8;
-
-    letter-spacing: 1px;
-}
-
-
-/* =========================
-   SERVICE TEXT
-========================= */
-
-.service-detail-card h2 {
-    margin: 0 0 15px;
-
-    color: #1b2430;
-
-    font-size: 28px;
-    line-height: 1.2;
-}
-
-.service-detail-card .service-lead {
-    margin: 0 0 18px;
-
-    color: #354052;
-
-    font-size: 17px;
-    line-height: 1.7;
-
-    font-weight: 600;
-}
-
-.service-detail-card > p:not(.service-lead) {
-    margin: 0;
-
-    color: #6c7688;
-
-    font-size: 16px;
-    line-height: 1.75;
-}
-
-
-/* =========================
-   SERVICE FEATURES
-========================= */
-
-.service-detail-card ul {
-    margin: 25px 0 0;
-    padding: 0;
-
-    list-style: none;
-
-    display: grid;
-    gap: 12px;
-}
-
-.service-detail-card li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-
-    color: #4c586b;
-
-    font-size: 15px;
-    line-height: 1.5;
-}
-
-.service-detail-card li i {
-    color: #2d6cdf;
-
-    font-size: 14px;
-
-    margin-top: 3px;
-}
-
-
-/* =========================
-   OUR APPROACH
-========================= */
-
-.services-approach {
-    padding: 130px 8%;
-
-    background: #ffffff;
-}
-
-.services-approach-content {
-    max-width: 1150px;
-    margin: 0 auto;
-}
-
-.services-approach .section-heading {
-    max-width: 800px;
-    margin: 0 auto 65px;
-
-    text-align: center;
-}
-
-.services-approach h2 {
-    margin: 25px auto 25px;
-
-    color: #1b2430;
-
-    font-size: clamp(38px, 5vw, 58px);
-    line-height: 1.15;
-}
-
-.services-approach h2 span {
-    color: #2d6cdf;
-}
-
-.services-approach .section-heading p {
-    color: #6c7688;
-
-    font-size: 18px;
-    line-height: 1.85;
-}
-
-
-/* =========================
-   APPROACH GRID
-========================= */
-
-.approach-grid {
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 22px;
-}
-
-.approach-item {
-    padding: 32px 25px;
-
-    text-align: center;
-
-    background: #f8faff;
-
-    border: 1px solid #edf1f7;
-    border-radius: 22px;
-}
-
-.approach-icon {
-    width: 58px;
-    height: 58px;
-
-    margin: 0 auto 22px;
-
-    border-radius: 50%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #eaf1ff;
-    color: #2d6cdf;
-
-    font-size: 20px;
-}
-
-.approach-item h3 {
-    margin: 0 0 12px;
-
-    color: #1b2430;
-
-    font-size: 21px;
-}
-
-.approach-item p {
-    margin: 0;
-
-    color: #6c7688;
-
-    font-size: 15px;
-    line-height: 1.7;
-}
-
-
-/* =========================
-   SERVICES CTA
-========================= */
-
-.services-cta {
-    padding: 130px 8%;
-
-    background: #f8faff;
-
-    text-align: center;
-}
-
-.services-cta-content {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.services-cta h2 {
-    margin: 25px auto 22px;
-
-    color: #1b2430;
-
-    font-size: clamp(40px, 5vw, 60px);
-    line-height: 1.12;
-}
-
-.services-cta h2 span {
-    color: #2d6cdf;
-}
-
-.services-cta p {
-    max-width: 700px;
-    margin: 0 auto;
-
-    color: #6c7688;
-
-    font-size: 18px;
-    line-height: 1.8;
-}
-
-.services-cta .primary-btn {
-    display: inline-flex;
-
-    margin-top: 34px;
-}
-
-
-/* =========================================================
-   SERVICES PAGE RESPONSIVE
-========================================================= */
-
-@media (max-width: 900px) {
-
-    .services-grid-page {
-        grid-template-columns: 1fr;
-    }
-
-    .approach-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .footer-brand {
-        max-width: 500px;
-    }
-
-    .footer-links {
-        justify-content: center;
-    }
-}
-
 
 @media (max-width: 600px) {
 
@@ -3971,443 +4750,11 @@ body:has(.about-cta) .about-cta {
         padding: 90px 6%;
     }
 
-    .site-footer {
-        padding: 55px 6% 25px;
-    }
-
 }
-/* =========================================================
-   CONTACT PAGE
-========================================================= */
-
-
-/* =========================
-   CONTACT HERO
-========================= */
-
-.contact-hero {
-
-    padding: 150px 8% 110px;
-
-    background: #ffffff;
-
-    text-align: center;
-
-}
-
-.contact-hero-content {
-
-    max-width: 850px;
-
-    margin: 0 auto;
-
-}
-
-.contact-hero h1 {
-
-    margin: 28px auto 25px;
-
-    font-size: clamp(48px, 6vw, 72px);
-
-    line-height: 1.1;
-
-    color: #1b2430;
-
-}
-
-.contact-hero h1 span {
-
-    color: #2d6cdf;
-
-}
-
-.contact-hero p {
-
-    max-width: 720px;
-
-    margin: 0 auto;
-
-    color: #6c7688;
-
-    font-size: 19px;
-
-    line-height: 1.8;
-
-}
-
-
-/* =========================
-   CONTACT SECTION
-========================= */
-
-.contact-section {
-
-    padding: 110px 8%;
-
-    background: #f8faff;
-
-}
-
-.contact-container {
-
-    max-width: 1150px;
-
-    margin: 0 auto;
-
-    display: grid;
-
-    grid-template-columns: 0.9fr 1.1fr;
-
-    gap: 70px;
-
-    align-items: start;
-
-}
-
-
-/* =========================
-   CONTACT INTRO
-========================= */
-
-.contact-intro h2 {
-
-    margin: 25px 0;
-
-    color: #1b2430;
-
-    font-size: 48px;
-
-    line-height: 1.15;
-
-}
-
-.contact-intro h2 span {
-
-    color: #2d6cdf;
-
-}
-
-.contact-intro > p {
-
-    max-width: 540px;
-
-    margin: 0 0 20px;
-
-    color: #6c7688;
-
-    font-size: 17px;
-
-    line-height: 1.8;
-
-}
-
-
-/* =========================
-   CONTACT DETAILS
-========================= */
-
-.contact-detail {
-
-    display: flex;
-
-    align-items: flex-start;
-
-    gap: 16px;
-
-    margin-top: 28px;
-
-}
-
-.contact-detail-icon {
-
-    flex-shrink: 0;
-
-    width: 50px;
-
-    height: 50px;
-
-    border-radius: 50%;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: #eaf1ff;
-
-    color: #2d6cdf;
-
-}
-
-.contact-detail span {
-
-    display: block;
-
-    margin-bottom: 5px;
-
-    color: #1b2430;
-
-    font-size: 14px;
-
-    font-weight: 700;
-
-}
-
-.contact-detail a {
-
-    color: #2d6cdf;
-
-    font-size: 16px;
-
-    text-decoration: none;
-
-}
-
-.contact-detail a:hover {
-
-    text-decoration: underline;
-
-}
-
-.contact-detail p {
-
-    margin: 0;
-
-    color: #6c7688;
-
-    font-size: 16px;
-
-    line-height: 1.6;
-
-}
-
-
-/* =========================
-   CONTACT FORM
-========================= */
-
-.contact-form-wrapper {
-
-    padding: 38px;
-
-    background: #ffffff;
-
-    border: 1px solid #e7edf6;
-
-    border-radius: 26px;
-
-    box-shadow:
-        0 18px 50px rgba(31, 41, 55, 0.06);
-
-}
-
-.contact-form {
-
-    display: grid;
-
-    gap: 20px;
-
-}
-
-.form-row {
-
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 18px;
-
-}
-
-.form-group {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 8px;
-
-}
-
-.form-group label {
-
-    color: #1b2430;
-
-    font-size: 14px;
-
-    font-weight: 600;
-
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-
-    width: 100%;
-
-    box-sizing: border-box;
-
-    border: 1px solid #dfe6f0;
-
-    border-radius: 12px;
-
-    background: #ffffff;
-
-    color: #1b2430;
-
-    font-family: inherit;
-
-    font-size: 15px;
-
-    padding: 14px 16px;
-
-    outline: none;
-
-    transition:
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
-
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-
-    color: #a1aaba;
-
-}
-
-.form-group textarea {
-
-    resize: vertical;
-
-    min-height: 150px;
-
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-
-    border-color: #2d6cdf;
-
-    box-shadow:
-        0 0 0 3px rgba(45, 108, 223, 0.08);
-
-}
-
-.contact-submit {
-
-    border: none;
-
-    cursor: pointer;
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 10px;
-
-    margin-top: 5px;
-
-}
-
-.form-note {
-
-    margin: 0;
-
-    color: #929baa;
-
-    font-size: 12px;
-
-    line-height: 1.6;
-
-    text-align: center;
-
-}
-
-
-/* =========================
-   CONTACT CTA
-========================= */
-
-.contact-cta {
-
-    padding: 120px 8%;
-
-    background: #ffffff;
-
-    text-align: center;
-
-}
-
-.contact-cta-content {
-
-    max-width: 760px;
-
-    margin: 0 auto;
-
-}
-
-.contact-cta h2 {
-
-    margin: 25px auto 20px;
-
-    color: #1b2430;
-
-    font-size: 52px;
-
-    line-height: 1.15;
-
-}
-
-.contact-cta h2 span {
-
-    color: #2d6cdf;
-
-}
-
-.contact-cta p {
-
-    max-width: 650px;
-
-    margin: 0 auto;
-
-    color: #6c7688;
-
-    font-size: 18px;
-
-    line-height: 1.8;
-
-}
-
 
 /* =========================================================
-   CONTACT RESPONSIVE
+   CONTACT PAGE — 600PX
 ========================================================= */
-
-@media (max-width: 900px) {
-
-    .contact-container {
-
-        grid-template-columns: 1fr;
-
-        gap: 50px;
-
-    }
-
-    .contact-intro {
-
-        max-width: 750px;
-
-        margin: 0 auto;
-
-    }
-
-}
-
 
 @media (max-width: 600px) {
 
@@ -4456,335 +4803,10 @@ body:has(.about-cta) .about-cta {
     }
 
 }
-/* ==========================================
-   XANORA AI — FORM MODALS
-========================================== */
 
-body.modal-open {
-    overflow: hidden;
-}
-
-
-/* ==========================================
-   MODAL BACKDROP
-========================================== */
-
-.form-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 30px;
-
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-
-    transition:
-        opacity 0.25s ease,
-        visibility 0.25s ease;
-}
-
-
-.form-modal.active {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
-
-
-.form-modal-overlay {
-    position: absolute;
-    inset: 0;
-
-    background: rgba(5, 8, 20, 0.78);
-
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-}
-
-
-/* ==========================================
-   MODAL CONTENT
-========================================== */
-
-.form-modal-content {
-    position: relative;
-
-    width: min(680px, 100%);
-    max-height: 90vh;
-
-    overflow-y: auto;
-
-    padding: 42px;
-
-    background: #ffffff;
-
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 24px;
-
-    box-shadow:
-        0 30px 80px rgba(0, 0, 0, 0.25);
-
-    transform: translateY(20px) scale(0.98);
-
-    transition:
-        transform 0.25s ease;
-}
-
-
-.form-modal.active .form-modal-content {
-    transform: translateY(0) scale(1);
-}
-
-
-/* ==========================================
-   CLOSE BUTTON
-========================================== */
-
-.form-modal-close {
-    position: absolute;
-
-    top: 18px;
-    right: 18px;
-
-    width: 42px;
-    height: 42px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 50%;
-
-    background: #f7f7f7;
-
-    color: #222;
-
-    cursor: pointer;
-
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease;
-}
-
-
-.form-modal-close:hover {
-    background: #eeeeee;
-    transform: rotate(5deg);
-}
-
-
-/* ==========================================
-   MODAL HEADER
-========================================== */
-
-.form-modal-header {
-    margin-bottom: 30px;
-
-    padding-right: 45px;
-}
-
-
-.form-modal-header .section-badge {
-    display: inline-block;
-
-    margin-bottom: 14px;
-}
-
-
-.form-modal-header h2 {
-    margin: 0 0 14px;
-
-    font-size: clamp(2rem, 5vw, 3rem);
-
-    line-height: 1.08;
-}
-
-
-.form-modal-header h2 span {
-    display: inline;
-}
-
-
-.form-modal-header p {
-    margin: 0;
-
-    color: #666;
-
-    line-height: 1.7;
-}
-
-
-/* ==========================================
-   FORM LAYOUT
-========================================== */
-
-.consultation-form {
-    display: flex;
-    flex-direction: column;
-
-    gap: 20px;
-}
-
-
-.form-field {
-    display: flex;
-    flex-direction: column;
-
-    gap: 8px;
-}
-
-
-.form-field label {
-    font-size: 0.92rem;
-    font-weight: 600;
-
-    color: #222;
-}
-
-
-.form-field label span {
-    color: #777;
-}
-
-
-.form-field label small {
-    font-weight: 400;
-    color: #888;
-}
-
-
-/* ==========================================
-   INPUTS
-========================================== */
-
-.form-field input,
-.form-field select,
-.form-field textarea {
-    width: 100%;
-
-    box-sizing: border-box;
-
-    padding: 14px 16px;
-
-    border: 1px solid #dcdcdc;
-    border-radius: 12px;
-
-    background: #ffffff;
-
-    color: #222;
-
-    font-family: inherit;
-    font-size: 0.95rem;
-
-    outline: none;
-
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-
-.form-field input:focus,
-.form-field select:focus,
-.form-field textarea:focus {
-    border-color: #222;
-
-    box-shadow:
-        0 0 0 3px rgba(0, 0, 0, 0.06);
-}
-
-
-.form-field textarea {
-    min-height: 120px;
-
-    resize: vertical;
-}
-
-
-.form-field select {
-    cursor: pointer;
-}
-
-
-/* ==========================================
-   RADIO OPTIONS
-========================================== */
-
-.form-options {
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 10px;
-}
-
-
-.option-card {
-    position: relative;
-
-    display: flex;
-    align-items: center;
-
-    gap: 10px;
-
-    padding: 13px 14px;
-
-    border: 1px solid #dcdcdc;
-    border-radius: 12px;
-
-    background: #ffffff;
-
-    cursor: pointer;
-
-    transition:
-        border-color 0.2s ease,
-        background 0.2s ease;
-}
-
-
-.option-card:hover {
-    border-color: #999;
-}
-
-
-.option-card input {
-    width: auto;
-    margin: 0;
-}
-
-
-.option-card span {
-    font-size: 0.9rem;
-}
-
-
-/* ==========================================
-   SUBMIT BUTTON
-========================================== */
-
-.form-submit {
-    width: 100%;
-
-    margin-top: 6px;
-
-    border: none;
-
-    cursor: pointer;
-
-    justify-content: center;
-}
-
-
-/* ==========================================
-   MOBILE
-========================================== */
+/* =========================================================
+   SHARED — FORM MODALS — 700PX
+========================================================= */
 
 @media (max-width: 700px) {
 
@@ -4815,6 +4837,1062 @@ body.modal-open {
     .form-modal-close {
         top: 14px;
         right: 14px;
+    }
+
+}
+
+
+.section-title h2 span {
+    color: var(--heading-accent);
+}
+
+
+.section-heading h2 span {
+    color: var(--heading-accent);
+}
+
+
+.who-title span {
+    color: var(--heading-accent);
+}
+
+
+.problems-section .problem-title span {
+    color: var(--heading-accent);
+}
+
+/* =========================================================
+   FINAL — UNIVERSAL PAGE BACKGROUND SYSTEM
+   Index / About / Services / Contact
+   One page background across the entire website.
+========================================================= */
+
+:root {
+    --page-background: #ffffff;
+}
+
+body {
+    background: var(--page-background);
+}
+
+#hero,
+.services-preview,
+.process,
+.who-section,
+.problems-section,
+.final-cta,
+
+.about-hero,
+.about-story,
+.about-beliefs,
+.about-capabilities,
+.about-vision,
+.about-process,
+.about-future,
+.about-cta,
+
+.services-hero,
+.services-intro,
+.services-list,
+.services-approach,
+.services-cta,
+
+.contact-hero,
+.contact-section,
+.contact-cta {
+    background: var(--page-background) !important;
+}
+
+/* =========================================================
+   LIGHT MODE — PREMIUM SURFACE HIERARCHY
+   Page canvas stays universally white.
+   Soft blue is reserved for supporting components.
+========================================================= */
+
+.why-card,
+.service-card,
+.process-card,
+.who-card,
+.problem-card,
+.belief-card,
+.capability-card,
+.about-process-card,
+.approach-card {
+    background: var(--surface-soft);
+}
+
+.service-detail-card,
+.contact-form-wrapper,
+.form-modal-content {
+    background: var(--surface-elevated);
+}
+
+.section-badge {
+    background: var(--surface-blue);
+    color: var(--brand-primary);
+}
+
+
+
+/* =========================================================
+   LIGHT MODE — PREMIUM CARD DEPTH
+   Distinguish cards from the universal page canvas.
+========================================================= */
+
+.why-card,
+.service-card,
+.process-card,
+.who-card,
+.problem-card,
+.belief-card,
+.capability-card,
+.about-process-card,
+.approach-item,
+.service-detail-card {
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.06);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.why-card:hover,
+.service-card:hover,
+.process-card:hover,
+.who-card:hover,
+.problem-card:hover,
+.belief-card:hover,
+.capability-card:hover,
+.about-process-card:hover,
+.approach-item:hover,
+.service-detail-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--border-blue);
+    box-shadow:
+        0 18px 45px rgba(var(--brand-rgb), 0.10);
+}
+
+/* =========================================================
+   HOME — SERVICES / PROCESS HEADING LAYER
+   Keep heading text above decorative circular graphics.
+========================================================= */
+
+.services-preview .section-title,
+.process .section-title {
+    position: relative;
+    z-index: 5;
+}
+
+.services-preview .section-title h2,
+.process .section-title h2 {
+    position: relative;
+    z-index: 6;
+}
+
+.services-orbit,
+.process-grid {
+    position: relative;
+    z-index: 1;
+}
+
+.services-orbit {
+    margin-top: 55px;
+}
+
+.process-grid {
+    margin-top: 40px;
+}
+
+.orbit-ring {
+    z-index: 0;
+}
+
+.services-center,
+.service-orbit-card {
+    z-index: 2;
+}
+
+/* =========================================================
+   ABOUT — SECTION BADGE CONSISTENCY
+========================================================= */
+
+.about-story .section-badge,
+.about-beliefs .section-badge,
+.about-capabilities .section-badge,
+.about-vision .section-badge,
+.about-process .section-badge,
+.about-future .section-badge,
+.about-cta .section-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: var(--surface-blue);
+    color: var(--brand-primary);
+    border: 1px solid var(--border-blue);
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+/* =========================================================
+   FINAL — UNIVERSAL SECTION TITLE / BADGE SYSTEM
+   Applies identically to Index, About, Services and Contact.
+   This is the single authoritative rule.
+========================================================= */
+
+.section-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 20px;
+
+    min-height: 42px;
+
+    border-radius: 999px;
+
+    background: #e4efff;
+    color: var(--brand-primary);
+
+    border: 1px solid #cfe0ff;
+
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+
+    white-space: nowrap;
+
+    margin-bottom: 20px;
+
+    box-sizing: border-box;
+}
+
+/* The same specification must win inside every page-specific component. */
+.about-hero .section-badge,
+.about-story .section-badge,
+.about-beliefs .section-badge,
+.about-capabilities .section-badge,
+.about-vision .section-badge,
+.about-process .section-badge,
+.about-future .section-badge,
+.about-cta .section-badge,
+.services-hero .section-badge,
+.services-intro .section-badge,
+.services-approach .section-badge,
+.services-cta .section-badge,
+.contact-hero .section-badge,
+.contact-section .section-badge,
+.contact-cta .section-badge,
+.final-cta .section-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 20px;
+
+    min-height: 42px;
+
+    border-radius: 999px;
+
+    background: #e4efff;
+    color: var(--brand-primary);
+
+    border: 1px solid #cfe0ff;
+
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+
+    white-space: nowrap;
+
+    margin-bottom: 20px;
+
+    box-sizing: border-box;
+}
+
+/* =========================================================
+   XANORA AI — DARK MODE
+   FINAL THEME LAYER
+   ---------------------------------------------------------
+   Light mode remains the existing baseline.
+   Dark mode uses deep navy, not black.
+   Manual theme choice: [data-theme="dark"]
+   System preference: @media (prefers-color-scheme: dark)
+========================================================= */
+
+/* =========================================================
+   DARK MODE — DESIGN TOKENS
+========================================================= */
+
+[data-theme="dark"] {
+    color-scheme: dark;
+
+    --surface-white: #f8fafc;
+
+    --brand-primary: #4f8cff;
+    --brand-hover: #6aa0ff;
+    --brand-accent: #7db2ff;
+    --heading-accent: #60a5fa;
+    --brand-rgb: 79, 140, 255;
+
+    --text-primary: #f8fafc;
+    --text-strong: #e2e8f0;
+    --text-secondary: #b8c5d6;
+    --text-list: #c5d0df;
+    --text-muted: #8293a8;
+
+    --page-background: #07111f;
+    --surface: #0b1728;
+    --surface-soft: #0d1d30;
+    --surface-blue: #122a45;
+    --surface-elevated: #102033;
+    --surface-card: #102033;
+    --surface-hover: #162b43;
+
+    --border: #1e344d;
+    --border-blue: #294f7d;
+
+    --footer-bg: #040b14;
+}
+
+/* Follow the operating system only when the user has not
+   explicitly selected a theme. JavaScript removes this
+   automatic behavior once a manual preference exists. */
+
+@media (prefers-color-scheme: dark) {
+
+    html:not([data-theme]) {
+        color-scheme: dark;
+    }
+
+    html:not([data-theme]) body {
+        --page-background: #07111f;
+        --surface: #0b1728;
+        --surface-soft: #0d1d30;
+        --surface-blue: #122a45;
+        --surface-elevated: #102033;
+        --surface-card: #102033;
+        --surface-hover: #162b43;
+
+        --brand-primary: #4f8cff;
+        --brand-hover: #6aa0ff;
+        --brand-accent: #7db2ff;
+        --heading-accent: #60a5fa;
+        --brand-rgb: 79, 140, 255;
+
+        --text-primary: #f8fafc;
+        --text-strong: #e2e8f0;
+        --text-secondary: #b8c5d6;
+        --text-list: #c5d0df;
+        --text-muted: #8293a8;
+
+        --border: #1e344d;
+        --border-blue: #294f7d;
+        --footer-bg: #040b14;
+    }
+}
+
+/* =========================================================
+   DARK MODE — GLOBAL CANVAS
+========================================================= */
+
+[data-theme="dark"] body {
+    background: var(--page-background);
+    color: var(--text-primary);
+}
+
+@media (prefers-color-scheme: dark) {
+    html:not([data-theme]) body {
+        background: #07111f;
+        color: #f8fafc;
+    }
+}
+
+/* =========================================================
+   DARK MODE — NAVIGATION
+========================================================= */
+
+[data-theme="dark"] .navbar {
+    background: rgba(7, 17, 31, 0.78);
+    border-color: rgba(125, 178, 255, 0.18);
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .logo,
+[data-theme="dark"] .nav-links a {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .nav-links a:hover,
+[data-theme="dark"] .nav-links .active {
+    color: var(--brand-accent);
+}
+
+[data-theme="dark"] .nav-button {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .nav-button:hover {
+    box-shadow: 0 8px 20px rgba(var(--brand-rgb), 0.28);
+}
+
+/* =========================================================
+   DARK MODE — THEME TOGGLE
+========================================================= */
+
+.theme-toggle {
+    width: 42px;
+    height: 42px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 42px;
+
+    padding: 0;
+
+    border: 1px solid var(--border);
+    border-radius: 50%;
+
+    background: var(--surface-elevated);
+    color: var(--text-primary);
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-blue);
+    box-shadow: 0 8px 22px rgba(var(--brand-rgb), 0.12);
+}
+
+.theme-toggle:focus-visible {
+    outline: 3px solid rgba(var(--brand-rgb), 0.25);
+    outline-offset: 3px;
+}
+
+.theme-toggle svg {
+    width: 19px;
+    height: 19px;
+    pointer-events: none;
+}
+
+[data-theme="dark"] .theme-toggle {
+    background: #102033;
+    border-color: #294f7d;
+    color: #f8fafc;
+}
+
+/* =========================================================
+   DARK MODE — UNIVERSAL PAGE SURFACES
+========================================================= */
+
+[data-theme="dark"] #hero,
+[data-theme="dark"] .services-preview,
+[data-theme="dark"] .process,
+[data-theme="dark"] .who-section,
+[data-theme="dark"] .problems-section,
+[data-theme="dark"] .final-cta,
+
+[data-theme="dark"] .about-hero,
+[data-theme="dark"] .about-story,
+[data-theme="dark"] .about-beliefs,
+[data-theme="dark"] .about-capabilities,
+[data-theme="dark"] .about-vision,
+[data-theme="dark"] .about-process,
+[data-theme="dark"] .about-future,
+[data-theme="dark"] .about-cta,
+
+[data-theme="dark"] .services-hero,
+[data-theme="dark"] .services-intro,
+[data-theme="dark"] .services-list,
+[data-theme="dark"] .services-approach,
+[data-theme="dark"] .services-cta,
+
+[data-theme="dark"] .contact-hero,
+[data-theme="dark"] .contact-section,
+[data-theme="dark"] .contact-cta {
+    background: var(--page-background) !important;
+}
+
+/* =========================================================
+   DARK MODE — SECTION BADGES
+   Same universal geometry and typography as light mode.
+   Only the tonal treatment changes.
+========================================================= */
+
+[data-theme="dark"] .section-badge,
+[data-theme="dark"] .about-hero .section-badge,
+[data-theme="dark"] .about-story .section-badge,
+[data-theme="dark"] .about-beliefs .section-badge,
+[data-theme="dark"] .about-capabilities .section-badge,
+[data-theme="dark"] .about-vision .section-badge,
+[data-theme="dark"] .about-process .section-badge,
+[data-theme="dark"] .about-future .section-badge,
+[data-theme="dark"] .about-cta .section-badge,
+[data-theme="dark"] .services-hero .section-badge,
+[data-theme="dark"] .services-intro .section-badge,
+[data-theme="dark"] .services-approach .section-badge,
+[data-theme="dark"] .services-cta .section-badge,
+[data-theme="dark"] .contact-hero .section-badge,
+[data-theme="dark"] .contact-section .section-badge,
+[data-theme="dark"] .contact-cta .section-badge,
+[data-theme="dark"] .final-cta .section-badge {
+    background: #122a45 !important;
+    color: #7db2ff !important;
+    border-color: #294f7d !important;
+}
+
+/* =========================================================
+   DARK MODE — HEADINGS / BODY TEXT
+========================================================= */
+
+[data-theme="dark"] .hero-left h1,
+[data-theme="dark"] .section-heading h2,
+[data-theme="dark"] .section-title h2,
+[data-theme="dark"] .who-title,
+[data-theme="dark"] .problems-section .problem-title,
+[data-theme="dark"] .final-cta h2,
+[data-theme="dark"] .about-hero h1,
+[data-theme="dark"] .about-story h2,
+[data-theme="dark"] .about-beliefs h2,
+[data-theme="dark"] .about-capabilities h2,
+[data-theme="dark"] .about-vision h2,
+[data-theme="dark"] .about-process h2,
+[data-theme="dark"] .about-future h2,
+[data-theme="dark"] .about-cta h2,
+[data-theme="dark"] .services-hero h1,
+[data-theme="dark"] .services-approach h2,
+[data-theme="dark"] .services-cta h2,
+[data-theme="dark"] .contact-hero h1,
+[data-theme="dark"] .contact-intro h2,
+[data-theme="dark"] .contact-cta h2 {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .hero-left h1 span,
+[data-theme="dark"] .section-heading h1 span,
+[data-theme="dark"] .section-heading h2 span,
+[data-theme="dark"] .section-title h2 span,
+[data-theme="dark"] .who-title span,
+[data-theme="dark"] .problems-section .problem-title span,
+[data-theme="dark"] .final-cta h2 span,
+[data-theme="dark"] .about-hero h1 span,
+[data-theme="dark"] .about-beliefs h2 span,
+[data-theme="dark"] .about-capabilities h2 span,
+[data-theme="dark"] .about-vision h2 span,
+[data-theme="dark"] .about-process h2 span,
+[data-theme="dark"] .about-future h2 span,
+[data-theme="dark"] .about-cta h2 span,
+[data-theme="dark"] .services-hero h1 span,
+[data-theme="dark"] .services-approach h2 span,
+[data-theme="dark"] .services-cta h2 span,
+[data-theme="dark"] .contact-hero h1 span,
+[data-theme="dark"] .contact-cta h2 span {
+    color: var(--heading-accent);
+}
+
+[data-theme="dark"] .hero-description,
+[data-theme="dark"] .section-heading p,
+[data-theme="dark"] .section-title p,
+[data-theme="dark"] .section-description,
+[data-theme="dark"] .hero-service-circles .floating-card p,
+[data-theme="dark"] .floating-card p {
+    color: var(--text-secondary);
+}
+
+/* =========================================================
+   DARK MODE — HERO
+========================================================= */
+
+[data-theme="dark"] .hero-badge {
+    background: #122a45;
+    color: #7db2ff;
+}
+
+[data-theme="dark"] .secondary-btn {
+    background: rgba(16, 32, 51, 0.72);
+    color: #7db2ff;
+    border-color: rgba(var(--brand-rgb), 0.65);
+}
+
+[data-theme="dark"] .secondary-btn:hover {
+    background: var(--brand-primary);
+    color: #ffffff;
+}
+
+[data-theme="dark"] .hero-features div {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .ai-node {
+    color: var(--brand-accent);
+}
+
+[data-theme="dark"] .ai-node svg {
+    background: #102033;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="dark"] .ai-node span {
+    color: var(--text-strong);
+}
+
+[data-theme="dark"] .hero-service-circles .floating-card {
+    background: rgba(16, 32, 51, 0.88);
+    border-color: rgba(var(--brand-rgb), 0.24);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.24);
+}
+
+[data-theme="dark"] .hero-service-circles .card-icon {
+    background: #122a45;
+    color: #7db2ff;
+}
+
+[data-theme="dark"] .hero-service-circles .floating-card h3 {
+    color: var(--text-primary);
+}
+
+/* =========================================================
+   DARK MODE — CARDS
+========================================================= */
+
+[data-theme="dark"] .why-card,
+[data-theme="dark"] .service-card,
+[data-theme="dark"] .process-card,
+[data-theme="dark"] .who-card,
+[data-theme="dark"] .problem-card,
+[data-theme="dark"] .belief-card,
+[data-theme="dark"] .capability-card,
+[data-theme="dark"] .about-process-card,
+[data-theme="dark"] .approach-card,
+[data-theme="dark"] .approach-item,
+[data-theme="dark"] .service-detail-card,
+[data-theme="dark"] .service-orbit-card {
+    background: var(--surface-elevated) !important;
+    border-color: var(--border);
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.24);
+}
+
+[data-theme="dark"] .why-card:hover,
+[data-theme="dark"] .service-card:hover,
+[data-theme="dark"] .process-card:hover,
+[data-theme="dark"] .who-card:hover,
+[data-theme="dark"] .problem-card:hover,
+[data-theme="dark"] .belief-card:hover,
+[data-theme="dark"] .capability-card:hover,
+[data-theme="dark"] .about-process-card:hover,
+[data-theme="dark"] .approach-item:hover,
+[data-theme="dark"] .service-detail-card:hover,
+[data-theme="dark"] .service-orbit-card:hover {
+    border-color: var(--border-blue);
+    box-shadow:
+        0 20px 50px rgba(var(--brand-rgb), 0.14);
+}
+
+[data-theme="dark"] .card-title h3,
+[data-theme="dark"] .service-card h3,
+[data-theme="dark"] .process-card h3,
+[data-theme="dark"] .who-card h3,
+[data-theme="dark"] .problem-card h3,
+[data-theme="dark"] .belief-card h3,
+[data-theme="dark"] .capability-card h3,
+[data-theme="dark"] .about-process-card h3,
+[data-theme="dark"] .service-detail-card h2,
+[data-theme="dark"] .service-detail-card h3,
+[data-theme="dark"] .approach-item h3,
+[data-theme="dark"] .service-orbit-card h3 {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .why-card p,
+[data-theme="dark"] .service-card p,
+[data-theme="dark"] .process-card p,
+[data-theme="dark"] .who-card p,
+[data-theme="dark"] .problem-card p,
+[data-theme="dark"] .belief-card p,
+[data-theme="dark"] .capability-card p,
+[data-theme="dark"] .about-process-card p,
+[data-theme="dark"] .service-detail-card p,
+[data-theme="dark"] .approach-item p,
+[data-theme="dark"] .service-orbit-card p {
+    color: var(--text-secondary);
+}
+
+/* =========================================================
+   DARK MODE — ORBIT / NETWORK VISUALS
+========================================================= */
+
+[data-theme="dark"] .services-center {
+    background: #102033;
+    border-color: var(--border-blue);
+    box-shadow:
+        0 20px 60px rgba(var(--brand-rgb), 0.14);
+}
+
+[data-theme="dark"] .services-center .center-icon,
+[data-theme="dark"] .service-orbit-card i {
+    background: #122a45;
+    color: #7db2ff;
+}
+
+[data-theme="dark"] .services-center h3 {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .services-center p {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .orbit-ring {
+    border-color: rgba(var(--brand-rgb), 0.35);
+}
+
+[data-theme="dark"] .orbit-dot {
+    background: var(--brand-primary);
+    box-shadow:
+        0 0 0 3px #07111f,
+        0 0 10px rgba(var(--brand-rgb), 0.35);
+}
+
+[data-theme="dark"] .process-grid::before {
+    background: #294f7d;
+}
+
+[data-theme="dark"] .network-svg path {
+    stroke: #4f8cff;
+}
+
+[data-theme="dark"] .infinity-path path {
+    stroke: rgba(var(--brand-rgb), 0.24);
+}
+
+/* =========================================================
+   DARK MODE — ICONS / NUMBERS
+========================================================= */
+
+[data-theme="dark"] .number,
+[data-theme="dark"] .who-icon,
+[data-theme="dark"] .problem-icon,
+[data-theme="dark"] .belief-icon,
+[data-theme="dark"] .capability-icon {
+    background: var(--brand-primary);
+    color: #ffffff;
+}
+
+/* =========================================================
+   DARK MODE — SERVICES PAGE
+========================================================= */
+
+[data-theme="dark"] .service-detail-card.service-highlight {
+    border-color: var(--brand-primary);
+    box-shadow:
+        0 0 0 4px rgba(var(--brand-rgb), 0.12),
+        0 25px 65px rgba(0, 0, 0, 0.28);
+}
+
+/* =========================================================
+   DARK MODE — CONTACT / FORMS
+========================================================= */
+
+[data-theme="dark"] .contact-form-wrapper,
+[data-theme="dark"] .form-modal-content {
+    background: var(--surface-elevated);
+    border-color: var(--border);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.42);
+}
+
+[data-theme="dark"] .form-group label {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group select,
+[data-theme="dark"] .form-group textarea {
+    background: #0b1728;
+    color: var(--text-primary);
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .form-group input::placeholder,
+[data-theme="dark"] .form-group textarea::placeholder {
+    color: var(--text-muted);
+}
+
+[data-theme="dark"] .form-group input:focus,
+[data-theme="dark"] .form-group select:focus,
+[data-theme="dark"] .form-group textarea:focus {
+    border-color: var(--brand-primary);
+    box-shadow:
+        0 0 0 3px rgba(var(--brand-rgb), 0.14);
+}
+
+[data-theme="dark"] .form-modal-overlay {
+    background: rgba(1, 6, 14, 0.84);
+}
+
+[data-theme="dark"] .form-modal-close {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .form-modal-header h2 {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .form-modal-header p,
+[data-theme="dark"] .form-note {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .form-option,
+[data-theme="dark"] .form-options label {
+    background: #0d1d30;
+    border-color: var(--border);
+    color: var(--text-primary);
+}
+
+/* =========================================================
+   DARK MODE — CTA / BUTTONS
+========================================================= */
+
+[data-theme="dark"] .primary-btn,
+[data-theme="dark"] .nav-button,
+[data-theme="dark"] .footer-cta {
+    background: var(--brand-primary);
+    color: #ffffff;
+}
+
+[data-theme="dark"] .primary-btn:hover,
+[data-theme="dark"] .nav-button:hover,
+[data-theme="dark"] .footer-cta:hover {
+    background: var(--brand-hover);
+}
+
+/* =========================================================
+   DARK MODE — FOOTER
+========================================================= */
+
+[data-theme="dark"] .site-footer {
+    background: var(--footer-bg);
+}
+
+[data-theme="dark"] .footer-brand p,
+[data-theme="dark"] .footer-column a,
+[data-theme="dark"] .footer-contact-text {
+    color: #9eafc4;
+}
+
+[data-theme="dark"] .footer-column a:hover,
+[data-theme="dark"] .footer-bottom-links a:hover {
+    color: #f8fafc;
+}
+
+[data-theme="dark"] .footer-bottom {
+    border-top-color: rgba(255, 255, 255, 0.10);
+}
+
+[data-theme="dark"] .footer-bottom p,
+[data-theme="dark"] .footer-bottom-links a {
+    color: #71839a;
+}
+
+/* =========================================================
+   DARK MODE — LINKS / SELECTED TEXT
+========================================================= */
+
+[data-theme="dark"] a {
+    -webkit-tap-highlight-color: rgba(var(--brand-rgb), 0.15);
+}
+
+[data-theme="dark"] ::selection {
+    background: rgba(var(--brand-rgb), 0.35);
+    color: #ffffff;
+}
+
+/* =========================================================
+   DARK MODE — THEME TRANSITION
+========================================================= */
+
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease !important;
+}
+
+/* =========================================================
+   DARK MODE — REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html.theme-transition *,
+    html.theme-transition *::before,
+    html.theme-transition *::after {
+        transition: none !important;
+    }
+}
+
+/* =========================================================
+   DARK MODE — MOBILE THEME TOGGLE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
+    }
+
+}
+
+/* =========================================================
+   LEGAL MODALS
+========================================================= */
+
+.legal-modal-content {
+    width: min(900px, 92%);
+    max-height: 90vh;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.legal-modal-content .form-modal-header {
+    flex-shrink: 0;
+}
+
+
+.legal-modal-body {
+    overflow-y: auto;
+
+    padding-right: 12px;
+
+    margin-top: 25px;
+
+    line-height: 1.8;
+}
+
+
+.legal-modal-body h2 {
+    margin-top: 45px;
+    margin-bottom: 18px;
+}
+
+
+.legal-modal-body h2:first-child {
+    margin-top: 0;
+}
+
+
+.legal-modal-body h3 {
+    margin-top: 30px;
+    margin-bottom: 12px;
+}
+
+
+.legal-modal-body p {
+    margin-bottom: 18px;
+}
+
+
+.legal-modal-body ul {
+    padding-left: 25px;
+    margin-bottom: 22px;
+}
+
+
+.legal-modal-body li {
+    margin-bottom: 8px;
+}
+
+
+.legal-modal-body a {
+    color: var(--primary-blue);
+    text-decoration: underline;
+}
+
+
+.legal-modal-body .legal-meta {
+    margin-bottom: 35px;
+    opacity: 0.75;
+}
+
+
+/* =========================================================
+   LEGAL MODALS — MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .legal-modal-content {
+        width: 94%;
+        max-height: 92vh;
+
+        padding: 30px 22px;
+    }
+
+
+    .legal-modal-body {
+        padding-right: 6px;
+
+        margin-top: 20px;
+
+        font-size: 15px;
+        line-height: 1.75;
+    }
+
+
+    .legal-modal-body h2 {
+        margin-top: 38px;
+        margin-bottom: 15px;
+
+        font-size: 26px;
+    }
+
+
+    .legal-modal-body h3 {
+        margin-top: 28px;
+        margin-bottom: 10px;
+
+        font-size: 19px;
     }
 
 }
