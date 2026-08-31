@@ -165,13 +165,17 @@ export async function onRequestPost(context) {
         // VALIDATE SERVICE
         // ==========================================
 
-        const allowedServices = [
-           "AI Consulting",
-           "Automation",
-           "Business Integration",
-           "Custom AI Software",
-           "AI Training",
-           "AI Strategy"
+       const allowedServices = [
+          "AI for Everyday Life",
+          "AI Consulting",
+          "AI Automation",
+          "Automation",
+          "Business Integration",
+          "Custom AI Solution",
+          "Custom AI Software",
+          "AI Training",
+          "AI Strategy",
+          "Something Else"
         ];
 
         if (!allowedServices.includes(cleanService)) {
