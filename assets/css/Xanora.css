@@ -157,6 +157,15 @@ header.nav-hidden {
     transform: translateY(-100%);
 }
 
+@media (max-width: 700px) {
+
+    .mobile-menu-panel.nav-hidden {
+        transform: translateY(-100%);
+        transition: transform 0.3s ease;
+    }
+
+}
+
 .navbar {
     max-width: 1200px;
     margin: 24px auto 0;
@@ -5627,12 +5636,21 @@ body {
     color: var(--text-primary);
 }
 
+[data-theme="dark"] .form-field label {
+    color: var(--text-primary);
+}
+
 [data-theme="dark"] .form-group input,
 [data-theme="dark"] .form-group select,
 [data-theme="dark"] .form-group textarea {
     background: #0b1728;
     color: var(--text-primary);
     border-color: var(--border);
+}
+
+[data-theme="dark"] .form-field input[type="date"],
+[data-theme="dark"] .form-field input[type="time"] {
+    color-scheme: light;
 }
 
 [data-theme="dark"] .form-group input::placeholder,
@@ -5893,6 +5911,477 @@ html.theme-transition *::after {
         margin-bottom: 10px;
 
         font-size: 19px;
+    }
+
+}
+
+/* =========================================================
+   XANORA AI — FINAL MOBILE OVERRIDES
+   Mobile navigation / spacing / hero network
+   Desktop remains untouched
+========================================================= */
+
+@media (max-width: 700px) {
+
+    /* =====================================================
+       MOBILE PAGE WIDTH
+    ===================================================== */
+
+    body {
+        margin: 0;
+    }
+
+    main,
+    section,
+    .hero-container,
+    .hero-left,
+    .hero-right {
+        width: 100%;
+        max-width: 100%;
+    }
+
+
+    /* =====================================================
+       MOBILE NAVBAR
+    ===================================================== */
+
+    header {
+        width: 100%;
+    }
+
+    .navbar {
+        position: relative;
+
+        width: calc(100% - 24px);
+        max-width: none;
+
+        margin: 12px auto 0;
+        padding: 10px 14px;
+
+        min-height: 54px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 10px;
+
+        overflow: visible;
+    }
+
+    .logo {
+        flex: 0 0 auto;
+
+        font-size: 22px;
+        line-height: 1;
+
+        white-space: nowrap;
+        margin: 0;
+    }
+
+    /* Hide desktop navigation on mobile */
+    .nav-links,
+    .nav-button {
+        display: none !important;
+    }
+
+
+    /* =====================================================
+       RIGHT-SIDE CONTROLS
+    ===================================================== */
+
+    .navbar .theme-toggle,
+    .mobile-menu-toggle {
+        flex: 0 0 40px;
+
+        width: 40px;
+        height: 40px;
+
+        display: inline-flex;
+
+        align-items: center;
+        justify-content: center;
+
+        padding: 0;
+    }
+
+
+    /* =====================================================
+       MOBILE MENU BUTTON
+    ===================================================== */
+
+    .mobile-menu-toggle {
+        border: 1px solid var(--border);
+        border-radius: 50%;
+
+        background: var(--surface-elevated);
+        color: var(--text-primary);
+
+        cursor: pointer;
+
+        font-size: 22px;
+        line-height: 1;
+
+        transition:
+            background-color .2s ease,
+            color .2s ease,
+            border-color .2s ease,
+            transform .2s ease;
+    }
+
+    .mobile-menu-toggle:hover {
+        transform: translateY(-1px);
+        border-color: var(--border-blue);
+    }
+
+
+    /* =====================================================
+       MOBILE MENU PANEL
+    ===================================================== */
+
+    .mobile-menu-panel {
+        display: none;
+
+        position: absolute;
+
+        top: calc(100% + 10px);
+
+        left: 0;
+        right: 0;
+
+        width: 100%;
+
+        padding: 10px;
+
+        background: var(--surface-elevated);
+
+        border: 1px solid var(--border);
+
+        border-radius: 18px;
+
+        box-shadow:
+            0 20px 45px rgba(15, 23, 42, 0.14);
+
+        z-index: 1200;
+    }
+
+    .mobile-menu-panel.active {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 4px;
+    }
+
+    .mobile-menu-panel a {
+        display: block;
+
+        width: 100%;
+
+        padding: 12px 14px;
+
+        border-radius: 12px;
+
+        color: var(--text-primary);
+
+        text-decoration: none;
+
+        font-size: 15px;
+        font-weight: 600;
+
+        transition:
+            background-color .2s ease,
+            color .2s ease;
+    }
+
+    .mobile-menu-panel a:hover,
+    .mobile-menu-panel a:focus-visible {
+        background: var(--surface-blue);
+        color: var(--brand-primary);
+    }
+
+
+    /* =====================================================
+       DARK MODE — MOBILE NAVIGATION
+    ===================================================== */
+
+    [data-theme="dark"] .mobile-menu-toggle {
+        background: #102033;
+        border-color: #294f7d;
+        color: #f8fafc;
+    }
+
+    [data-theme="dark"] .mobile-menu-panel {
+        background: #102033;
+        border-color: #294f7d;
+    }
+
+    [data-theme="dark"] .mobile-menu-panel a:hover,
+    [data-theme="dark"] .mobile-menu-panel a:focus-visible {
+        background: #122a45;
+        color: #7db2ff;
+    }
+
+
+    /* =====================================================
+       HERO — MOBILE SPACING
+    ===================================================== */
+
+    #hero {
+        min-height: auto;
+
+        padding:
+            42px 16px 24px;
+    }
+
+    .hero-container {
+        gap: 20px;
+    }
+
+    .hero-right {
+        gap: 4px;
+    }
+
+    .hero-visual {
+        width: min(100%, 330px);
+        height: 320px;
+
+        margin:
+            0 auto 14px;
+    }
+
+
+    /* =====================================================
+       AI NETWORK — MOBILE
+    ===================================================== */
+
+    .ai-network {
+        width: min(92vw, 360px);
+        height: 290px;
+
+        max-width: 100%;
+
+        margin: 0 auto;
+
+        transform: none;
+    }
+
+
+    /* =====================================================
+       MOBILE NODE POSITIONS
+       
+       1 = Intelligence
+       2 = Automation
+       3 = Development
+       4 = Integration
+    ===================================================== */
+
+    .ai-node-1 {
+        left: 12% !important;
+        top: 50% !important;
+    }
+
+    .ai-node-2 {
+        left: 50% !important;
+        top: 15% !important;
+    }
+
+    .ai-node-3 {
+        left: 88% !important;
+        top: 50% !important;
+    }
+
+    .ai-node-4 {
+        left: 50% !important;
+        top: 85% !important;
+    }
+
+
+    /* =====================================================
+       NODE SCALE
+    ===================================================== */
+
+    .ai-node {
+        width: 120px;
+    }
+
+    .ai-node svg {
+        width: 38px;
+        height: 38px;
+
+        min-width: 38px;
+        min-height: 38px;
+
+        padding: 9px;
+    }
+
+    .ai-node span {
+        font-size: 13px;
+    }
+
+
+    /* =====================================================
+       SERVICE CIRCLES
+    ===================================================== */
+
+    .hero-service-circles {
+        width: 100%;
+        max-width: 330px;
+
+        margin-top: 4px;
+
+        gap: 8px;
+    }
+
+    .hero-service-circles .floating-card {
+        width: 140px;
+        height: 140px;
+
+        flex: 0 0 140px;
+    }
+
+
+    /* =====================================================
+       MOBILE SECTION SPACING
+    ===================================================== */
+
+    .why-xanora {
+        margin: 38px auto;
+        padding: 10px 16px;
+    }
+
+    .services-preview {
+        padding: 38px 16px;
+    }
+
+    .process {
+        padding: 42px 16px;
+    }
+
+    .who-section {
+        padding: 42px 16px 34px;
+    }
+
+    .problems-section {
+        padding: 28px 16px 48px;
+    }
+
+    .final-cta {
+        padding: 42px 16px;
+    }
+
+
+    /* =====================================================
+       KEEP CONTENT INSIDE PHONE WIDTH
+    ===================================================== */
+
+    .services-grid,
+    .why-grid,
+    .process-grid,
+    .who-grid,
+    .problems-grid,
+    .hero-features {
+        width: 100%;
+        max-width: 100%;
+    }
+
+}
+
+/* =========================================================
+   XANORA AI — FINAL MOBILE PAGE SPACING
+   About / Services / Contact
+   Desktop remains untouched
+========================================================= */
+
+@media (max-width: 700px) {
+
+    /* =====================================================
+       ABOUT PAGE
+    ===================================================== */
+
+    body:has(.about-hero) .about-hero {
+        padding: 70px 6% 50px;
+    }
+
+    body:has(.about-story) .about-story {
+        padding: 45px 6%;
+    }
+
+    body:has(.about-beliefs) .about-beliefs {
+        padding: 45px 6%;
+    }
+
+    body:has(.about-capabilities) .about-capabilities {
+        padding: 45px 6%;
+    }
+
+    body:has(.about-vision) .about-vision {
+        padding: 45px 6%;
+    }
+
+    body:has(.about-process) .about-process {
+        padding: 45px 6%;
+    }
+
+    body:has(.about-future) .about-future {
+        padding: 45px 6%;
+    }
+
+    body:has(.about-cta) .about-cta {
+        padding: 50px 6%;
+    }
+
+
+    /* =====================================================
+       SERVICES PAGE
+    ===================================================== */
+
+    .services-hero {
+        padding: 70px 6% 50px;
+    }
+
+    .services-intro {
+        padding: 45px 6% 35px;
+    }
+
+    .services-list {
+        padding: 40px 6% 50px;
+    }
+
+    .services-approach {
+        padding: 45px 6%;
+    }
+
+    .services-cta {
+        padding: 50px 6%;
+    }
+
+
+    /* =====================================================
+       CONTACT PAGE
+    ===================================================== */
+
+    .contact-hero {
+        padding: 70px 6% 50px;
+    }
+
+    .contact-section {
+        padding: 45px 6%;
+    }
+
+    .contact-cta {
+        padding: 50px 6%;
+    }
+
+
+    /* =====================================================
+       MOBILE SECTION HEADING SPACING
+    ===================================================== */
+
+    body:has(.about-hero) .section-heading h1,
+    body:has(.about-hero) .section-heading h2 {
+        margin-top: 18px;
+        margin-bottom: 18px;
     }
 
 }

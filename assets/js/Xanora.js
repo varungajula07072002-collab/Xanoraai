@@ -35,48 +35,181 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-
-    /* =====================================================
-       HIDE NAVIGATION ON SCROLL DOWN
-       SHOW NAVIGATION ON SCROLL UP
-    ===================================================== */
+   /* =====================================================
+     NAVIGATION — HIDE ON DOWN / SHOW ON UP
+     Desktop + Mobile
+   ===================================================== */
 
     const header =
-        document.querySelector("header");
+      document.querySelector("header");
+
+    const navbar =
+       document.querySelector(".navbar");
 
     let lastScrollY =
         window.scrollY;
 
+    let scrollDirectionDistance = 0;
+    let lastDirection = null;
+
     if (header) {
 
-        window.addEventListener("scroll", function () {
+       window.addEventListener("scroll", function () {
 
-            const currentScrollY =
-                window.scrollY;
+          const currentScrollY =
+             window.scrollY;
 
-            if (
-                currentScrollY > lastScrollY &&
-                currentScrollY > 100
-            ) {
+          const delta =
+             currentScrollY - lastScrollY;
 
-                header.classList.add("nav-hidden");
 
-            } else if (
-                currentScrollY < lastScrollY
-            ) {
+          /* =================================================
+             DESKTOP
+          ================================================= */
 
-                header.classList.remove("nav-hidden");
+          if (window.innerWidth > 700) {
+
+               /* ================================
+                DESKTOP — EXISTING LOGIC
+               ================================= */
+
+               if (
+                  currentScrollY > lastScrollY &&
+                  currentScrollY > 100
+                ) {
+
+                   header.classList.add("nav-hidden");
+
+                }
+
+                else if (
+                    currentScrollY < lastScrollY
+                ) {
+
+                   header.classList.remove("nav-hidden");
+                }
+
+            } else {
+
+               /* =================================================
+                 MOBILE NAVIGATION
+                 Navbar + open menu move together
+               ================================================= */
+
+               const menuPanel =
+                 navbar.querySelector(".mobile-menu-panel");
+
+               const menuIsOpen =
+                   menuPanel &&
+                   menuPanel.classList.contains("active");
+
+
+               /* -----------------------------------------------
+                  MOBILE REVEAL THRESHOLD
+ 
+                  Small upward movements are ignored.
+                  The user must intentionally scroll upward
+                  before the navigation returns.
+               ----------------------------------------------- */
+
+                const MOBILE_REVEAL_THRESHOLD = 25;
+
+
+               /* -----------------------------------------------
+                   ALWAYS SHOW AT VERY TOP
+               ----------------------------------------------- */
+
+               if (currentScrollY <= 20) {
+
+                   header.classList.remove("nav-hidden");
+
+                    if (menuPanel) {
+                      menuPanel.classList.remove("nav-hidden");
+                    }
+                    
+                   scrollDirectionDistance = 0;
+                   lastDirection = null;
+
+                }
+
+
+               /* -----------------------------------------------
+                  SCROLLING DOWN
+       
+                  This applies even when the menu is OPEN.
+
+                  Because the menu is inside the header,
+                  hiding the header hides the menu with it.
+                ----------------------------------------------- */
+
+                else if (delta > 0) {
+
+                   if (lastDirection !== "down") {
+
+                       scrollDirectionDistance = 0;
+                       lastDirection = "down";
+ 
+                    }
+
+                   scrollDirectionDistance += delta;
+
+                  header.classList.add("nav-hidden");
+
+                  if (menuPanel) {
+                       menuPanel.classList.add("nav-hidden");
+                    }
+                }
+
+
+              /* -----------------------------------------------
+                 SCROLLING UP
+ 
+                 Do NOT immediately reveal the navbar.
+                 Accumulate upward movement first.
+              ----------------------------------------------- */
+
+              else if (delta < 0) {
+
+                 if (lastDirection !== "up") {
+
+                     scrollDirectionDistance = 0;
+                      lastDirection = "up";
+
+                    }
+
+                 scrollDirectionDistance += Math.abs(delta);
+
+
+                 /* Reveal only after deliberate upward movement */
+
+                 if (
+                     scrollDirectionDistance >=
+                     MOBILE_REVEAL_THRESHOLD
+                    ) {
+
+                     header.classList.remove(
+                         "nav-hidden"
+                         );
+
+                     if (menuPanel) {
+                           menuPanel.classList.remove(
+                               "nav-hidden"
+                            );
+                        }
+                     scrollDirectionDistance = 0;
+
+                    }
+                }
 
             }
 
-            lastScrollY =
-                currentScrollY;
+          lastScrollY =
+             currentScrollY;
 
         });
 
     }
-
-
+  
     /* =====================================================
        SCROLL REVEAL
     ===================================================== */
@@ -997,11 +1130,11 @@ document.addEventListener(
 
 
                 if (
-                    angle >
-                    Math.PI * 2
+                    angle <
+                      0
                 ) {
 
-                    angle -=
+                    angle +=
                         Math.PI * 2;
 
                 }
@@ -1388,7 +1521,7 @@ document.addEventListener(
 
         const consultationButtons =
             document.querySelectorAll(
-                'a[href="contact.html"]'
+                'a[href="contact.html"], a[href="index.html#book-consultation"]'
             );
 
 
@@ -1411,12 +1544,35 @@ document.addEventListener(
                         "click",
                         function (event) {
 
-                            event.preventDefault();
+                         /*
+                         * IF THE CONSULTATION MODAL EXISTS
+                         * ON THE CURRENT PAGE:
+                         * open it here.
+                         */
+                         if (consultationModal) {
 
-                            openModal(
-                                consultationModal
-                            );
+                             event.preventDefault();
 
+                             openModal(
+                                 consultationModal
+                                );
+
+                              return;
+                            }
+
+
+                         /*
+                         * IF THE MODAL DOES NOT EXIST
+                         * ON THE CURRENT PAGE:
+                         *
+                         * Go to the Index page and tell
+                         * the Index page to open the
+                         * consultation modal.
+                         */
+                         event.preventDefault();
+
+                         window.location.href =
+                           "index.html#book-consultation";
                         }
                     );
 
@@ -1614,18 +1770,26 @@ document.addEventListener(
         /* =====================================================
            OPEN CONSULTATION FROM OTHER PAGES
         ===================================================== */
+        function handleConsultationHash() {
+          if (
+               window.location.hash ===
+              "#book-consultation" &&
+               consultationModal
+            ) {
 
-        if (
-            window.location.hash ===
-            "#book-consultation" &&
-            consultationModal
-        ) {
+              openModal(
+                  consultationModal
+                );
 
-            openModal(
-                consultationModal
-            );
-
+            }
         }
+
+        handleConsultationHash();
+
+        window.addEventListener(
+          "hashchange",
+           handleConsultationHash
+        );
 
 
         /* =====================================================
@@ -2620,3 +2784,88 @@ document.addEventListener(
     }
 
 })();
+
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const navbar =
+            document.querySelector(".navbar");
+
+        if (!navbar) return;
+
+
+        const menuButton =
+            navbar.querySelector(".mobile-menu-toggle");
+
+        const menuPanel =
+            navbar.querySelector(".mobile-menu-panel");
+
+
+        if (
+            !menuButton ||
+            !menuPanel
+        ) {
+            return;
+        }
+
+
+        menuButton.addEventListener(
+            "click",
+            function () {
+
+                const isOpen =
+                    menuPanel.classList.toggle("active");
+
+
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    String(isOpen)
+                );
+
+
+                menuButton.setAttribute(
+                    "aria-label",
+                    isOpen
+                        ? "Close navigation"
+                        : "Open navigation"
+                );
+
+            }
+        );
+
+
+        menuPanel
+            .querySelectorAll("a")
+            .forEach(function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        menuPanel.classList.remove(
+                            "active"
+                        );
+
+                        menuButton.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                        menuButton.setAttribute(
+                            "aria-label",
+                            "Open navigation"
+                        );
+
+                    }
+                );
+
+            });
+
+    }
+);
+
