@@ -4976,8 +4976,7 @@ body {
 .belief-card:hover,
 .capability-card:hover,
 .about-process-card:hover,
-.approach-item:hover,
-.service-detail-card:hover {
+.approach-item:hover{
     transform: translateY(-5px);
     border-color: var(--border-blue);
     box-shadow:
