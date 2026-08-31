@@ -6385,3 +6385,34 @@ html.theme-transition *::after {
     }
 
 }
+
+/* =========================================================
+   MOBILE MENU — DESKTOP HIDDEN
+   ========================================================= */
+
+.mobile-menu-toggle,
+.mobile-menu-panel {
+    display: none !important;
+}
+
+
+/* =========================================================
+   MOBILE — SHOW MENU CONTROLS
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .mobile-menu-toggle {
+        display: inline-flex !important;
+    }
+
+    .mobile-menu-panel {
+        display: none !important;
+    }
+
+    .mobile-menu-panel.active {
+        display: flex !important;
+        flex-direction: column;
+    }
+
+}
