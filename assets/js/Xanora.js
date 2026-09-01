@@ -2683,9 +2683,8 @@ document.addEventListener(
         }
 
 
-        root.setAttribute(
-            "data-theme",
-            getSystemTheme()
+        root.removeAttribute(
+            "data-theme"
         );
 
 
@@ -2716,14 +2715,13 @@ document.addEventListener(
 
 
     const initialTheme =
-        storedTheme || getSystemTheme();
-       
-    root.setAttribute(
-            "data-theme",
-            initialTheme
-        );
+    storedTheme ||
+    getSystemTheme();
 
-    }
+    root.setAttribute(
+        "data-theme",
+        initialTheme
+    );
 
 
     /* =====================================================
